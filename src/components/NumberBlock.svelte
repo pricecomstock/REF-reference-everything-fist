@@ -15,7 +15,7 @@
 		<p>{trait?.number ?? role?.number}.</p>
 		<p>
 			<a href={`/trait/${trait?.name.toLowerCase()}`}>
-				<!-- <Link size="20" /> -->
+				<Link size="20" />
 			</a>
 		</p>
 	</div>
