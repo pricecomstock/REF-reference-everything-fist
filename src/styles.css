@@ -1,0 +1,33 @@
+h1,
+h2,
+h3,
+h4 {
+	font-family: 'Michroma', sans-serif;
+}
+
+:root {
+	--background-dark: #000;
+	--background-light: #fff;
+
+	--text-dark: #fff;
+	--text-light: #000;
+
+	--gray-dark: #777;
+	--gray-light: #ccc;
+
+	--background: var(--background-dark);
+	--text: var(--text-dark);
+	--gray: var(--gray-dark);
+}
+
+body {
+	font-family: 'Space Grotesk', sans-serif;
+
+	background-color: var(--background-dark);
+	color: var(--background-light);
+}
+
+a,
+a:visited {
+	color: var(--text);
+}
