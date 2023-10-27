@@ -1,18 +1,43 @@
 <script lang="ts">
-	let isDark = true;
-	// import { Moon, Sun } from 'lucide-svelte';
+	import { fly } from 'svelte/transition';
+	import { theme, toggleTheme } from '$lib/theme';
+	import { Moon, Sun } from 'lucide-svelte';
 </script>
 
-<!-- <div on:click={() => (isDark = !isDark)}>
-	{#if isDark}
-		<Moon size="24" />
+<button on:click={toggleTheme}>
+	{#if $theme === 'light'}
+		<div in:fly={{ y: -10 }}>
+			<Moon size="32" />
+			Dark
+		</div>
 	{:else}
-		<Sun size="24" />
+		<div in:fly={{ y: 10 }}>
+			<Sun size="32" />
+			Light
+		</div>
 	{/if}
-</div> -->
+</button>
 
 <style>
-	div {
+	button {
+		background: none;
+		padding: 0;
+		border: none;
 		cursor: pointer;
+		font-weight: inherit;
+		box-shadow: none;
+
+		color: currentColor;
+	}
+
+	button > * {
+		display: flex;
+		gap: 0.25rem;
+	}
+
+	button > div {
+		display: flex;
+		align-items: center;
+		gap: 0.25rem;
 	}
 </style>

@@ -14,10 +14,23 @@
 	<div class="number">
 		<p>{trait?.number ?? role?.number}.</p>
 		<p>
-			<a href={`/trait/${trait?.name.toLowerCase()}`}>
-				<Link size="20" />
-			</a>
+			{#if trait}
+				<a href={`/trait/${trait?.name.toLowerCase()}`}>
+					<Link size="20" />
+				</a>
+			{:else}
+				<a href={`/role/${role?.name.toLowerCase()}`}>
+					<Link size="20" />
+				</a>
+			{/if}
 		</p>
+		<!-- {#if trait?.stats}
+			{#each Object.entries(trait.stats) as [key, value]}
+				<span class={`stat ${STAT_ABBREVIATIONS[key]?.toLowerCase()}`}
+					>{value} {STAT_ABBREVIATIONS[key]}</span
+				>
+			{/each}
+		{/if} -->
 	</div>
 	<div class="details">
 		{#if trait}
@@ -48,4 +61,8 @@
 		padding: 0 0.75rem;
 		border-right: var(--gray) 2px solid;
 	}
+
+	/* .stat {
+		border-radius: 0.25rem;
+	} */
 </style>

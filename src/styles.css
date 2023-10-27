@@ -1,33 +1,101 @@
-h1,
-h2,
-h3,
-h4 {
-	font-family: 'Michroma', sans-serif;
-}
-
-:root {
+html {
 	--background-dark: #000;
-	--background-light: #fff;
-
 	--text-dark: #fff;
-	--text-light: #000;
-
 	--gray-dark: #777;
+
+	--background-light: #fcfcfc;
+	--text-light: #000;
 	--gray-light: #ccc;
 
+	--header-font: 'Michroma', sans-serif;
+	--body-font: 'Space Grotesk', sans-serif;
+
+	--color-frc: #e84855;
+	--color-tac: #3581b8;
+	--color-rfx: #05b37f;
+	--color-cre: #fadf63;
+}
+
+/* Default dark mode */
+:root {
+	color-scheme: dark;
 	--background: var(--background-dark);
 	--text: var(--text-dark);
 	--gray: var(--gray-dark);
 }
 
+/* System light mode */
+/* @media (prefers-color-scheme: light) {
+	:root {
+		color-scheme: light;
+		--background: var(--background-light);
+		--text: var(--text-light);
+		--gray: var(--gray-light);
+	}
+} */
+
+[color-scheme='dark'] {
+	color-scheme: dark;
+	--background: var(--background-dark);
+	--text: var(--text-dark);
+	--gray: var(--gray-dark);
+}
+
+[color-scheme='light'] {
+	color-scheme: light;
+	--background: var(--background-light);
+	--text: var(--text-light);
+	--gray: var(--gray-light);
+}
+
 body {
 	font-family: 'Space Grotesk', sans-serif;
 
-	background-color: var(--background-dark);
-	color: var(--background-light);
+	background-color: var(--background);
+	color: var(--text);
+
+	transition: background-color 0.1s ease-in-out;
+}
+
+h1,
+h2,
+h3 {
+	font-family: var(--header-font);
+	text-align: center;
+
+	margin-top: 2rem;
+	margin-bottom: 1rem;
+}
+
+h4,
+h5,
+h6 {
+	font-family: var(--body-font);
+	font-weight: bold;
+	text-align: left;
 }
 
 a,
 a:visited {
 	color: var(--text);
+}
+
+a.icon-link {
+	text-decoration: none;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.35rem;
+}
+
+.frc {
+	background-color: var(--color-frc);
+}
+.tac {
+	background-color: var(--color-tac);
+}
+.rfx {
+	background-color: var(--color-rfx);
+}
+.cre {
+	background-color: var(--color-cre);
 }

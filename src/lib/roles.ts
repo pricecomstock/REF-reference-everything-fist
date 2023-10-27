@@ -11,3 +11,15 @@ export const roles: Role[] = rolesJSON;
 
 export const rolesByNumber = mapByField(roles, 'number');
 export const rolesByName = mapByField(roles, 'name');
+
+export function getRoleByNumber(n: number) {
+	return rolesByNumber.get(n);
+}
+
+export function getRoleByName(name: string) {
+	return rolesByName.get(name.toUpperCase());
+}
+
+export function getRandomRole() {
+	return roles[Math.floor(Math.random() * roles.length)];
+}

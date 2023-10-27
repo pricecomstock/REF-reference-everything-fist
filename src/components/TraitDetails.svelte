@@ -10,10 +10,14 @@
 		{trait.effect}
 	</p>
 	<p class="stats">-&nbsp;&nbsp;{trait.item}, {trait.stat}</p>
+	<!-- <ul class="stats-list">
+		<li>{trait.item}</li>
+		<li>{trait.stat}</li>
+	</ul> -->
 </div>
 
 <style>
-	.stats {
+	p.stats {
 		padding-left: 1rem;
 	}
 </style>

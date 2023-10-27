@@ -11,6 +11,19 @@
 			rel="stylesheet"
 		/>
 		%sveltekit.head%
+
+		<script type="module">
+			const theme = localStorage.getItem('color-scheme');
+
+			if (theme) {
+				console.log('Found theme in local storage: ' + theme);
+				document.documentElement.setAttribute('color-scheme', theme);
+			} else {
+				console.log('Default set theme to dark');
+				localStorage.setItem('color-scheme', 'dark');
+				document.documentElement.setAttribute('color-scheme', 'dark');
+			}
+		</script>
 	</head>
 	<body data-sveltekit-preload-data="hover">
 		<div style="display: contents">%sveltekit.body%</div>

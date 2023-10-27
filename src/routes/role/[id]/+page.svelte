@@ -1,12 +1,12 @@
 <script lang="ts">
-	import type { PageServerData } from './$types';
+	import type { PageServerLoad } from './$types';
 	import NumberBlock from '$components/NumberBlock.svelte';
-	export let data: PageServerData;
-	$: ({ trait } = data);
+	export let data: PageServerLoad;
+	$: ({ role } = data);
 </script>
 
-<h1>Trait # {trait.number}: {trait.name}</h1>
-<NumberBlock {trait} />
+<h1>Role # {role.number}: {role.name}</h1>
+<NumberBlock {role} />
 
 <!-- <pre>{JSON.stringify(data, null, 2)}</pre> -->
 

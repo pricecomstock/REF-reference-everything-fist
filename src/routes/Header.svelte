@@ -4,7 +4,7 @@
 
 <div class="header">
 	<a class="logo" href="/">
-		<h1>FIST Online Traits Index</h1>
+		<span>R.E.F.</span>
 	</a>
 	<div class="header-right">
 		<DarkMode />
@@ -19,17 +19,12 @@
 		margin: 1rem;
 	}
 
-	.header h1 {
-		font-size: 1.75rem;
-	}
-
 	.logo {
+		font-family: var(--header-font);
+		font-size: 1.75rem;
 		text-decoration: none;
-	}
-
-	.header img {
-		max-width: min(10rem, 20vw);
-		margin: 0.5rem;
+		-webkit-text-stroke: 0.15rem;
+		letter-spacing: 0.3rem;
 	}
 
 	.header-right {
