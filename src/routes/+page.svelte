@@ -3,7 +3,7 @@
 </script>
 
 <h1>The R.E.F.</h1>
-<p class="subtitle"><u>R</u>EFERENCE of <u>E</u>VERYTHING <u>F</u>IST</p>
+<p class="subtitle"><u>R</u>EFERENCE for <u>E</u>VERYTHING <u>F</u>IST</p>
 <div class="instructions">
 	<p>Click an item above to get started.</p>
 </div>
