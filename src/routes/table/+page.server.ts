@@ -4,6 +4,7 @@ import { roles } from '$lib/roles';
 
 export const load = (async () => {
 	return {
+		title: 'Dice Table',
 		traits,
 		roles
 	};

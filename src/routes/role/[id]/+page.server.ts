@@ -1,5 +1,5 @@
 import { getRoleByName, getRoleByNumber } from '$lib/roles';
-import { redirect } from '@sveltejs/kit';
+import { error, redirect } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 
 export const load = (async ({ params }) => {
@@ -11,7 +11,12 @@ export const load = (async ({ params }) => {
 
 	const role = getRoleByName(params.id);
 
+	if (!role) {
+		throw error(404);
+	}
+
 	return {
+		title: role.name,
 		role
 	};
 }) satisfies PageServerLoad;

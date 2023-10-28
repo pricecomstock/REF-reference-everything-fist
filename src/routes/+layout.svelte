@@ -1,10 +1,15 @@
 <script lang="ts">
+	import { page } from '$app/stores';
 	import '../reset.css';
 	import '../styles.css';
 	import Footer from './Footer.svelte';
 	import Header from './Header.svelte';
 	import Nav from './Nav.svelte';
 </script>
+
+<svelte:head>
+	<title>FISTREF - {$page.data.title ?? 'Online Fist Reference'}</title>
+</svelte:head>
 
 <div class="layout">
 	<Header />

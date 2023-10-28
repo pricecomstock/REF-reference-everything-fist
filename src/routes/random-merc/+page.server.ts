@@ -10,6 +10,7 @@ export const load = (async () => {
 		randomTrait2 = getRandomTrait();
 	}
 	return {
+		title: 'Random Merc',
 		codename: getRandomCodename(),
 		role: getRandomRole(),
 		traits: [getRandomTrait(), getRandomTrait()]

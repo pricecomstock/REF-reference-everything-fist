@@ -5,6 +5,11 @@
 	$: ({ role } = data);
 </script>
 
+<!-- 
+<svelte:head>
+	<title>FistREF - {role.name}</title>
+</svelte:head> -->
+
 <h1>Role # {role.number}: {role.name}</h1>
 <NumberBlock {role} />
 

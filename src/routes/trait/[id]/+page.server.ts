@@ -1,8 +1,8 @@
 import { getTraitByName, getTraitByNumber } from '$lib/traits';
-import { redirect } from '@sveltejs/kit';
+import { error, redirect } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 
-export const load = (async ({ params }: { id: number | string }) => {
+export const load = (async ({ params }) => {
 	const idNumber = Number(params.id);
 	if (idNumber) {
 		const trait = getTraitByNumber(idNumber);
@@ -11,7 +11,12 @@ export const load = (async ({ params }: { id: number | string }) => {
 
 	const trait = getTraitByName(params.id);
 
+	if (!trait) {
+		throw error(404);
+	}
+
 	return {
+		title: trait.name,
 		trait
 	};
 }) satisfies PageServerLoad;

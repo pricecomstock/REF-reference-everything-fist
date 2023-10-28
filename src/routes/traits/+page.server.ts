@@ -3,6 +3,7 @@ import type { PageLoad } from '../$types';
 
 export const load = (async () => {
 	return {
-		traits
+		traits,
+		title: 'Traits Index'
 	};
 }) satisfies PageLoad;
