@@ -17,10 +17,8 @@
 			const theme = localStorage.getItem('color-scheme');
 
 			if (theme) {
-				console.log('Found theme in local storage: ' + theme);
 				document.documentElement.setAttribute('color-scheme', theme);
 			} else {
-				console.log('Default set theme to dark');
 				localStorage.setItem('color-scheme', 'dark');
 				document.documentElement.setAttribute('color-scheme', 'dark');
 			}

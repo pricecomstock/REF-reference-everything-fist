@@ -1,6 +1,6 @@
 <script lang="ts">
 	const changelog: Record<string, string[]> = {
-		'27 OCT 2023': [
+		'26 OCT 2023': [
 			'--Initial creation--',
 			'Traits index',
 			'Roles index',
@@ -9,7 +9,8 @@
 			'Random role',
 			'Random merc',
 			'Dark mode'
-		]
+		],
+		'27 OCT 2023': ['Fix trait formatting', "Use lulu's new JSON", 'Improved random merc']
 	};
 </script>
 
@@ -18,7 +19,7 @@
 <div class="changelog">
 	<h2>Changelog</h2>
 	<div class="changelog-entries">
-		{#each Object.entries(changelog) as [date, items]}
+		{#each Object.entries(changelog).reverse() as [date, items]}
 			<div class="date">{date}</div>
 			<div class="items">
 				{#each items as item}
@@ -35,6 +36,8 @@
 		<li>Filtering & Search</li>
 		<li>Improved merc generator</li>
 		<li>Community content</li>
+		<li>Offline mode</li>
+		<li>Printable References</li>
 	</ul>
 </div>
 

@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { PageServerLoad } from '../traits/$types';
-	export let data: PageServerLoad;
+	import type { PageServerData } from '../traits/$types';
+	export let data: PageServerData;
 	$: ({ traits, roles } = data);
 </script>
 

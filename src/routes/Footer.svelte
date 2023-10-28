@@ -14,7 +14,7 @@
 			This tool manufactured with <i>extreme</i> precision by
 			<a href="https://price.town/about">PC</a>.
 		</p>
-		<p>JSON data compiled by <a href="https://github.com/u-lulu/sonder/tree/main">lulu.</a></p>
+		<p>JSON data compiled by <a href="https://ululu.itch.io/fist-json-data">lulu.</a></p>
 	</div>
 </div>
 

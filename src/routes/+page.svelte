@@ -11,7 +11,7 @@
 <div class="links">
 	<a class="icon-link" href="https://claymorerpgs.itch.io/fist"><Book size="24" />GET FIST</a>
 	<a class="icon-link" href="/changelog"><Triangle size="24" />CHANGELOG & WISHLIST</a>
-	<a class="icon-link" href="https://github.com/pricecomstock/fist-tools"
+	<a class="icon-link" href="https://github.com/pricecomstock/REF-reference-everything-fist"
 		><SquareCode size="24" />SOURCE CODE</a
 	>
 </div>
@@ -35,5 +35,10 @@
 
 	.links {
 		max-width: 25ch;
+	}
+
+	.icon-link {
+		text-decoration: underline;
+		font-weight: bold;
 	}
 </style>

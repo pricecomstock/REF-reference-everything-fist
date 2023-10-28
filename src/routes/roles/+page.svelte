@@ -1,7 +1,7 @@
 <script lang="ts">
 	import NumberBlock from '$components/NumberBlock.svelte';
-	import type { PageServerLoad } from './$types';
-	export let data: PageServerLoad;
+	import type { PageServerData } from './$types';
+	export let data: PageServerData;
 	$: ({ roles } = data);
 </script>
 

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import NumberBlock from '$components/NumberBlock.svelte';
-	import type { PageServerLoad } from '../traits/$types';
-	export let data: PageServerLoad;
+	import type { PageServerData } from '../traits/$types';
+	export let data: PageServerData;
 	$: ({ traits } = data);
 </script>
 

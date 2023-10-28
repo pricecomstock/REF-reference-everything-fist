@@ -135,7 +135,7 @@
 	{
 		"number": 142,
 		"name": "BREAKDOWN",
-		"effect": "A directive burns in the back of your mind. When you take this trait, randomly roll a CHOKE score for your character (`/matrix choke`)\u2014and roll against it when appropriate, as the ref would with an NPC. If you CHOKE, you must either perform the listed action immediately or release a psionic shockwave from your skull, ten feet in diameter with the concussive force of a frag grenade. This shockwave deals 1D6+2 DAMAGE to everyone caught inside (not including yourself) and, if you spend a WAR DIE, additionally functions as a short-range EMP burst which shorts out power lines, burns out lights, and disables electronics.",
+		"effect": "A directive burns in the back of your mind. When you take this trait, randomly roll a CHOKE score for your character (D66, p. 148)\u2014and roll against it when appropriate, as the ref would with an NPC. If you CHOKE, you must either perform the listed action immediately or release a psionic shockwave from your skull, ten feet in diameter with the concussive force of a frag grenade. This shockwave deals 1D6+2 DAMAGE to everyone caught inside (not including yourself) and, if you spend a WAR DIE, additionally functions as a short-range EMP burst which shorts out power lines, burns out lights, and disables electronics.",
 		"item": "Needle gun (1D6+1 DAMAGE)",
 		"stat": "-1 TACTICAL"
 	},
@@ -157,7 +157,7 @@
 		"number": 145,
 		"name": "BUM",
 		"effect": "Years of homelessness have been harsh on your bones, but you are skilled in the art of survival sans income and shelter. You may roll the dice +CREATIVE to panhandle in the presence of enemies\u2014on a success, at least one enemy will give you something they have, free of charge. Those who ignore poor and homeless people will never notice you, even if you're hiding in plain sight.",
-		"item": "Shabby coat (new Item `/matrix gear item` in pocket each mission)",
+		"item": "Shabby coat (new Item (p. 85) in pocket each mission)",
 		"stat": "-1 FORCEFUL"
 	},
 	{
@@ -233,7 +233,7 @@
 	{
 		"number": 164,
 		"name": "CONCEAL",
-		"effect": "You can always take weapons and contraband through pat-downs, checkpoints, and metal detectors without rolling the dice. Once per mission, if you have no weapon equipped and no weapons in your inventory, you may reveal a random weapon (roll on the weapons table, `/matrix gear weapon`) and say that you had it hidden away the whole time.",
+		"effect": "You can always take weapons and contraband through pat-downs, checkpoints, and metal detectors without rolling the dice. Once per mission, if you have no weapon equipped and no weapons in your inventory, you may reveal a random WEAPON (roll D66 on the weapons table, p. 83) and say that you had it hidden away the whole time.",
 		"item": "Leather trenchcoat (1 ARMOR)",
 		"stat": "-1 REFLEXIVE"
 	},
@@ -1206,7 +1206,7 @@
 	{
 		"number": 555,
 		"name": "STAND",
-		"effect": "You command a flamboyant spirit with its own trait, tangible only to you but able to affect the corporeal world. Roll a random trait for your stand (`/trait random`) and choose a hyper-specific additional bonus, like \"can be used twice per mission if my blood is removed and replaced\" or \"deals double DAMAGE if the target is left-handed.\" Everyone else at the table should democratically decide on a hyper-specific condition or downside, such as \"can only be used when Mercury is in retrograde\" or \"causes a random bone in the user's body to break when used.\"",
+		"effect": "You command a flamboyant spirit with its own trait, tangible only to you but able to affect the corporeal world. Roll a random trait for your stand (D666) and choose a hyper-specific additional bonus, like \"can be used twice per mission if my blood is removed and replaced\" or \"deals double DAMAGE if the target is left-handed.\" Everyone else at the table should democratically decide on a hyper-specific condition or downside, such as \"can only be used when Mercury is in retrograde\" or \"causes a random bone in the user's body to break when used.\"",
 		"item": "Stand (immortal and invisible)",
 		"stat": "+1 FORCEFUL"
 	},
@@ -1437,7 +1437,7 @@
 	{
 		"number": 652,
 		"name": "VOLATILE",
-		"effect": "Your menagerie of ultrahuman abilities is virtually infinite in scope, but which powers manifest themselves (and when) is completely unpredictable. At the beginning of each mission, roll a trait (`/trait random`). That trait replaces this trait (VOLATILE) until the end of the mission (although you also retain VOLATILE's containment armor and -2 TACTICAL penalty). Reroll your trait when you rest, use a WAR DIE, or take 6+ DAMAGE.",
+		"effect": "Your menagerie of ultrahuman abilities is virtually infinite in scope, but which powers manifest themselves (and when) is completely unpredictable. At the beginning of each mission, roll a trait (D666). That trait replaces this trait (VOLATILE) until the end of the mission (although you also retain VOLATILE's containment armor and -2 TACTICAL penalty). Reroll your trait when you rest, use a WAR DIE, or take 6+ DAMAGE.",
 		"item": "Containment armor (2 ARMOR)",
 		"stat": "-2 TACTICAL"
 	},

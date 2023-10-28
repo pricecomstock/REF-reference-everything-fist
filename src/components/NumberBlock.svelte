@@ -44,7 +44,7 @@
 <style>
 	.number-block {
 		display: grid;
-		grid-template-columns: 5ch 1fr;
+		grid-template-columns: 6ch 1fr;
 		gap: 0.75rem;
 
 		max-width: 65ch;

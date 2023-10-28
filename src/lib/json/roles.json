@@ -57,7 +57,7 @@
 	{
 		"number": 26,
 		"name": "FLUX",
-		"text": "Describe why your motivations and worldview are in a constant state of flux. When each mission begins, roll a random role (`/role random`), answer the \"describe\" section as succinctly as possible, and play as though that role were yours for the duration of the mission."
+		"text": "Describe why your motivations and worldview are in a constant state of flux. When each mission begins, roll a random role (D66), answer the \"describe\" section as succinctly as possible, and play as though that role were yours for the duration of the mission."
 	},
 	{
 		"number": 31,

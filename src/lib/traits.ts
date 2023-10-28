@@ -54,7 +54,7 @@ export const traits: Trait[] = rawTraits.map((trait) => {
 		// I think using else is ok for every vanilla trait
 		if (['TACTICAL', 'REFLEXIVE', 'FORCEFUL', 'CREATIVE'].includes(statString)) {
 			stats = {
-				[statString]: parseInt(modifier, 10)
+				[STAT_ABBREVIATIONS[statString]]: parseInt(modifier, 10)
 			};
 		} else if (statString.startsWith('MAX HP')) {
 			stats.MAX_HP = parseInt(modifier, 10);
@@ -71,9 +71,6 @@ export const traits: Trait[] = rawTraits.map((trait) => {
 		} else {
 			console.error('Unknown stat:', modifier, statString);
 		}
-		stats = {
-			[statString]: parseInt(modifier, 10)
-		};
 	}
 
 	return {

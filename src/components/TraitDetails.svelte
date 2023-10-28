@@ -2,22 +2,29 @@
 	import type { Trait } from '$lib/traits';
 
 	export let trait: Trait;
+	$: formattedEffect = trait.effect.replaceAll(/\n(\d.)/gi, '\n    $1');
 </script>
 
 <div>
 	<p class="effect">
 		<b>{trait.name}:</b>
-		{trait.effect}
+		{formattedEffect}
 	</p>
-	<p class="stats">-&nbsp;&nbsp;{trait.item}, {trait.stat}</p>
-	<!-- <ul class="stats-list">
+	<ul class="stats-list">
 		<li>{trait.item}</li>
 		<li>{trait.stat}</li>
-	</ul> -->
+	</ul>
 </div>
 
 <style>
-	p.stats {
-		padding-left: 1rem;
+	.effect {
+		white-space: pre-wrap;
+	}
+	ul,
+	ol {
+		margin: 0;
+	}
+	li {
+		margin-left: -0.5rem;
 	}
 </style>
