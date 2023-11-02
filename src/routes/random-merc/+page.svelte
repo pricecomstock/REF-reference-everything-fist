@@ -1,11 +1,16 @@
 <script lang="ts">
 	import NumberBlock from '$components/NumberBlock.svelte';
+	import IconButton from '$components/IconButton.svelte';
 	import type { Stats, Trait } from '$lib/traits';
 	import type { PageServerData } from './$types';
-	export let data: PageServerData;
-	$: ({ codename, role, traits } = data);
+	import { merc, rerollCodename, rerollMerc, rerollRole, rerollTrait } from './randomMercStore';
+	import { onMount } from 'svelte';
 
-	$: stats = traits.reduce((acc, trait) => {
+	onMount(() => {
+		rerollMerc();
+	});
+
+	$: stats = $merc.traits.reduce((acc, trait) => {
 		Object.entries(trait.stats).forEach(([key, value]) => {
 			acc[key as keyof Stats] = (acc[key as keyof Stats] || 0) + value;
 		});
@@ -14,25 +19,47 @@
 </script>
 
 <h1>Random Merc</h1>
+<div class="top-actions">
+	<IconButton label="REROLL ALL" size={24} on:click={rerollMerc} />
+</div>
 <div class="merc">
 	<div class="description">
 		<p class="codename">
-			<span class="field">CODENAME:</span> <span class="bold">{codename}</span>
+			<span class="field">CODENAME:</span> <span class="bold">{$merc.codename}</span>
+			<span class="inline-button">
+				<IconButton size={16} on:click={rerollCodename} />
+			</span>
 		</p>
-		<p><span class="field">ROLE:</span> <span class="bold">{role.name}</span> ({role.number})</p>
+		<p>
+			<span class="field">ROLE:</span> <span class="bold"> {$merc.role.name}</span> ({$merc.role
+				.number})
+		</p>
 		<p>
 			<span class="field">TRAITS:</span>
-			{#each traits as trait, i}
-				<span class="bold">{trait.name}</span> ({trait.number}){i === traits.length - 1 ? '' : ', '}
+			{#each $merc.traits as trait, i}
+				<span class="bold">{trait.name}</span> ({trait.number}){i === $merc.traits.length - 1
+					? ''
+					: ', '}
 			{/each}
 		</p>
 	</div>
 
 	<h2>Role</h2>
-	<NumberBlock {role} />
+	<div class="rerollable-block">
+		<NumberBlock role={$merc.role} />
+		<IconButton size={16} on:click={rerollRole} />
+	</div>
 	<h2>Traits</h2>
-	{#each traits as trait}
-		<NumberBlock {trait} />
+	{#each $merc.traits as trait, index}
+		<div class="rerollable-block">
+			<NumberBlock {trait} />
+			<IconButton
+				size={16}
+				on:click={() => {
+					rerollTrait(index);
+				}}
+			/>
+		</div>
 	{/each}
 
 	<div class="stats">
@@ -66,6 +93,11 @@
 </div>
 
 <style>
+	.top-actions {
+		margin: 1rem auto 2rem;
+		display: flex;
+		justify-content: center;
+	}
 	.description {
 		margin: auto;
 	}
@@ -81,6 +113,16 @@
 	}
 	.bold {
 		font-weight: bold;
+	}
+
+	.rerollable-block {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 0.5rem;
+
+		/* This helps visually center and cram more text on mobile */
+		margin-left: -1rem;
 	}
 
 	.stats {
@@ -113,6 +155,11 @@
 		margin-left: 0.75rem;
 		width: 3rem;
 		text-align: center;
-		border-radius: 0.25rem;
+		border-radius: var(--border-radius);
+	}
+
+	.inline-button {
+		display: inline-flex;
+		/* margin: 0rem 0.25rem; */
 	}
 </style>

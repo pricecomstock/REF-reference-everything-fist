@@ -61,8 +61,4 @@
 		padding: 0 0.75rem;
 		border-right: var(--gray) 2px solid;
 	}
-
-	/* .stat {
-		border-radius: 0.25rem;
-	} */
 </style>

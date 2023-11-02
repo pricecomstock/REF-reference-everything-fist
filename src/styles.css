@@ -14,6 +14,8 @@ html {
 	--color-tac: #3581b8;
 	--color-rfx: #05b37f;
 	--color-cre: #fadf63;
+
+	--border-radius: 0.35rem;
 }
 
 /* Default dark mode */

@@ -10,7 +10,8 @@
 			'Random merc',
 			'Dark mode'
 		],
-		'27 OCT 2023': ['Fix trait formatting', "Use lulu's new JSON", 'Improved random merc']
+		'27 OCT 2023': ['Fix trait formatting', "Use lulu's new JSON", 'Improved random merc'],
+		'01 NOV 2023': ['Add rerolls to random merc']
 	};
 </script>
 
@@ -19,7 +20,7 @@
 <div class="changelog">
 	<h2>Changelog</h2>
 	<div class="changelog-entries">
-		{#each Object.entries(changelog).reverse() as [date, items]}
+		{#each Object.entries(changelog).reverse() as [date, items], index}
 			<div class="date">{date}</div>
 			<div class="items">
 				{#each items as item}
@@ -51,7 +52,7 @@
 	.changelog-entries {
 		display: grid;
 		grid-template-columns: 1fr 1fr;
-		gap: 1rem;
+		gap: 2rem 1.5rem;
 	}
 
 	.date {

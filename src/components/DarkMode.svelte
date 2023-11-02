@@ -2,18 +2,17 @@
 	import { fly } from 'svelte/transition';
 	import { theme, toggleTheme } from '$lib/theme';
 	import { Moon, Sun } from 'lucide-svelte';
+	import IconButton from './IconButton.svelte';
 </script>
 
 <button on:click={toggleTheme}>
 	{#if $theme === 'light'}
 		<div in:fly={{ y: -10 }}>
-			<Moon size="32" />
-			Dark
+			<IconButton icon={Moon} size={24} label="Dark" />
 		</div>
 	{:else}
 		<div in:fly={{ y: 10 }}>
-			<Sun size="32" />
-			Light
+			<IconButton icon={Sun} size={24} label="Light" />
 		</div>
 	{/if}
 </button>
