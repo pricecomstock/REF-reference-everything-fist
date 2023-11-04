@@ -151,7 +151,6 @@
 				}}
 				bind:this={resultElementsObject[trait.number]}
 			>
-				{overallIndex}
 				<NumberBlock showLink={false} {trait} />
 			</a>
 		{/each}
@@ -173,7 +172,7 @@
 
 		position: absolute;
 
-		width: min(90vw, 35rem);
+		width: min(90vw, 47.5rem);
 
 		padding: 0;
 
