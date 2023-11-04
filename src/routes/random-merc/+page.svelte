@@ -1,8 +1,7 @@
 <script lang="ts">
 	import NumberBlock from '$components/NumberBlock.svelte';
 	import IconButton from '$components/IconButton.svelte';
-	import type { Stats, Trait } from '$lib/traits';
-	import type { PageServerData } from './$types';
+	import type { Stats } from '$lib/traits';
 	import { merc, rerollCodename, rerollMerc, rerollRole, rerollTrait } from './randomMercStore';
 	import { onMount } from 'svelte';
 
@@ -123,6 +122,8 @@
 
 		/* This helps visually center and cram more text on mobile */
 		margin-left: -1rem;
+		margin-top: 1.5rem;
+		margin-bottom: 1.5rem;
 	}
 
 	.stats {

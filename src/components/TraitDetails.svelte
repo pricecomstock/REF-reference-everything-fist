@@ -18,12 +18,14 @@
 
 <style>
 	.effect {
+		/* This means we can just use normal spaces and newlines in this block */
 		white-space: pre-wrap;
 	}
-	ul,
-	ol {
+
+	ul {
 		margin: 0;
 	}
+
 	li {
 		margin-left: -0.5rem;
 	}

@@ -8,7 +8,7 @@
 <button on:click>
 	<div style={`font-size: ${size * 0.65}px; padding: ${size * 0.25}px 0;`}>
 		<svelte:component this={icon} {size} />
-		{label}
+		<span class="label">{label}</span>
 	</div>
 </button>
 
@@ -16,7 +16,6 @@
 	button {
 		background: none;
 		padding: 0 0.5rem;
-		margin-bottom: -0.5rem;
 		border: none;
 		cursor: pointer;
 		font-weight: inherit;
@@ -44,12 +43,13 @@
 		gap: 0.25rem;
 	}
 
-	.icon-container {
-	}
-
 	button > div {
 		display: flex;
 		align-items: center;
 		gap: 0.25rem;
+	}
+
+	.label {
+		line-height: 65%;
 	}
 </style>

@@ -37,5 +37,7 @@
 		font-size: 0.85rem;
 
 		gap: 0.5rem;
+
+		view-transition-name: footer;
 	}
 </style>

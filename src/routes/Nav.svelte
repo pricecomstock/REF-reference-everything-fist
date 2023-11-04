@@ -53,6 +53,8 @@
 		justify-content: center;
 		margin: 1rem;
 		gap: 0.25rem 0.9rem;
+
+		view-transition-name: nav;
 	}
 
 	.current {

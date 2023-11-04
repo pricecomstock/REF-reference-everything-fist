@@ -24,6 +24,7 @@ html {
 	--background: var(--background-dark);
 	--text: var(--text-dark);
 	--gray: var(--gray-dark);
+	--accent: var(--gray);
 }
 
 /* System light mode */
@@ -41,6 +42,7 @@ html {
 	--background: var(--background-dark);
 	--text: var(--text-dark);
 	--gray: var(--gray-dark);
+	--accent: var(--gray);
 }
 
 [color-scheme='light'] {
@@ -48,6 +50,7 @@ html {
 	--background: var(--background-light);
 	--text: var(--text-light);
 	--gray: var(--gray-light);
+	--accent: var(--gray);
 }
 
 body {

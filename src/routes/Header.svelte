@@ -1,5 +1,6 @@
 <script lang="ts">
 	import DarkMode from '$components/DarkMode.svelte';
+	import Search from '$components/SearchBar.svelte';
 </script>
 
 <div class="header">
@@ -7,6 +8,7 @@
 		<span>R.E.F.</span>
 	</a>
 	<div class="header-right">
+		<Search />
 		<DarkMode />
 	</div>
 </div>
@@ -17,6 +19,8 @@
 		align-items: center;
 		justify-content: space-between;
 		margin: 1rem;
+
+		view-transition-name: header;
 	}
 
 	.logo {
@@ -30,5 +34,6 @@
 	.header-right {
 		display: flex;
 		align-items: center;
+		gap: 1rem;
 	}
 </style>

@@ -17,7 +17,7 @@
 	"devDependencies": {
 		"@playwright/test": "^1.28.1",
 		"@sveltejs/adapter-auto": "^2.0.0",
-		"@sveltejs/kit": "^1.20.4",
+		"@sveltejs/kit": "^1.27.3",
 		"@typescript-eslint/eslint-plugin": "^6.0.0",
 		"@typescript-eslint/parser": "^6.0.0",
 		"eslint": "^8.28.0",
@@ -34,6 +34,8 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@types/flexsearch": "^0.7.5",
+		"flexsearch": "^0.7.31",
 		"lucide-svelte": "^0.289.0"
 	}
 }

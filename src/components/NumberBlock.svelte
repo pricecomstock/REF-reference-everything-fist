@@ -8,22 +8,26 @@
 
 	export let trait: Trait | undefined = undefined;
 	export let role: Role | undefined = undefined;
+
+	export let showLink = true;
 </script>
 
 <div class="number-block">
 	<div class="number">
 		<p>{trait?.number ?? role?.number}.</p>
-		<p>
-			{#if trait}
-				<a href={`/trait/${trait?.name.toLowerCase()}`}>
-					<Link size="20" />
-				</a>
-			{:else}
-				<a href={`/role/${role?.name.toLowerCase()}`}>
-					<Link size="20" />
-				</a>
-			{/if}
-		</p>
+		{#if showLink}
+			<p>
+				{#if trait}
+					<a href={`/trait/${trait?.name.toLowerCase()}`}>
+						<Link size="20" />
+					</a>
+				{:else}
+					<a href={`/role/${role?.name.toLowerCase()}`}>
+						<Link size="20" />
+					</a>
+				{/if}
+			</p>
+		{/if}
 		<!-- {#if trait?.stats}
 			{#each Object.entries(trait.stats) as [key, value]}
 				<span class={`stat ${STAT_ABBREVIATIONS[key]?.toLowerCase()}`}
@@ -48,7 +52,7 @@
 		gap: 0.75rem;
 
 		max-width: 65ch;
-		margin: 1.5rem auto;
+		margin: auto;
 	}
 
 	.number {
@@ -59,6 +63,6 @@
 		font-weight: bold;
 		text-align: right;
 		padding: 0 0.75rem;
-		border-right: var(--gray) 2px solid;
+		border-right: var(--accent) 2px solid;
 	}
 </style>

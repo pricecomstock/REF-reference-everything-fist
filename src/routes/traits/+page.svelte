@@ -7,8 +7,13 @@
 
 <h1>Traits Index</h1>
 {#each traits as trait}
-	<NumberBlock {trait} />
+	<div>
+		<NumberBlock {trait} />
+	</div>
 {/each}
 
 <style>
+	div {
+		margin: 1.5rem auto;
+	}
 </style>
