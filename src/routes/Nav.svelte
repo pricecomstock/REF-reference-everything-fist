@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { Zap, Sparkle, Dice6, Dices } from 'lucide-svelte';
+	import { Zap, Sparkle, Dice6, Dices, Blocks } from 'lucide-svelte';
 
 	const navItems = [
 		{
@@ -32,6 +32,11 @@
 			name: 'Random Merc',
 			link: '/random-merc',
 			icon: Dices
+		},
+		{
+			name: 'Intelligence Matrix',
+			link: '/matrix',
+			icon: Blocks
 		}
 	];
 </script>

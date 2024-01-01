@@ -1,3 +1,15 @@
+/** Chooses and returns a random item from an array */
+export function randomChoice<T>(arr: Array<T>): T {
+	return arr[Math.floor(Math.random() * arr.length)];
+}
+
+/** Chooses a random integer between min and max, inclusive */
+export function randomInt(min: number, max: number): number {
+	const exMax = max + 1;
+	const range = exMax - min;
+	return Math.floor(Math.random() * range) + min;
+}
+
 /** Shuffles an array in place. This is mutative! */
 export function shuffleArrayInPlace<T>(arr: Array<T>): Array<T> {
 	let currentIndex = arr.length;
