@@ -8,7 +8,9 @@
 <button on:click>
 	<div style={`font-size: ${size * 0.65}px; padding: ${size * 0.25}px 0;`}>
 		<svelte:component this={icon} {size} />
-		<span class="label">{label}</span>
+		{#if label}
+			<span class="label">{label}</span>
+		{/if}
 	</div>
 </button>
 
