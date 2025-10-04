@@ -419,26 +419,26 @@ function parseRoleBlock(block: string): CommunityRole | null {
 }
 
 // Simple hash-based number generation to ensure consistency with a variant of djb2
-function generateTraitNumber(name: string): number {
+function generateHashNumber(name: string, digits: number = 6): number {
 	let hash = 0;
 	for (let i = 0; i < name.length; i++) {
 		const char = name.charCodeAt(i);
 		hash = (hash << 5) - hash + char;
 		hash = hash & hash; // Convert to 32bit integer
 	}
-	// Map to a 6-digit range starting from 100000 to avoid conflicts with official traits
-	return 100000 + (Math.abs(hash) % 900000);
+	// Calculate the range based on digits
+	const min = Math.pow(10, digits - 1);
+	const max = Math.pow(10, digits) - 1;
+	const range = max - min + 1;
+	return min + (Math.abs(hash) % range);
+}
+
+function generateTraitNumber(name: string): number {
+	return generateHashNumber(name, 5);
 }
 
 function generateRoleNumber(name: string): number {
-	let hash = 0;
-	for (let i = 0; i < name.length; i++) {
-		const char = name.charCodeAt(i);
-		hash = (hash << 5) - hash + char;
-		hash = hash & hash; // Convert to 32bit integer
-	}
-	// Map to a 6-digit range starting from 100000 to avoid conflicts with official roles
-	return 100000 + (Math.abs(hash) % 900000);
+	return generateHashNumber(name, 5);
 }
 
 // Main execution
