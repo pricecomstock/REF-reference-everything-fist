@@ -1,4 +1,5 @@
 import traitsJSON from './json/traits.json';
+import communityTraitsJSON from './json/community_traits.json';
 import { mapByField } from './util';
 
 export type Stats = {
@@ -84,11 +85,23 @@ export const traits: Trait[] = rawTraits.map((trait) => ({
 	stats: parseStatString(trait.stat)
 }));
 
+const rawCommunityTraits: (RawTrait & { author: string })[] = communityTraitsJSON;
+
+export const communityTraits: CommunityTrait[] = rawCommunityTraits.map((trait) => ({
+	...trait,
+	stats: parseStatString(trait.stat)
+}));
+
 export const traitsByNumber = mapByField(traits, 'number');
 export const traitsByName = mapByField(traits, 'name');
+export const communityTraitsByNumber = mapByField(communityTraits, 'number');
 
 export function getTraitByNumber(n: number) {
 	return traitsByNumber.get(n);
+}
+
+export function getCommunityTraitByNumber(n: number) {
+	return communityTraitsByNumber.get(n);
 }
 
 export function getTraitByName(name: string) {

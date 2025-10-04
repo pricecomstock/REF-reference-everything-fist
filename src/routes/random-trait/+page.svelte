@@ -43,7 +43,7 @@
 	</label>
 	<IconButton label="REROLL" size={24} on:click={reroll} />
 </div>
-<h1>Trait #{formatTraitRoleNumber(trait.number)}: {trait.name}</h1>
+<h1>Trait # {formatTraitRoleNumber(trait.number)}: {trait.name}</h1>
 <NumberBlock {trait} />
 
 <style>

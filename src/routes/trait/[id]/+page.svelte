@@ -1,11 +1,12 @@
 <script lang="ts">
 	import type { PageServerData } from './$types';
 	import NumberBlock from '$components/NumberBlock.svelte';
+	import { formatTraitRoleNumber } from '$lib/util';
 	export let data: PageServerData;
 	$: ({ trait } = data);
 </script>
 
-<h1>Trait # {trait.number}: {trait.name}</h1>
+<h1>Trait # {formatTraitRoleNumber(trait.number)}: {trait.name}</h1>
 <NumberBlock {trait} />
 
 <!-- <pre>{JSON.stringify(data, null, 2)}</pre> -->
