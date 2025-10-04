@@ -59,7 +59,11 @@
 {#each matrixTables as table, tableIndex}
 	<div class="field">
 		<div class="left">
-			<div class="table-name">{table.Title}:</div>
+			<div class="table-name">{table.Title} ({table.Roll}):</div>
+			<div class="table-choice">
+				<b>{choices?.[tableIndex][0]}:</b>
+				{choices?.[tableIndex][1]}
+			</div>
 			{#if isExpanded?.[tableIndex]}
 				<div class="result-list">
 					{#each Object.entries(table.Values) as [number, result]}
@@ -72,13 +76,7 @@
 							<span>{result}</span>
 						</button>
 					{/each}
-				</div>
-			{:else}
-				<div class="table-choice">
-					<b>{choices?.[tableIndex][0]}:</b>
-					{choices?.[tableIndex][1]}
-				</div>
-			{/if}
+				</div>{/if}
 		</div>
 
 		<div class="right">
@@ -134,6 +132,10 @@
 	button:hover {
 		background-color: var(--text);
 		color: var(--background);
+	}
+
+	.table-choice {
+		margin-bottom: 0.5rem;
 	}
 
 	.selected {
