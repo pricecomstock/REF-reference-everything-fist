@@ -2,7 +2,8 @@ import { codenames } from '$lib/codenames';
 import { roles } from '$lib/roles';
 import { traits } from '$lib/traits';
 import { loadCommunityTraits, loadCommunityRoles } from '$lib/community';
-import type { Trait, Role } from '$lib/traits';
+import type { Trait } from '$lib/traits';
+import type { Role } from '$lib/roles';
 
 import type { Merc } from '$lib/mercs';
 
@@ -10,7 +11,7 @@ import { DeckRandomizer } from '$lib/randUtil';
 
 import { writable } from 'svelte/store';
 
-let codenamesDeck = new DeckRandomizer([...codenames]);
+const codenamesDeck = new DeckRandomizer([...codenames]);
 let traitsDeck = new DeckRandomizer([...traits]);
 let rolesDeck = new DeckRandomizer([...roles]);
 

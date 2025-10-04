@@ -105,6 +105,15 @@
 			<div class="value">{stats.RFX ?? 0}</div>
 		</div>
 	</div>
+
+	{#if 'author' in $merc.role || $merc.traits.some((trait) => 'author' in trait)}
+		<div class="community">
+			<p class="stat-warning bold">[WARNING]</p>
+			<p class="stat-warning">
+				Double check stats with community content, calculations may be incorrect.
+			</p>
+		</div>
+	{/if}
 	<!-- <div class="stats">
 		<div class="stat">
 			<div class="name">ARMOR</div>
@@ -197,6 +206,10 @@
 		width: 3rem;
 		text-align: center;
 		border-radius: var(--border-radius);
+	}
+
+	.stat-warning {
+		text-align: center;
 	}
 
 	.inline-button {
