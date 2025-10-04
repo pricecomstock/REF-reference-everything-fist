@@ -1,6 +1,8 @@
 import { codenames } from '$lib/codenames';
 import { roles } from '$lib/roles';
 import { traits } from '$lib/traits';
+import { loadCommunityTraits, loadCommunityRoles } from '$lib/community';
+import type { Trait, Role } from '$lib/traits';
 
 import type { Merc } from '$lib/mercs';
 
@@ -8,9 +10,13 @@ import { DeckRandomizer } from '$lib/randUtil';
 
 import { writable } from 'svelte/store';
 
-const codenamesDeck = new DeckRandomizer([...codenames]);
-const traitsDeck = new DeckRandomizer([...traits]);
-const rolesDeck = new DeckRandomizer([...roles]);
+let codenamesDeck = new DeckRandomizer([...codenames]);
+let traitsDeck = new DeckRandomizer([...traits]);
+let rolesDeck = new DeckRandomizer([...roles]);
+
+let communityTraits: Trait[] = [];
+let communityRoles: Role[] = [];
+let allowCommunity = false;
 
 export const merc = writable<Merc>({
 	codename: '',
@@ -51,4 +57,30 @@ export function rerollTrait(index: number) {
 		}
 		return m;
 	});
+}
+
+export async function toggleCommunity(enabled: boolean) {
+	allowCommunity = enabled;
+
+	if (enabled) {
+		// Load community data if not already loaded
+		if (communityTraits.length === 0) {
+			communityTraits = await loadCommunityTraits();
+		}
+		if (communityRoles.length === 0) {
+			communityRoles = await loadCommunityRoles();
+		}
+
+		// Recreate decks with community content
+		traitsDeck = new DeckRandomizer([...traits, ...communityTraits]);
+		rolesDeck = new DeckRandomizer([...roles, ...communityRoles]);
+	} else {
+		// Reset decks to vanilla only
+		traitsDeck = new DeckRandomizer([...traits]);
+		rolesDeck = new DeckRandomizer([...roles]);
+	}
+}
+
+export function isCommunityEnabled() {
+	return allowCommunity;
 }

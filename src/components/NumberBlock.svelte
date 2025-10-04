@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { Role } from '$lib/roles';
 	import type { Trait } from '$lib/traits';
+	import { formatTraitRoleNumber } from '$lib/util';
 	import RoleDetails from './RoleDetails.svelte';
 	import TraitDetails from './TraitDetails.svelte';
 
@@ -14,7 +15,7 @@
 
 <div class="number-block">
 	<div class="number">
-		<p>{trait?.number ?? role?.number}.</p>
+		<p>{formatTraitRoleNumber(trait?.number ?? role?.number ?? -1)}.</p>
 		{#if showLink}
 			<p>
 				{#if trait}

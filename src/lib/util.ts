@@ -22,3 +22,11 @@ export function fuzzySearch(needle: string, haystack: string): boolean {
 	}
 	return true;
 }
+
+export function formatTraitRoleNumber(n: number): string {
+	// Format community numbers differently
+	if (n > 1000) {
+		return `C${String(n).replace(/(\d{2})(\d+)/, '$1-$2')}`;
+	}
+	return String(n);
+}
