@@ -15,7 +15,7 @@ html {
 	--color-rfx: #05b37f;
 	--color-cre: #fadf63;
 
-	--color-community: var(--color-cre);
+	--color-community: var(--color-frc);
 
 	--border-radius: 0.35rem;
 }
@@ -27,6 +27,8 @@ html {
 	--text: var(--text-dark);
 	--gray: var(--gray-dark);
 	--accent: var(--gray);
+
+	--color-community: var(--color-cre);
 }
 
 /* System light mode */
@@ -45,6 +47,8 @@ html {
 	--text: var(--text-dark);
 	--gray: var(--gray-dark);
 	--accent: var(--gray);
+
+	--color-community: var(--color-cre);
 }
 
 [color-scheme='light'] {
@@ -53,6 +57,7 @@ html {
 	--text: var(--text-light);
 	--gray: var(--gray-light);
 	--accent: var(--gray);
+	--color-community: var(--color-frc);
 }
 
 body {

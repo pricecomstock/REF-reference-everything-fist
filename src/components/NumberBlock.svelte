@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { Role } from '$lib/roles';
-	import type { Trait } from '$lib/traits';
+	import type { CommunityRole, Role } from '$lib/roles';
+	import type { CommunityTrait, Trait } from '$lib/traits';
 	import { formatTraitRoleNumber } from '$lib/util';
 	import clsx from 'clsx';
 	import RoleDetails from './RoleDetails.svelte';
@@ -8,8 +8,8 @@
 
 	import { Link } from 'lucide-svelte';
 
-	export let trait: Trait | undefined = undefined;
-	export let role: Role | undefined = undefined;
+	export let trait: Trait | CommunityTrait | undefined = undefined;
+	export let role: Role | CommunityRole | undefined = undefined;
 
 	export let showLink = true;
 
@@ -20,11 +20,11 @@
 		if (trait && !isCommunity) {
 			link = `/trait/${trait?.name.toLowerCase()}`;
 		} else if (trait && isCommunity) {
-			link = `/trait/C${trait?.number}`;
+			link = `/trait/c${trait?.number}`;
 		} else if (role && !isCommunity) {
 			link = `/trait/${role?.name.toLowerCase()}`;
 		} else {
-			link = `/role/C${role?.number}`;
+			link = `/role/c${role?.number}`;
 		}
 	}
 </script>
@@ -48,10 +48,20 @@
 		{/if} -->
 	</div>
 	<div class="details">
+		{#if trait && 'author' in trait}
+			<p class="author">[COMMUNITY TRAIT]</p>
+		{:else if role && 'author' in role}
+			<p class="author">[COMMUNITY ROLE]</p>
+		{/if}
 		{#if trait}
 			<TraitDetails {trait} />
 		{:else if role}
 			<RoleDetails {role} />
+		{/if}
+		{#if trait && 'author' in trait}
+			<p class="author">[AUTHOR: {trait.author}]</p>
+		{:else if role && 'author' in role}
+			<p class="author">[AUTHOR: {role.author}]</p>
 		{/if}
 	</div>
 </div>
@@ -75,5 +85,19 @@
 		text-align: right;
 		padding: 0 0.75rem;
 		border-right: var(--accent) 2px solid;
+	}
+
+	.details {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	.community-tag {
+		font-weight: bold;
+	}
+	.author {
+		font-weight: bold;
+		color: var(--color-community);
 	}
 </style>

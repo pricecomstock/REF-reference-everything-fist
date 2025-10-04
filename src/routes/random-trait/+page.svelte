@@ -5,6 +5,7 @@
 	import type { Trait } from '$lib/traits';
 
 	import IconButton from '$components/IconButton.svelte';
+	import { formatTraitRoleNumber } from '$lib/util';
 
 	let allowCommunity = false;
 	let communityTraits: Trait[] = [];
@@ -32,12 +33,17 @@
 
 <div class="controls">
 	<label class="toggle">
-		<input type="checkbox" bind:checked={allowCommunity} on:change={toggleCommunity} disabled={isLoadingCommunity} />
+		<input
+			type="checkbox"
+			bind:checked={allowCommunity}
+			on:change={toggleCommunity}
+			disabled={isLoadingCommunity}
+		/>
 		<span>Allow Community</span>
 	</label>
 	<IconButton label="REROLL" size={24} on:click={reroll} />
 </div>
-<h1>Trait #{trait.number}: {trait.name}</h1>
+<h1>Trait #{formatTraitRoleNumber(trait.number)}: {trait.name}</h1>
 <NumberBlock {trait} />
 
 <style>
