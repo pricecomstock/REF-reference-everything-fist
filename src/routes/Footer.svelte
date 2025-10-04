@@ -16,10 +16,10 @@
 		</p>
 		<p>JSON data compiled by <a href="https://ululu.itch.io/fist-json-data">lulu.</a></p>
 		<p>
-			Community traits and roles by the community in Discord and kept in <a
+			Community traits and roles by the community &lt;3 and parsed from <a
 				href="https://docs.google.com/document/d/1ZkZ7bVUg7W-zASTg2ql7Hrdz0dcTiWKg2R2qt0fOCQY/edit?tab=t.0"
 				>The Community Index</a
-			> &lt;3
+			>
 		</p>
 	</div>
 </div>

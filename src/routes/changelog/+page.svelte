@@ -16,7 +16,8 @@
 			'Add quick search',
 			'Move random generation to client to make things faster and less network dependent',
 			'Fancy animations'
-		]
+		],
+		'04 OCT 2025': ['Add community roles and traits']
 	};
 </script>
 
@@ -28,7 +29,7 @@
 		<li><s>Search</s></li>
 		<li><s>Improved merc generator</s></li>
 		<li>Filtering</li>
-		<li>Community content</li>
+		<li><s>Community content</s></li>
 		<li>Offline mode</li>
 		<li>Printable References</li>
 	</ul>
