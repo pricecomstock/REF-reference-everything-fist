@@ -7,6 +7,10 @@ export type Role = {
 	text: string;
 };
 
+export type CommunityRole = Role & {
+	author: string;
+};
+
 export const roles: Role[] = rolesJSON;
 
 export const rolesByNumber = mapByField(roles, 'number');

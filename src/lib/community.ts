@@ -1,16 +1,26 @@
-import type { Trait, Role } from '$lib/traits';
+import type { CommunityTrait } from '$lib/traits';
+import type { CommunityRole } from '$lib/roles';
 import { parseStatString } from '$lib/traits';
 
-let communityTraits: Trait[] | null = null;
-let communityRoles: Role[] | null = null;
+let communityTraits: CommunityTrait[] | null = null;
+let communityRoles: CommunityRole[] | null = null;
 
-export async function loadCommunityTraits(): Promise<Trait[]> {
+interface RawCommunityTrait {
+	number: number;
+	name: string;
+	effect: string;
+	item: string;
+	stat: string;
+	author: string;
+}
+
+export async function loadCommunityTraits(): Promise<CommunityTrait[]> {
 	if (communityTraits) return communityTraits;
 
 	const module = await import('./json/community_traits.json');
-	const rawTraits = module.default;
+	const rawTraits = module.default as RawCommunityTrait[];
 
-	communityTraits = rawTraits.map((trait: any) => ({
+	communityTraits = rawTraits.map((trait) => ({
 		...trait,
 		stats: parseStatString(trait.stat)
 	}));
@@ -18,7 +28,7 @@ export async function loadCommunityTraits(): Promise<Trait[]> {
 	return communityTraits;
 }
 
-export async function loadCommunityRoles(): Promise<Role[]> {
+export async function loadCommunityRoles(): Promise<CommunityRole[]> {
 	if (communityRoles) return communityRoles;
 
 	const module = await import('./json/community_roles.json');
@@ -27,10 +37,10 @@ export async function loadCommunityRoles(): Promise<Role[]> {
 	return communityRoles;
 }
 
-export function getCommunityTraitsSync(): Trait[] | null {
+export function getCommunityTraitsSync(): CommunityTrait[] | null {
 	return communityTraits;
 }
 
-export function getCommunityRolesSync(): Role[] | null {
+export function getCommunityRolesSync(): CommunityRole[] | null {
 	return communityRoles;
 }
