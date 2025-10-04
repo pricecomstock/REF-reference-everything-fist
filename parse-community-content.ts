@@ -126,18 +126,16 @@ function parseTraitBlock(block: string): CommunityTrait | null {
 	const name = traitLine.substring(0, colonIndex).trim();
 	const effect = traitLine.substring(colonIndex + 1).trim();
 
-	// Find author line index
+	// Find author line index and extract author
 	let authorIndex = -1;
 	let author = '';
 
 	for (let i = 0; i < lines.length; i++) {
 		const line = lines[i];
-		if (line.startsWith('[AUTHOR:')) {
+		const authorMatch = line.match(/\[AUTHOR:\s*([^\]]+)\]/);
+		if (authorMatch) {
 			authorIndex = i;
-			author = line
-				.replace(/^\[AUTHOR:\s*/, '')
-				.replace(/\]$/, '')
-				.trim();
+			author = authorMatch[1].trim();
 			break;
 		}
 	}
@@ -381,12 +379,15 @@ function parseRoleBlock(block: string): CommunityRole | null {
 
 	for (let i = textStart; i < lines.length; i++) {
 		const line = lines[i];
+		const authorMatch = line.match(/\[AUTHOR:\s*([^\]]+)\]/);
 
-		if (line.startsWith('[AUTHOR:')) {
-			author = line
-				.replace(/^\[AUTHOR:\s*/, '')
-				.replace(/\]$/, '')
-				.trim();
+		if (authorMatch) {
+			author = authorMatch[1].trim();
+			// If author is inline, extract the text before it
+			const beforeAuthor = line.substring(0, line.indexOf('[AUTHOR:')).trim();
+			if (beforeAuthor) {
+				text += ' ' + beforeAuthor;
+			}
 			break;
 		} else {
 			// Continue building text
@@ -394,14 +395,12 @@ function parseRoleBlock(block: string): CommunityRole | null {
 		}
 	}
 
-	// Find author if not found yet
+	// Find author if not found yet (check all lines)
 	if (!author) {
 		for (const line of lines) {
-			if (line.startsWith('[AUTHOR:')) {
-				author = line
-					.replace(/^\[AUTHOR:\s*/, '')
-					.replace(/\]$/, '')
-					.trim();
+			const authorMatch = line.match(/\[AUTHOR:\s*([^\]]+)\]/);
+			if (authorMatch) {
+				author = authorMatch[1].trim();
 				break;
 			}
 		}

@@ -858,10 +858,10 @@
 	{
 		"number": 33118,
 		"name": "COVENANT - THE SUN",
-		"effect": "You have pledged yourself to the Covenant of The Sun, setting yourself on the path of cooperation. You always know if an enemy has BOSS MOVES, and what they are. You may never take items off of defeated foes, and you cannot attack anything that is unaware of your presence. Your covenant items are Sol Medallions. These are created when an enemy with a BOSS MOVE has been defeated using the power of teamwork. Your role is irrelevant. Instead, you advance by spending these items on advancement rewards as if they were XP. (FIST ULTRA PG. 74) Once per mission, you can perform the Secret Gesture of the Sun, which opens up a free Rendezvous Point (FIST ULTRA pg. 6) in the area, either figuratively through an NPC's trust, or literally through hidden doors or paths.",
+		"effect": "You have pledged yourself to the Covenant of The Sun, setting yourself on the path of cooperation. You always know if an enemy has BOSS MOVES, and what they are. You may never take items off of defeated foes, and you cannot attack anything that is unaware of your presence. Your covenant items are Sol Medallions. These are created when an enemy with a BOSS MOVE has been defeated using the power of teamwork. Your role is irrelevant. Instead, you advance by spending these items on advancement rewards as if they were XP. (FIST ULTRA PG. 74) Once per mission, you can perform the Secret Gesture of the Sun, which opens up a free Rendezvous Point (FIST ULTRA pg. 6) in the area, either figuratively through an NPC's trust, or literally through hidden doors or paths. [AUTHOR: eat grass fool",
 		"item": "Solar Shield (Accessory, 1 ARMOR, usable as flashlight), additional +1 when you assist someone or someone assists you",
 		"stat": "",
-		"author": "eat grass fool"
+		"author": ""
 	},
 	{
 		"number": 16880,
@@ -3202,10 +3202,10 @@
 	{
 		"number": 88554,
 		"name": "RATTY",
-		"effect": "you are a human person of very few words that also happens to always be wearing so much clothing that no one else has ever seen what your totally normal human being body looks like. you like doing things that human beings do, such as playing in a band with your friends and being a mercenary soldier. you absolutely are not a jumble of rats.",
+		"effect": "you are a human person of very few words that also happens to always be wearing so much clothing that no one else has ever seen what your totally normal human being body looks like. you like doing things that human beings do, such as playing in a band with your friends and being a mercenary soldier. you absolutely are not a jumble of rats. [AUTHOR: ghostlenin",
 		"item": "2 ARMOR (because it’s hard to hit the rats inside)",
 		"stat": "+1 CREATIVE",
-		"author": "ghostlenin"
+		"author": ""
 	},
 	{
 		"number": 84348,
@@ -3850,10 +3850,10 @@
 	{
 		"number": 68524,
 		"name": "TENET",
-		"effect": "You can invert yourself, moving backwards in time while everyone else moves forwards, catching bullets with your gun, undoing damage as you fire, but still damaging anything else on the way back to your gun. Once per mission, undo damage to a notably large structure or vehicle. Once repaired, that structure cannot be destroyed in this mission, due to the paradox involved.",
+		"effect": "You can invert yourself, moving backwards in time while everyone else moves forwards, catching bullets with your gun, undoing damage as you fire, but still damaging anything else on the way back to your gun. Once per mission, undo damage to a notably large structure or vehicle. Once repaired, that structure cannot be destroyed in this mission, due to the paradox involved. [AUTHOR: christron 5000)",
 		"item": "Oxygen mask (breathe while inverted)",
 		"stat": "+1 CREATIVE",
-		"author": "christron 5000)"
+		"author": ""
 	},
 	{
 		"number": 61831,

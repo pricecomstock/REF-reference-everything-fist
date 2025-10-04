@@ -1,7 +1,7 @@
 <script lang="ts">
-	import type { Trait } from '$lib/traits';
+	import type { CommunityTrait, Trait } from '$lib/traits';
 
-	export let trait: Trait;
+	export let trait: Trait | CommunityTrait;
 	$: formattedEffect = trait.effect.replaceAll(/\n(\d.)/gi, '\n    $1');
 </script>
 

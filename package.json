@@ -40,6 +40,7 @@
 	},
 	"dependencies": {
 		"@types/flexsearch": "^0.7.5",
+		"clsx": "^2.1.1",
 		"flexsearch": "^0.7.31",
 		"lucide-svelte": "^0.289.0"
 	}

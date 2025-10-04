@@ -2,6 +2,7 @@
 	import type { Role } from '$lib/roles';
 	import type { Trait } from '$lib/traits';
 	import { formatTraitRoleNumber } from '$lib/util';
+	import clsx from 'clsx';
 	import RoleDetails from './RoleDetails.svelte';
 	import TraitDetails from './TraitDetails.svelte';
 
@@ -11,22 +12,31 @@
 	export let role: Role | undefined = undefined;
 
 	export let showLink = true;
+
+	let link = '';
+
+	$: isCommunity = (trait?.number ?? role?.number ?? 0) > 1000;
+	$: {
+		if (trait && !isCommunity) {
+			link = `/trait/${trait?.name.toLowerCase()}`;
+		} else if (trait && isCommunity) {
+			link = `/trait/C${trait?.number}`;
+		} else if (role && !isCommunity) {
+			link = `/trait/${role?.name.toLowerCase()}`;
+		} else {
+			link = `/role/C${role?.number}`;
+		}
+	}
 </script>
 
 <div class="number-block">
-	<div class="number">
+	<div class={clsx(['number', { community: isCommunity }])}>
 		<p>{formatTraitRoleNumber(trait?.number ?? role?.number ?? -1)}.</p>
 		{#if showLink}
 			<p>
-				{#if trait}
-					<a href={`/trait/${trait?.name.toLowerCase()}`}>
-						<Link size="20" />
-					</a>
-				{:else}
-					<a href={`/role/${role?.name.toLowerCase()}`}>
-						<Link size="20" />
-					</a>
-				{/if}
+				<a href={link}>
+					<Link size="20" />
+				</a>
 			</p>
 		{/if}
 		<!-- {#if trait?.stats}
