@@ -43,6 +43,10 @@ export type Trait = RawTrait & {
 	stats: Stats;
 };
 
+export type CommunityTrait = Trait & {
+	author: string;
+};
+
 export function parseStatString(statString: string): Stats {
 	const [modifier, ...statTokens] = statString.split(' ');
 	const statName = statTokens.join(' ');
