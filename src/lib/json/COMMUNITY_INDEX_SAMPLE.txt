@@ -1,0 +1,162 @@
+TRAITS
+ INDEX
+Copy below the line to make a new trait!
+________________
+
+
+TRAIT: description
+* item, stat modifier
+[AUTHOR: name]
+________________
+
+
+5IREPROOF: The number 5 personally despises you, and the feeling is mutual. If the total of your roll is exactly 5, you may roll again and take the first result that isn’t a !@#$ 5. If the total of your roll is exactly 10, do the same, because a 10 is just two 5s in a trenchcoat.
+* Bottle of 50 proof vodka (+1D6 HP, reroll on 5s), +2 CREATIVE
+[AUTHOR: Brandoff]
+________________
+
+
+6TH SENSE: You tend to feel when danger is nearby. You can dodge slow projectiles (grenades, rockets, rocks, etc) without rolling the dice. Once per mission you can dodge a faster projectile (bullets, lasers, etc) without rolling the dice.
+* Overcoat (1 ARMOR), +2 REFLEXIVE
+[AUTHOR: Sea47r]
+
+________________
+
+AUTHORITY: You exude authority, and the lowest-ranking members of any hierarchy are eager to win your approval.  At any time, you can raise your badge at any non-boss NPC and roll FRC, choosing two of the following on a success, or one on a partial success:
+- They drop an item from their inventory
+- They must make a Choke roll (pg. 90)
+- They leave you alone and stop asking questions
+- They answer two questions as honestly as possible
+Regardless of success, after you show someone the badge, that person cannot be affected by this trait again for the rest of the mission.
+* Shiny badge (3 uses), +1 FORCEFUL
+[AUTHOR: Eat Grass Fool]
+________________
+
+BLOODY: Your violence knows no limit. Once per session, when you roll double sixes to attack, you may instantly kill your target (describe how you do this).
+* ?, -1 TACTICAL
+[AUTHOR: Agent 69]
+________________
+
+
+BLOW: Your lungs have a much grander capacity than normal, allowing you to hold your breath for up to one hour. Additionally, once per mission, you can take a deep breath and roll +FORCEFUL to attempt to knock back all loose objects and characters in front of you. 
+* Inhaler (refresh your breath ability, one use), +1 FORCEFUL
+[AUTHOR: dilbee]
+
+
+BREW: You may deploy your portable cauldron once per mission to create a concoction. In order to produce a specific potion (you can choose from the list below or negotiate a custom effect with the referee), you must acquire three integral but difficult-to-reach components. The referee will tell you what and where the components are; they are usually scattered throughout the mission area.If you are unable to find all three, you can still brew something, but you roll 1D6 to determine what kind of potion it is.
+1. Concoction immediately explodes, roll +RFX to avoid 4 DAMAGE 
+2. Health (+1D6 HP, consumable)
+3. Harm (1D6 DAMAGE, consumable)
+4. Courage (gain 1 WAR DIE, consumable)
+5. Love (drinker falls in love with you, consumable)
+6. Polymorph (drinker transforms into a small animal for 30 minutes, consumable)
+* Portable cauldron (one use), +1 CREATIVE
+[AUTHOR: dilbee]
+________________
+
+
+BUFFOON: You manage to make the most of a situation when you’re making a mess of the situation. Rolling Snake Eyes (two 1s) on a roll counts as an Ultra Success. While you are not wearing any armor, you count as having ARMOR equal to the number of your stats that are negative.
+* A bindle containing your belongings, -1 Any ability.
+[AUTHOR: Jacknerik]
+________________
+
+
+BUG-CATCHER: You are specially equipped for dealing with magical foes. Once per mission, when a spell or magic ability is used against you, you may capture it. The spell becomes a one use item in your inventory, which disappears at the start of the next mission if left unused. 
++ Distinctive hat (Whispers of danger, ACCESSORY), -1 CREATIVE
+[AUTHORS: METAGOSSIP et al]
+________________
+
+
+CHARGER: You're an unstoppable force. You do not have to roll the dice whenever you try to knock someone or something down. If it's something particularly hard to knock over, such as a statue or a battle tank, you get badly bruised, giving you a -2 FRC penalty until the end of the mission.
+* Chargin' Targe (1 ARMOR, accessory), -1 TAC
+[AUTHOR: Groov]
+________________
+
+
+COMBO: Your power grows as you display your mastery. You have a combo meter starting at level 1- note it somewhere on your sheet. When you take this trait, pick another trait you don’t have- note it down as your COMBO TRAIT, and work out a major improvement for it with the ref. Your combo meter has the following levels:
+
+
+1: Deal -1 DAMAGE, -1 ARMOR
+2: -1 ARMOR
+3: Deal +1 DAMAGE
+4: Deal +2 DAMAGE, +1 ARMOR
+5: Deal +3 DAMAGE, +1 ARMOR, +1 to your highest stat
+6: Deal +4 DAMAGE, +2 ARMOR, +1 to your highest stat, gain your COMBO TRAIT
+
+
+When you make a roll that doesn’t repeat anything you did in the last two rolls (like attacking with the same weapon twice, repeating a tactic, or utilizing a trait twice) and it’s at least a partial success, increase your combo meter by 1 and gain the appropriate benefit or drawback. Decrease it by 1 on a failure and reset it to 1 on two consecutive failures, resting at a rendezvous point, or at the end of the mission.
+[AUTHOR: Hevybot]
+* Stylish longsword (1D6+1 DAMAGE), +1 FORCEFUL
+________________
+
+
+COVENANT - THE SUN: You have pledged yourself to the Covenant of The Sun, setting yourself on the path of cooperation.
+You always know if an enemy has BOSS MOVES, and what they
+are.
+You may never take items off of defeated foes, and you cannot
+attack anything that is unaware of your presence.
+Your covenant items are Sol Medallions. These are created when
+an enemy with a BOSS MOVE has been defeated using the
+power of teamwork.
+Your role is irrelevant. Instead, you advance by spending these
+items on advancement rewards as if they were XP. (FIST ULTRA PG. 74)
+Once per mission, you can perform the Secret Gesture of the Sun,
+which opens up a free Rendezvous Point (FIST ULTRA pg. 6) in
+the area, either figuratively through an NPC's trust, or literally
+through hidden doors or paths.
+* Solar Shield (Accessory, 1 ARMOR, usable as flashlight)
+* additional +1 when you assist someone or someone assists you
+[AUTHOR: eat grass fool
+________________
+
+
+CRAB: You are one of nature's many attempts to evolve a crab. Your left hand and arm have fused into a gigantic claw, and you have astral gills that allow you to breathe in any environment---even ones that are toxic or lack air. 
+* Claw (1d6+1 damage), +1 FORCEFUL
+[AUTHOR: kumada1]
+________________
+
+
+GALVANIZER: People around you always comment on your electrifying performances and personality - for machines, this takes on a very literal meaning. You can touch a complex machine and imbue it with strange electrical energy by rolling +FORCEFUL. On a partial success, choose one from the list below, on a full success, choose up to two: 
+• It performs one action of your choice, completely free of errors and malfunction. 
+• It gains +1 to all attack rolls and damage rolls. 
+• It gains sapience if it possesses the capacity for such. If it already is, it becomes stunned for 1 minute. Regardless of the result, you can’t use this trait on the same machine more than once. 
+* Nanotech chrome paint (+1 ARMOR to one vehicle or similar machinery, one use), +1 FORCEFUL
+[AUTHOR: maenad of miami]
+________________
+
+
+GAMBLE: You live for the thrill of the bet. Once per session when you roll the dice you may flip a coin instead and say which side you think it will land on. If you are correct your roll is an ultra success, if you are wrong it counts as having rolled two 1s.
+* ?, ?
+[AUTHOR: agent 69]
+________________
+
+ARSENAL: You are an amateur inventor of weapons with an apparent specialty (such as guns or boomerangs). Once per mission, you may roll 1D6, reach into your bag, and add one of the following weapons to your inventory: 
+        1. Your worst work (explodes 5 seconds after it’s drawn for 3 DAMAGE) 
+        2. Your weird phase (1 DAMAGE, applies a bizarre and highly situational debuff) 
+        3. Your first design (1 DAMAGE, holds sentimental value) 
+        4. Your saving grace (no DAMAGE, usually useful anyway) 
+        5. Your bread and butter (1D6+1 DAMAGE) 
+        6. Your newest prototype (2D6 DAMAGE, unfinished, one use) 
+At any time, you may expend a WAR DIE to reach into the bag and roll again. Weapons grabbed already are not removed from the list. If you advance, you can replace one of the 1D6 results with a new weapon, instead of taking the usual advancement reward. Any weapons gained this way are returned to the bag between missions.
+* Grag bag (ACCESSORY, holds all your shit), +1 REFLEXIVE OR FORCEFUL
+[AUTHOR: agitprophet]
+________________
+
+
+ROLES 
+INDEX
+Copy below the line to make a new role!  
+________________
+
+
+TITLE: describe x, advance if y
+[AUTHOR: name]
+________________
+PROPHET: Describe the vision you saw or the voice that spoke to you and what it said. Advance if you did something to bring the vision you saw or the future described to you by the voice to fruition.
+[AUTHOR: ClassicJ]
+________________
+
+
+WYRD: Describe a fate that awaits you. Advance when circumstances beyond your control move you closer to that fate.
+[AUTHOR: kumada1]
+________________

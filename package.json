@@ -12,12 +12,14 @@
 		"lint": "prettier --plugin-search-dir . --check . && eslint .",
 		"format": "prettier --plugin-search-dir . --write .",
 		"test:integration": "playwright test",
-		"test:unit": "vitest"
+		"test:unit": "vitest",
+		"parse-community": "npx tsx parse-community-content.ts src/lib/json/COMMUNITY_TRAITS_ROLES_INDEX.txt"
 	},
 	"devDependencies": {
 		"@playwright/test": "^1.28.1",
 		"@sveltejs/adapter-auto": "^2.0.0",
 		"@sveltejs/kit": "^1.27.3",
+		"@types/node": "^24.6.2",
 		"@typescript-eslint/eslint-plugin": "^6.0.0",
 		"@typescript-eslint/parser": "^6.0.0",
 		"eslint": "^8.28.0",
@@ -33,6 +35,9 @@
 		"vitest": "^0.32.2"
 	},
 	"type": "module",
+	"engines": {
+		"node": ">=22.0.0"
+	},
 	"dependencies": {
 		"@types/flexsearch": "^0.7.5",
 		"flexsearch": "^0.7.31",
