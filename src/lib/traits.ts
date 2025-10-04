@@ -64,12 +64,15 @@ export function parseStatString(statString: string): Stats {
 			stats.DAMAGE = parseInt(modifier, 10);
 		} else if (statName.startsWith('ARMOR') || statName.startsWith('to ARMOR')) {
 			stats.ARMOR = parseInt(modifier, 10);
-		} else if (statName.startsWith('to chosen attribute')) {
-			stats.CHOSEN_ATTRIBUTE = parseInt(modifier, 10);
-		} else if (statName.startsWith('WAR DIE per mission')) {
+		} else if (
+			statName.startsWith('WAR DIE per mission') ||
+			statName.startsWith('WAR DICE per mission')
+		) {
 			stats.WAR_DIE_PER_MISSION = parseInt(modifier, 10);
 		} else if (statName.startsWith('when you roll WAR DICE')) {
 			stats.WAR_DIE_RESULT_BONUS = parseInt(modifier, 10);
+		} else if (statName.startsWith('to chosen attribute') || statName.search(/attribute/gi)) {
+			stats.CHOSEN_ATTRIBUTE = parseInt(modifier, 10);
 		} else {
 			console.error('Unknown stat:', modifier, statName);
 		}

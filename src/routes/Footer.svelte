@@ -1,4 +1,9 @@
 <script lang="ts">
+	import communityMetadata from '$lib/json/community_metadata.json';
+	import { format } from 'date-fns';
+
+	const lastSyncDate = new Date(communityMetadata.lastSyncedAt);
+	const formattedDate = format(lastSyncDate, 'dd MMM yyyy').toUpperCase();
 </script>
 
 <div class="footer">
@@ -20,6 +25,7 @@
 				href="https://docs.google.com/document/d/1ZkZ7bVUg7W-zASTg2ql7Hrdz0dcTiWKg2R2qt0fOCQY/edit?tab=t.0"
 				>The Community Index</a
 			>
+			(synced {formattedDate})
 		</p>
 	</div>
 </div>

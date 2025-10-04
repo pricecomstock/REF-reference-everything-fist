@@ -39,8 +39,10 @@
 		"node": ">=22.0.0"
 	},
 	"dependencies": {
+		"@sveltejs/adapter-vercel": "^5.10.3",
 		"@types/flexsearch": "^0.7.5",
 		"clsx": "^2.1.1",
+		"date-fns": "^4.1.0",
 		"flexsearch": "^0.7.31",
 		"lucide-svelte": "^0.289.0"
 	}

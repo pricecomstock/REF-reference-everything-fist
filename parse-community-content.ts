@@ -461,6 +461,16 @@ function main() {
 		writeFileSync(rolesOutput, JSON.stringify(roles, null, '\t'));
 		console.log(`✅ Wrote ${roles.length} community roles to ${rolesOutput}`);
 
+		// Write metadata with timestamp
+		const metadataOutput = join(outputDir, 'community_metadata.json');
+		const metadata = {
+			lastSyncedAt: new Date().toISOString(),
+			traitsCount: traits.length,
+			rolesCount: roles.length
+		};
+		writeFileSync(metadataOutput, JSON.stringify(metadata, null, '\t'));
+		console.log(`✅ Wrote metadata to ${metadataOutput}`);
+
 		// // Output some examples for verification
 		// if (traits.length > 0) {
 		// 	console.log('\n📋 Sample trait:');
