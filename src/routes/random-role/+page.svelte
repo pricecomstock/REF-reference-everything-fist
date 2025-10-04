@@ -6,6 +6,7 @@
 
 	import IconButton from '$components/IconButton.svelte';
 	import { formatTraitRoleNumber } from '$lib/util';
+	import clsx from 'clsx';
 
 	let allowCommunity = false;
 	let communityRoles: Role[] = [];
@@ -32,6 +33,7 @@
 </svelte:head>
 
 <div class="controls">
+	<IconButton label="REROLL" size={24} on:click={reroll} />
 	<label class="toggle">
 		<input
 			type="checkbox"
@@ -39,9 +41,10 @@
 			on:change={toggleCommunity}
 			disabled={isLoadingCommunity}
 		/>
-		<span>Allow Community</span>
+		<span class={clsx({ community: allowCommunity, bold: allowCommunity })}
+			>[INCLUDE COMMUNITY CONTENT]</span
+		>
 	</label>
-	<IconButton label="REROLL" size={24} on:click={reroll} />
 </div>
 <h1>Role # {formatTraitRoleNumber(role.number)}: {role.name}</h1>
 <NumberBlock {role} />
@@ -69,5 +72,6 @@
 		cursor: pointer;
 		width: 1.2rem;
 		height: 1.2rem;
+		accent-color: var(--color-community);
 	}
 </style>

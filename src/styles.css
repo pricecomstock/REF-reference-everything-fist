@@ -112,6 +112,10 @@ a.icon-link {
 	background-color: var(--color-cre);
 }
 
+.bold {
+	font-weight: bold;
+}
+
 .community {
 	color: var(--color-community);
 }

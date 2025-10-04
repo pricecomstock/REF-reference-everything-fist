@@ -12,6 +12,7 @@
 		isCommunityEnabled
 	} from './randomMercStore';
 	import { onMount } from 'svelte';
+	import clsx from 'clsx';
 
 	let allowCommunity = isCommunityEnabled();
 	let isLoadingCommunity = false;
@@ -36,6 +37,7 @@
 
 <h1>Random Merc</h1>
 <div class="top-actions">
+	<IconButton label="REROLL ALL" size={24} on:click={rerollMerc} />
 	<label class="toggle">
 		<input
 			type="checkbox"
@@ -43,9 +45,10 @@
 			on:change={handleToggleCommunity}
 			disabled={isLoadingCommunity}
 		/>
-		<span>Allow Community</span>
+		<span class={clsx({ community: allowCommunity, bold: allowCommunity })}
+			>[INCLUDE COMMUNITY CONTENT]</span
+		>
 	</label>
-	<IconButton label="REROLL ALL" size={24} on:click={rerollMerc} />
 </div>
 <div class="merc">
 	<div class="description">
@@ -145,6 +148,7 @@
 		cursor: pointer;
 		width: 1.2rem;
 		height: 1.2rem;
+		accent-color: var(--color-community);
 	}
 	.description {
 		margin: auto;
