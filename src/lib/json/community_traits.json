@@ -506,10 +506,10 @@
 	{
 		"number": 66783,
 		"name": "BUG-CATCHER",
-		"effect": "You are specially equipped for dealing with magical foes. Once per mission, when a spell or magic ability is used against you, you may capture it. The spell becomes a one use item in your inventory, which disappears at the start of the next mission if left unused. [AUTHORS: METAGOSSIP et al]",
+		"effect": "You are specially equipped for dealing with magical foes. Once per mission, when a spell or magic ability is used against you, you may capture it. The spell becomes a one use item in your inventory, which disappears at the start of the next mission if left unused.",
 		"item": "Distinctive hat (Whispers of danger, ACCESSORY)",
 		"stat": "-1 CREATIVE",
-		"author": ""
+		"author": "METAGOSSIP et al"
 	},
 	{
 		"number": 30102,
@@ -882,10 +882,10 @@
 	{
 		"number": 65318,
 		"name": "CRESCENDO",
-		"effect": "You are an unstoppable force of nature, able to enter a state of rapidly escalating violence at will. Each time you succeed on a FORCEFUL roll, gain +1 FORCEFUL. This bonus accumulates until you cease your rampage, at which point your FORCEFUL attribute reverts back to normal. Rolling a failure with a cumulative bonus from this trait results in your position being overrun by a number of generic enemies equal to twice the bonus, and reverts your FORCEFUL to normal. [AUTHORS: helen\n+ valorie]",
+		"effect": "You are an unstoppable force of nature, able to enter a state of rapidly escalating violence at will. Each time you succeed on a FORCEFUL roll, gain +1 FORCEFUL. This bonus accumulates until you cease your rampage, at which point your FORCEFUL attribute reverts back to normal. Rolling a failure with a cumulative bonus from this trait results in your position being overrun by a number of generic enemies equal to twice the bonus, and reverts your FORCEFUL to normal.",
 		"item": "Glass Idol (Heal 1HP immediately after a kill, 6 uses)",
 		"stat": "+1 FORCEFUL",
-		"author": ""
+		"author": "helen + valorie"
 	},
 	{
 		"number": 17146,
@@ -930,10 +930,10 @@
 	{
 		"number": 20122,
 		"name": "CULT",
-		"effect": "Whether you like it or not, you are the object of worship to a small cult. Set aside a D6, starting at\n3. Whenever you aid, exalt, or perform a miracle for your followers tick this die up by one. During a mission, you may tick down your dice by the listed amount for the listed benefit. 2\n- Your followers have left a dead drop with a useful item or info 3\n- 1D3 followers temporarily come to your aid, or one performs an action for you offscreen 5\n- A crowd of 2D6+2 followers show up for one scene and cause a riot If you do not perform an act for your cult during a mission, subtract 2 from your die. If your die would ever go below zero, you are revealed as a false messiah, and immediately lose this trait and gain the FUGITIVE role. +Cult writing (Indoctrinate 1 NPC, 1 use), +1 to a stat that your cult exalts & -1 to one they abhor [AUTHORS: METAGOSSIP et al]",
+		"effect": "Whether you like it or not, you are the object of worship to a small cult. Set aside a D6, starting at\n3. Whenever you aid, exalt, or perform a miracle for your followers tick this die up by one. During a mission, you may tick down your dice by the listed amount for the listed benefit. 2\n- Your followers have left a dead drop with a useful item or info 3\n- 1D3 followers temporarily come to your aid, or one performs an action for you offscreen 5\n- A crowd of 2D6+2 followers show up for one scene and cause a riot If you do not perform an act for your cult during a mission, subtract 2 from your die. If your die would ever go below zero, you are revealed as a false messiah, and immediately lose this trait and gain the FUGITIVE role. +Cult writing (Indoctrinate 1 NPC, 1 use), +1 to a stat that your cult exalts & -1 to one they abhor",
 		"item": "",
 		"stat": "",
-		"author": ""
+		"author": "METAGOSSIP et al"
 	},
 	{
 		"number": 34420,
@@ -970,18 +970,18 @@
 	{
 		"number": 30820,
 		"name": "DAVID",
-		"effect": "Pick up your S.L.I.N.G. and get to work. If you’re fighting against a mech or similarly sized enemy on foot, you can spend wardice to reduce the damage you take from mech-scale weaponry/attacks. [AUTHORS: helen\n+ valorie]",
+		"effect": "Pick up your S.L.I.N.G. and get to work. If you’re fighting against a mech or similarly sized enemy on foot, you can spend wardice to reduce the damage you take from mech-scale weaponry/attacks.",
 		"item": "S.L.I.N.G. Configuration Anti-Armor Launcher (2d6+2 Damage LOUD, ANTI-MATERIAL, MESSY",
 		"stat": "-2 to attack targets smaller than a truck.) +2 Wardice per mission",
-		"author": ""
+		"author": "helen + valorie"
 	},
 	{
 		"number": 49524,
 		"name": "DAY TRIPPER",
-		"effect": "Whenever you are under the influence of one or more mind/body/spirit/etc altering substances or similar effects, temporarily gain a FRACTAL TRAIT [Mandelbrot Set pg. XX] chosen either at random or by the referee, until you sober up. [AUTHORS: helen\n+ valorie]",
+		"effect": "Whenever you are under the influence of one or more mind/body/spirit/etc altering substances or similar effects, temporarily gain a FRACTAL TRAIT [Mandelbrot Set pg. XX] chosen either at random or by the referee, until you sober up.",
 		"item": "Peculiar Quesadilla (Heals 1 HP for each substance you've come under the influence of this mission, One use.), +1 to a random attribute, changes each time you benefit from this bonus",
 		"stat": "",
-		"author": ""
+		"author": "helen + valorie"
 	},
 	{
 		"number": 33923,
@@ -1506,10 +1506,10 @@
 	{
 		"number": 32640,
 		"name": "FRANGIBLE",
-		"effect": "You're beautifully fragile. Upon taking lethal damage, you may choose to be shattered instead. You will come back the next mission missing 2 MAX HP and some important part of yourself (ref's choice). If you make it to the end of a mission without shattering you gain back 1 MAX HP. Anything else you've lost is possible (though difficult) to find again, (and maybe you were better off without it in the first place. something to think about) [AUTHORS: helen\n+ valorie]",
+		"effect": "You're beautifully fragile. Upon taking lethal damage, you may choose to be shattered instead. You will come back the next mission missing 2 MAX HP and some important part of yourself (ref's choice). If you make it to the end of a mission without shattering you gain back 1 MAX HP. Anything else you've lost is possible (though difficult) to find again, (and maybe you were better off without it in the first place. something to think about)",
 		"item": "Shattered glass \"hair\" (0 ARMOR, deals 1 damage when you're hit with a melee attack, 3 DAMAGE if they're unarmed)",
 		"stat": "-1 FORCEFUL",
-		"author": ""
+		"author": "helen + valorie"
 	},
 	{
 		"number": 54724,
@@ -1658,10 +1658,10 @@
 	{
 		"number": 37568,
 		"name": "GIFT",
-		"effect": "You have the Gift, and are talented with sharp things. You may roll +CRE to ritually inflict a wound on yourself; on a success this wound is inflicted on a given target as well, no matter the distance. If you have a significant item taken from your target,you may consume it as part of the ritual to guarantee a success. [AUTHORS: METAGOSSIP et al]",
+		"effect": "You have the Gift, and are talented with sharp things. You may roll +CRE to ritually inflict a wound on yourself; on a success this wound is inflicted on a given target as well, no matter the distance. If you have a significant item taken from your target,you may consume it as part of the ritual to guarantee a success.",
 		"item": "Box cutter (1D6 DAMAGE, COLLAPSIBLE)",
 		"stat": "+2 MAX HP",
-		"author": ""
+		"author": "METAGOSSIP et al"
 	},
 	{
 		"number": 28160,
@@ -1674,10 +1674,10 @@
 	{
 		"number": 98795,
 		"name": "GLAMOUR",
-		"effect": "You are possessed of a certain je ne sais quoi, able to blend in as someone you probably are not. When you have a spare moment, you may roll +CRE to apply your glamour (enchanted cigar, psychic symbiote earring, alien makeup kit, etc) and appear to be, for all intents and purposes, one of the following (D6): Someone important, Nobody special, Someone who belongs here, A longtime friend, \"Just who i was looking for!\" or \"just who i was trying to avoid!\". If dealing with people who would recognize you without the glamour, or maintaining it for extended periods of time (long/multiple scenes), you must spend a war die to really lay it on thick. On a partial success or lower, the referee rolls the d6 in secret and does not tell you the result. On a failure, add \"who is on thin fucking ice\" or a similar phrase to the end of your result. [AUTHORS: helen\n+ valorie]",
+		"effect": "You are possessed of a certain je ne sais quoi, able to blend in as someone you probably are not. When you have a spare moment, you may roll +CRE to apply your glamour (enchanted cigar, psychic symbiote earring, alien makeup kit, etc) and appear to be, for all intents and purposes, one of the following (D6): Someone important, Nobody special, Someone who belongs here, A longtime friend, \"Just who i was looking for!\" or \"just who i was trying to avoid!\". If dealing with people who would recognize you without the glamour, or maintaining it for extended periods of time (long/multiple scenes), you must spend a war die to really lay it on thick. On a partial success or lower, the referee rolls the d6 in secret and does not tell you the result. On a failure, add \"who is on thin fucking ice\" or a similar phrase to the end of your result.",
 		"item": "Your glamour (accessory, three uses)",
 		"stat": "-1 TACTICAL",
-		"author": ""
+		"author": "helen + valorie"
 	},
 	{
 		"number": 30520,
@@ -2170,10 +2170,10 @@
 	{
 		"number": 75035,
 		"name": "KINGDOM",
-		"effect": "You are a cultist of the KINGDOM Aspect, a folder of space. Declare a secret or lost region. (ex. Limbo, a dimension hidden within a painting, a fractal garden, an infinite library, etc). You may roll +TAC to try and find the nearest gap in reality that leads to this hidden place, though entering it may be a different endeavor altogether. You may learn of a new hidden region instead of the usual advancement options. [AUTHORS: METAGOSSIP et al]",
+		"effect": "You are a cultist of the KINGDOM Aspect, a folder of space. Declare a secret or lost region. (ex. Limbo, a dimension hidden within a painting, a fractal garden, an infinite library, etc). You may roll +TAC to try and find the nearest gap in reality that leads to this hidden place, though entering it may be a different endeavor altogether. You may learn of a new hidden region instead of the usual advancement options.",
 		"item": "Old tome (Contains one fact relevant to your mission) +2 MAX HP for every known hidden region",
 		"stat": "",
-		"author": ""
+		"author": "METAGOSSIP et al"
 	},
 	{
 		"number": 66975,
@@ -2554,10 +2554,10 @@
 	{
 		"number": 42502,
 		"name": "MOTH",
-		"effect": "Between real and unreal, factual and conspiratorial, mystery flutters on dark wings. When investigating a scene or searching for clues, you may roll +CRE to perform a leap in logic. On a success, you're able to garner useful information about a scene from mere scraps. On a failure, the Moth takes delight in the mystery, and an impossible wrinkle (ex. cryptids, double identities, aliens) becomes temporarily true, making the situation worse. Your role is irrelevant- advance at the end of a mission if you put yourself in danger chasing a secret, mystery, or truth. [AUTHORS: METAGOSSIP et al]",
+		"effect": "Between real and unreal, factual and conspiratorial, mystery flutters on dark wings. When investigating a scene or searching for clues, you may roll +CRE to perform a leap in logic. On a success, you're able to garner useful information about a scene from mere scraps. On a failure, the Moth takes delight in the mystery, and an impossible wrinkle (ex. cryptids, double identities, aliens) becomes temporarily true, making the situation worse. Your role is irrelevant- advance at the end of a mission if you put yourself in danger chasing a secret, mystery, or truth.",
 		"item": "Dead moth (Comes to life near danger)",
 		"stat": "+1 CREATIVE",
-		"author": ""
+		"author": "METAGOSSIP et al"
 	},
 	{
 		"number": 76802,
@@ -2810,10 +2810,10 @@
 	{
 		"number": 88692,
 		"name": "OWL",
-		"effect": "You are a cultist of the Owl Aspect, possessed by cruel hunger. Once per mission, you may look upon a character and initiate THE HUNT. When you deal damage to a character you are hunting, you may roll twice and choose either result, or roll once and additionally injure or maim them. This effect lasts until one of you is dead- letting your prey escape too many times will mark you as weak, and other hunters may wish to make a meal of you. [AUTHORS: METAGOSSIP et al]",
+		"effect": "You are a cultist of the Owl Aspect, possessed by cruel hunger. Once per mission, you may look upon a character and initiate THE HUNT. When you deal damage to a character you are hunting, you may roll twice and choose either result, or roll once and additionally injure or maim them. This effect lasts until one of you is dead- letting your prey escape too many times will mark you as weak, and other hunters may wish to make a meal of you.",
 		"item": "Keen senses (drink fresh blood to learn a secret)",
 		"stat": "-2 CREATIVE",
-		"author": ""
+		"author": "METAGOSSIP et al"
 	},
 	{
 		"number": 57051,
@@ -3530,10 +3530,10 @@
 	{
 		"number": 90165,
 		"name": "SPADE",
-		"effect": "You work best when your luck's run out. Whenever you roll a failure, you may push your roll, rolling another 2D6 and adding it to the result. If you do, any result *higher* than 10 counts as a failure. Failure in such a way is often catastrophic. [AUTHORS: METAGOSSIP et al]",
+		"effect": "You work best when your luck's run out. Whenever you roll a failure, you may push your roll, rolling another 2D6 and adding it to the result. If you do, any result *higher* than 10 counts as a failure. Failure in such a way is often catastrophic.",
 		"item": "Fifth ace (Reroll any single die)",
 		"stat": "-1 FORCEFUL",
-		"author": ""
+		"author": "METAGOSSIP et al"
 	},
 	{
 		"number": 62668,
@@ -3562,10 +3562,10 @@
 	{
 		"number": 14463,
 		"name": "SMOKE",
-		"effect": "You are a cultist of the SMOKE Aspect, able to draw upon strong death magic. Whenever an allied character dies in your presence, gain +1 in a stat they had a positive modifier in, and -1 in a stat they had a negative modifier in, where applicable. You can see and speak to ghosts. [AUTHORS: METAGOSSIP et al]",
+		"effect": "You are a cultist of the SMOKE Aspect, able to draw upon strong death magic. Whenever an allied character dies in your presence, gain +1 in a stat they had a positive modifier in, and -1 in a stat they had a negative modifier in, where applicable. You can see and speak to ghosts.",
 		"item": "“PAINTED LADY CIGARETTES” (smoke to attract ghosts)",
 		"stat": "+1 to a stat that killed your previous FIST character",
-		"author": ""
+		"author": "METAGOSSIP et al"
 	},
 	{
 		"number": 37788,

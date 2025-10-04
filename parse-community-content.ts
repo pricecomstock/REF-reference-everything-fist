@@ -132,7 +132,7 @@ function parseTraitBlock(block: string): CommunityTrait | null {
 
 	for (let i = 0; i < lines.length; i++) {
 		const line = lines[i];
-		const authorMatch = line.match(/\[AUTHOR:\s*([^\]]+)\]/);
+		const authorMatch = line.match(/\[AUTHORS?:\s*([^\]]+)\]/);
 		if (authorMatch) {
 			authorIndex = i;
 			author = authorMatch[1].trim();
@@ -379,12 +379,13 @@ function parseRoleBlock(block: string): CommunityRole | null {
 
 	for (let i = textStart; i < lines.length; i++) {
 		const line = lines[i];
-		const authorMatch = line.match(/\[AUTHOR:\s*([^\]]+)\]/);
+		const authorMatch = line.match(/\[AUTHORS?:\s*([^\]]+)\]/);
 
 		if (authorMatch) {
 			author = authorMatch[1].trim();
 			// If author is inline, extract the text before it
-			const beforeAuthor = line.substring(0, line.indexOf('[AUTHOR:')).trim();
+			const authorTagStart = line.search(/\[AUTHORS?:/);
+			const beforeAuthor = line.substring(0, authorTagStart).trim();
 			if (beforeAuthor) {
 				text += ' ' + beforeAuthor;
 			}
@@ -398,7 +399,7 @@ function parseRoleBlock(block: string): CommunityRole | null {
 	// Find author if not found yet (check all lines)
 	if (!author) {
 		for (const line of lines) {
-			const authorMatch = line.match(/\[AUTHOR:\s*([^\]]+)\]/);
+			const authorMatch = line.match(/\[AUTHORS?:\s*([^\]]+)\]/);
 			if (authorMatch) {
 				author = authorMatch[1].trim();
 				break;
