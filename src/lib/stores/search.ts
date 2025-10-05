@@ -1,11 +1,13 @@
-import { derived, writable } from 'svelte/store';
-import { traits, getTraitByNumber, type Trait } from '$lib/traits';
-import { roles, getRoleByNumber, type Role } from '$lib/roles';
+import { derived, writable, get } from 'svelte/store';
+import { traits, getTraitByNumber, type Trait, type CommunityTrait } from '$lib/traits';
+import { roles, getRoleByNumber, type Role, type CommunityRole } from '$lib/roles';
+import { communityTraits, communityRoles } from '$lib/community';
 
 import flexsearch, { type Index } from 'flexsearch';
 
 export const isSearching = writable(false);
 export const searchQuery = writable('');
+export const includeCommunity = writable(false);
 
 isSearching.subscribe((val) => {
 	if (val) {
@@ -24,8 +26,18 @@ const indexTraits = new Index({
 	encoder: 'balance'
 });
 const indexRoles = new Index({
-	tokenize: 'forward', // index parts of words from beginning
-	language: 'en', // use english defaults
+	tokenize: 'forward',
+	language: 'en',
+	encoder: 'balance'
+});
+const indexCommunityTraits = new Index({
+	tokenize: 'forward',
+	language: 'en',
+	encoder: 'balance'
+});
+const indexCommunityRoles = new Index({
+	tokenize: 'forward',
+	language: 'en',
 	encoder: 'balance'
 });
 
@@ -44,10 +56,38 @@ for (const role of roles) {
 
 console.timeEnd('Setting up search index');
 
-export const searchResults = derived<typeof searchQuery, { roles: Role[]; traits: Trait[] }>(
-	searchQuery,
-	(query, set) => {
-		const emptyResult: { roles: Role[]; traits: Trait[] } = { roles: [], traits: [] };
+// Index community content when available
+communityTraits.subscribe((commTraits) => {
+	for (const trait of commTraits) {
+		indexCommunityTraits.add(trait.number, trait.name);
+		indexCommunityTraits.append(trait.number, trait.effect);
+		indexCommunityTraits.append(trait.number, trait.item);
+	}
+});
+
+communityRoles.subscribe((commRoles) => {
+	for (const role of commRoles) {
+		indexCommunityRoles.add(role.number, role.name);
+		indexCommunityRoles.append(role.number, role.text);
+	}
+});
+
+type SearchResults = {
+	roles: Role[];
+	traits: Trait[];
+	communityRoles: CommunityRole[];
+	communityTraits: CommunityTrait[];
+};
+
+export const searchResults = derived<[typeof searchQuery, typeof includeCommunity], SearchResults>(
+	[searchQuery, includeCommunity],
+	([query, includeComm], set) => {
+		const emptyResult: SearchResults = {
+			roles: [],
+			traits: [],
+			communityRoles: [],
+			communityTraits: []
+		};
 
 		// If the user types in a number, we just fetch that if we can
 		if (Number(query)) {
@@ -55,7 +95,12 @@ export const searchResults = derived<typeof searchQuery, { roles: Role[]; traits
 			const role = getRoleByNumber(Number(query));
 
 			if (trait || role) {
-				set({ roles: role ? [role] : [], traits: trait ? [trait] : [] });
+				set({
+					roles: role ? [role] : [],
+					traits: trait ? [trait] : [],
+					communityRoles: [],
+					communityTraits: []
+				});
 				return;
 			}
 		}
@@ -73,28 +118,27 @@ export const searchResults = derived<typeof searchQuery, { roles: Role[]; traits
 			.map(getRoleByNumber)
 			.filter(Boolean) as Role[];
 
-		const searchResults = { roles: [...new Set(resultRoles)], traits: [...new Set(resultTraits)] };
+		let resultCommunityTraits: CommunityTrait[] = [];
+		let resultCommunityRoles: CommunityRole[] = [];
 
-		// for (const result of results) {
-		// 	const trait = getTraitByNumber(result);
-		// 	if (trait) {
-		// 		searchResults.push({
-		// 			priority: 1,
-		// 			trait
-		// 		});
-		// 	}
+		if (includeComm) {
+			const commTraits = get(communityTraits);
+			const commRoles = get(communityRoles);
 
-		// 	const role = getRoleByNumber(result);
-		// 	if (role) {
-		// 		searchResults.push({
-		// 			priority: 2,
-		// 			role
-		// 		});
-		// 	}
-		// }
+			resultCommunityTraits = (indexCommunityTraits.search(query, 8, { suggest: true }) as number[])
+				.map((num) => commTraits.find((t) => t.number === num))
+				.filter(Boolean) as CommunityTrait[];
 
-		// searchResults.sort((a, b) => a.priority - b.priority);
+			resultCommunityRoles = (indexCommunityRoles.search(query, 5, { suggest: true }) as number[])
+				.map((num) => commRoles.find((r) => r.number === num))
+				.filter(Boolean) as CommunityRole[];
+		}
 
-		set(searchResults);
+		set({
+			roles: [...new Set(resultRoles)],
+			traits: [...new Set(resultTraits)],
+			communityRoles: [...new Set(resultCommunityRoles)],
+			communityTraits: [...new Set(resultCommunityTraits)]
+		});
 	}
 );

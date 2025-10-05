@@ -1,7 +1,7 @@
 <script lang="ts">
 	import NumberBlock from '$components/NumberBlock.svelte';
 	import { getRandomRole, roles } from '$lib/roles';
-	import { loadCommunityRoles } from '$lib/community';
+	import { communityRoles as communityRolesStore, loadAllCommunityContent } from '$lib/community';
 	import type { Role } from '$lib/roles';
 
 	import IconButton from '$components/IconButton.svelte';
@@ -9,22 +9,21 @@
 	import clsx from 'clsx';
 
 	let allowCommunity = false;
-	let communityRoles: Role[] = [];
 	let isLoadingCommunity = false;
 
 	let role = getRandomRole();
 	$: isCommunity = 'author' in role;
 
 	async function toggleCommunity() {
-		if (allowCommunity && communityRoles.length === 0) {
+		if (allowCommunity && $communityRolesStore.length === 0) {
 			isLoadingCommunity = true;
-			communityRoles = await loadCommunityRoles();
+			await loadAllCommunityContent();
 			isLoadingCommunity = false;
 		}
 	}
 
 	const reroll = () => {
-		const pool = allowCommunity ? [...roles, ...communityRoles] : roles;
+		const pool = allowCommunity ? [...roles, ...$communityRolesStore] : roles;
 		role = pool[Math.floor(Math.random() * pool.length)];
 	};
 </script>

@@ -1,11 +1,15 @@
 <script lang="ts">
-	import { isSearching, searchQuery, searchResults } from '$lib/stores/search';
-	import { Sparkle, X, Zap } from 'lucide-svelte';
+	import { isSearching, searchQuery, searchResults, includeCommunity } from '$lib/stores/search';
+	import { Sparkle, X, Zap, UserPen } from 'lucide-svelte';
 	import { onDestroy, onMount } from 'svelte';
 	import NumberBlock from './NumberBlock.svelte';
 	import { afterNavigate } from '$app/navigation';
+	import { loadAllCommunityContent } from '$lib/community';
+	import clsx from 'clsx';
 
 	import { fade } from 'svelte/transition';
+
+	let isLoadingCommunity = false;
 
 	let dialogElement: HTMLDialogElement;
 	let searchInputElement: HTMLInputElement;
@@ -35,8 +39,25 @@
 		if (unsubscribe) unsubscribe();
 	});
 
-	$: allResults = [...$searchResults.roles, ...$searchResults.traits];
-	$: resultCount = $searchResults.traits.length + $searchResults.roles.length;
+	$: allResults = [
+		...$searchResults.roles,
+		...$searchResults.traits,
+		...$searchResults.communityRoles,
+		...$searchResults.communityTraits
+	];
+	$: resultCount =
+		$searchResults.traits.length +
+		$searchResults.roles.length +
+		$searchResults.communityTraits.length +
+		$searchResults.communityRoles.length;
+
+	async function handleToggleCommunity() {
+		if ($includeCommunity && !isLoadingCommunity) {
+			isLoadingCommunity = true;
+			await loadAllCommunityContent();
+			isLoadingCommunity = false;
+		}
+	}
 
 	let highlightedResultIndex = -1;
 
@@ -109,6 +130,20 @@
 		/>
 		<button aria-label="Close" on:click={() => isSearching.set(false)}><X /></button>
 	</div>
+	<div class="community-toggle">
+		<label>
+			<input
+				type="checkbox"
+				role="switch"
+				bind:checked={$includeCommunity}
+				on:change={handleToggleCommunity}
+				disabled={isLoadingCommunity}
+			/>
+			<span class={clsx({ community: $includeCommunity, bold: $includeCommunity })}
+				>[INCLUDE COMMUNITY CONTENT]</span
+			>
+		</label>
+	</div>
 	<div class="results">
 		{#if $searchResults.roles.length}
 			<div class="section-header">
@@ -154,7 +189,63 @@
 				<NumberBlock showLink={false} {trait} />
 			</a>
 		{/each}
-		{#if $searchResults.roles.length === 0 && $searchResults.traits.length === 0}
+		{#if $searchResults.communityRoles.length}
+			<div
+				class="section-header community"
+				in:fade={{ duration: 150 }}
+				out:fade={{ duration: 150 }}
+			>
+				<UserPen size={32} /> Community Roles
+			</div>
+		{/if}
+		{#each $searchResults.communityRoles as role, index (role.number)}
+			{@const overallIndex = index + $searchResults.roles.length + $searchResults.traits.length}
+			<a
+				href={`/role/${role.slug}`}
+				class="search-result"
+				in:fade={{ delay: overallIndex * 40, duration: 100 }}
+				out:fade={{ duration: 100 }}
+				on:focus={() => setFocus(overallIndex)}
+				on:mouseover={() => {
+					setFocus(overallIndex);
+					updateFocus();
+				}}
+				bind:this={resultElementsObject[role.number]}
+			>
+				<NumberBlock showLink={false} {role} />
+			</a>
+		{/each}
+		{#if $searchResults.communityTraits.length}
+			<div
+				class="section-header community"
+				in:fade={{ duration: 150 }}
+				out:fade={{ duration: 150 }}
+			>
+				<UserPen size={32} /> Community Traits
+			</div>
+		{/if}
+		{#each $searchResults.communityTraits as trait, index (trait.number)}
+			{@const overallIndex =
+				index +
+				$searchResults.roles.length +
+				$searchResults.traits.length +
+				$searchResults.communityRoles.length}
+			<a
+				href={`/trait/${trait.slug}`}
+				class="search-result"
+				in:fade={{ delay: overallIndex * 40, duration: 100 }}
+				out:fade={{ duration: 100 }}
+				on:focus={() => setFocus(overallIndex)}
+				on:mouseover={() => {
+					setFocus(overallIndex);
+					updateFocus();
+				}}
+				bind:this={resultElementsObject[trait.number]}
+			>
+				<NumberBlock showLink={false} {trait} />
+			</a>
+		{/each}
+		{#if $searchResults.roles.length === 0 && $searchResults.traits.length === 0 && $searchResults.communityRoles.length === 0 && $searchResults.communityTraits.length === 0}
 			{#if $searchQuery.length < 3}
 				<div class="message" in:fade={{ duration: 100 }}>AWAITING QUERY...</div>
 			{:else}
@@ -224,6 +315,29 @@
 		position: relative;
 	}
 
+	.community-toggle {
+		display: flex;
+		justify-content: center;
+		padding: 0.5rem;
+		background-color: var(--gray);
+		border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	}
+
+	.community-toggle label {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		cursor: pointer;
+		font-size: 0.875rem;
+	}
+
+	.community-toggle input[type='checkbox'] {
+		cursor: pointer;
+		width: 1.2rem;
+		height: 1.2rem;
+		accent-color: var(--color-community);
+	}
+
 	.section-header {
 		display: flex;
 		align-items: center;
@@ -232,6 +346,10 @@
 		gap: 0.25rem;
 
 		margin: 0.5rem;
+	}
+
+	.section-header.community {
+		color: var(--color-community);
 	}
 
 	.message {

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import NumberBlock from '$components/NumberBlock.svelte';
 	import { getRandomTrait, traits } from '$lib/traits';
-	import { loadCommunityTraits } from '$lib/community';
+	import { communityTraits as communityTraitsStore, loadAllCommunityContent } from '$lib/community';
 	import type { Trait } from '$lib/traits';
 
 	import IconButton from '$components/IconButton.svelte';
@@ -9,22 +9,21 @@
 	import clsx from 'clsx';
 
 	let allowCommunity = false;
-	let communityTraits: Trait[] = [];
 	let isLoadingCommunity = false;
 
 	let trait = getRandomTrait();
 	$: isCommunity = 'author' in trait;
 
 	async function toggleCommunity() {
-		if (allowCommunity && communityTraits.length === 0) {
+		if (allowCommunity && $communityTraitsStore.length === 0) {
 			isLoadingCommunity = true;
-			communityTraits = await loadCommunityTraits();
+			await loadAllCommunityContent();
 			isLoadingCommunity = false;
 		}
 	}
 
 	const reroll = () => {
-		const pool = allowCommunity ? [...traits, ...communityTraits] : traits;
+		const pool = allowCommunity ? [...traits, ...$communityTraitsStore] : traits;
 		trait = pool[Math.floor(Math.random() * pool.length)];
 	};
 </script>

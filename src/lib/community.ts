@@ -1,9 +1,7 @@
+import { writable } from 'svelte/store';
 import type { CommunityTrait } from '$lib/traits';
 import type { CommunityRole } from '$lib/roles';
 import { parseStatString } from '$lib/traits';
-
-let communityTraits: CommunityTrait[] | null = null;
-let communityRoles: CommunityRole[] | null = null;
 
 interface RawCommunityTrait {
 	number: number;
@@ -12,35 +10,51 @@ interface RawCommunityTrait {
 	item: string;
 	stat: string;
 	author: string;
+	slug: string;
 }
 
+// Stores for community content
+export const communityTraits = writable<CommunityTrait[]>([]);
+export const communityRoles = writable<CommunityRole[]>([]);
+export const communityLoaded = writable(false);
+
+let traitsCache: CommunityTrait[] | null = null;
+let rolesCache: CommunityRole[] | null = null;
+
 export async function loadCommunityTraits(): Promise<CommunityTrait[]> {
-	if (communityTraits) return communityTraits;
+	if (traitsCache) return traitsCache;
 
 	const module = await import('./json/community_traits.json');
 	const rawTraits = module.default as RawCommunityTrait[];
 
-	communityTraits = rawTraits.map((trait) => ({
+	traitsCache = rawTraits.map((trait) => ({
 		...trait,
 		stats: parseStatString(trait.stat)
 	}));
 
-	return communityTraits;
+	communityTraits.set(traitsCache);
+	return traitsCache;
 }
 
 export async function loadCommunityRoles(): Promise<CommunityRole[]> {
-	if (communityRoles) return communityRoles;
+	if (rolesCache) return rolesCache;
 
 	const module = await import('./json/community_roles.json');
-	communityRoles = module.default;
+	rolesCache = module.default;
 
-	return communityRoles;
+	communityRoles.set(rolesCache);
+	return rolesCache;
+}
+
+export async function loadAllCommunityContent(): Promise<void> {
+	await Promise.all([loadCommunityTraits(), loadCommunityRoles()]);
+	communityLoaded.set(true);
 }
 
 export function getCommunityTraitsSync(): CommunityTrait[] | null {
-	return communityTraits;
+	return traitsCache;
 }
 
 export function getCommunityRolesSync(): CommunityRole[] | null {
-	return communityRoles;
+	return rolesCache;
 }
