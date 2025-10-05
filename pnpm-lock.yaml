@@ -21,8 +21,8 @@ dependencies:
     specifier: ^0.7.31
     version: 0.7.31
   lucide-svelte:
-    specifier: ^0.289.0
-    version: 0.289.0(svelte@4.0.5)
+    specifier: ^0.544.0
+    version: 0.544.0(svelte@4.0.5)
 
 devDependencies:
   '@playwright/test':
@@ -2389,10 +2389,10 @@ packages:
     dependencies:
       yallist: 4.0.0
 
-  /lucide-svelte@0.289.0(svelte@4.0.5):
-    resolution: {integrity: sha512-xWWldTSF4uRqk5tlHXwWjdr1qxSRaU+lAPgUM4/FjBLyMKOmRYPNY7cuIGNHbH8KbV/q7PdRysPHDIwaZKK6Dg==}
+  /lucide-svelte@0.544.0(svelte@4.0.5):
+    resolution: {integrity: sha512-8kBxSivf8SJdEUJRHBpu9bRw0S/qfVK+Yfb92KQnRRBdP425RzT6aQfrIfZctG1oucPVTBQe1ZXgmth/3qVICg==}
     peerDependencies:
-      svelte: '>=3 <5'
+      svelte: ^3 || ^4 || ^5.0.0-next.42
     dependencies:
       svelte: 4.0.5
     dev: false

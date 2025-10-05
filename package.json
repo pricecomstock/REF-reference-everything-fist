@@ -45,6 +45,6 @@
 		"clsx": "^2.1.1",
 		"date-fns": "^4.1.0",
 		"flexsearch": "^0.7.31",
-		"lucide-svelte": "^0.289.0"
+		"lucide-svelte": "^0.544.0"
 	}
 }
