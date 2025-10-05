@@ -1,12 +1,11 @@
-import { getRoleByName, getRoleByNumber, getCommunityRoleByNumber } from '$lib/roles';
+import { getRoleByName, getRoleByNumber, getCommunityRoleBySlug } from '$lib/roles';
 import { error, redirect } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 
 export const load = (async ({ params }) => {
-	// Check if ID starts with 'C' or 'c' for community roles
-	if (params.id.match(/^[Cc]\d+$/)) {
-		const communityNumber = Number(params.id.slice(1));
-		const role = getCommunityRoleByNumber(communityNumber);
+	// Check if ID starts with 'c-' for community role slug
+	if (params.id.startsWith('c')) {
+		const role = getCommunityRoleBySlug(params.id);
 
 		if (!role) {
 			throw error(404);

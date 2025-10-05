@@ -24,6 +24,7 @@ interface CommunityTrait {
 	item: string;
 	stat: string;
 	author: string;
+	slug: string;
 }
 
 // Stat abbreviation mapping (matches src/lib/traits.ts)
@@ -39,6 +40,7 @@ interface CommunityRole {
 	name: string;
 	text: string;
 	author: string;
+	slug: string;
 }
 
 function parseCommunityContent(filePath: string) {
@@ -154,13 +156,19 @@ function parseTraitBlock(block: string): CommunityTrait | null {
 	// Generate a number (we'll need to assign these systematically)
 	const number = generateTraitNumber(name);
 
+	// Generate slug from name and author
+	const slugName = name.toLowerCase().replace(/\s+/g, '-');
+	const slugAuthor = author.toLowerCase().replace(/\s+/g, '-');
+	const slug = `ct-${slugName}-${slugAuthor}`;
+
 	return {
 		number,
 		name: name.toUpperCase(),
 		effect: formatDescriptionText(effectText.trim()),
 		item: item.trim(),
 		stat: stat.trim(),
-		author: author.trim()
+		author: author.trim(),
+		slug
 	};
 }
 
@@ -379,7 +387,7 @@ function parseRoleBlock(block: string): CommunityRole | null {
 
 	for (let i = textStart; i < lines.length; i++) {
 		const line = lines[i];
-		const authorMatch = line.match(/\[AUTHORS?:\s*([^\]]+)\]/);
+		const authorMatch = line.match(/\[AUTHORS? *:\s*([^\]]+)\]/);
 
 		if (authorMatch) {
 			author = authorMatch[1].trim();
@@ -410,11 +418,17 @@ function parseRoleBlock(block: string): CommunityRole | null {
 	// Generate a number (we'll need to assign these systematically)
 	const number = generateRoleNumber(name);
 
+	// Generate slug from name and author
+	const slugName = name.toLowerCase().replace(/\s+/g, '-');
+	const slugAuthor = author.toLowerCase().replace(/\s+/g, '-');
+	const slug = `cr-${slugName}-${slugAuthor}`;
+
 	return {
 		number,
 		name: name.toUpperCase(),
 		text: text.trim(),
-		author: author.trim()
+		author: author.trim(),
+		slug
 	};
 }
 
@@ -434,11 +448,11 @@ function generateHashNumber(name: string, digits: number = 6): number {
 }
 
 function generateTraitNumber(name: string): number {
-	return generateHashNumber(name, 5);
+	return generateHashNumber(name, 4);
 }
 
 function generateRoleNumber(name: string): number {
-	return generateHashNumber(name, 5);
+	return generateHashNumber(name, 4);
 }
 
 // Main execution

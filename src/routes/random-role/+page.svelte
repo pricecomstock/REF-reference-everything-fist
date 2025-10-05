@@ -13,6 +13,7 @@
 	let isLoadingCommunity = false;
 
 	let role = getRandomRole();
+	$: isCommunity = 'author' in role;
 
 	async function toggleCommunity() {
 		if (allowCommunity && communityRoles.length === 0) {
@@ -46,7 +47,7 @@
 		>
 	</label>
 </div>
-<h1>Role # {formatTraitRoleNumber(role.number)}: {role.name}</h1>
+<h1>Role # {formatTraitRoleNumber(role.number, false, isCommunity)}: {role.name}</h1>
 <NumberBlock {role} />
 
 <style>

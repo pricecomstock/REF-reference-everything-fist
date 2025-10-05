@@ -14,24 +14,26 @@
 	export let showLink = true;
 
 	let link = '';
+	let isTrait = false;
 
-	$: isCommunity = (trait?.number ?? role?.number ?? 0) > 1000;
+	$: isCommunity = (trait && 'author' in trait) || (role && 'author' in role);
+	$: isTrait = !!trait;
 	$: {
 		if (trait && !isCommunity) {
-			link = `/trait/${trait?.name.toLowerCase()}`;
-		} else if (trait && isCommunity) {
-			link = `/trait/c${trait?.number}`;
+			link = `/trait/${trait.name.toLowerCase()}`;
+		} else if (trait && isCommunity && 'slug' in trait) {
+			link = `/trait/${trait.slug}`;
 		} else if (role && !isCommunity) {
-			link = `/trait/${role?.name.toLowerCase()}`;
-		} else {
-			link = `/role/c${role?.number}`;
+			link = `/role/${role.name.toLowerCase()}`;
+		} else if (role && isCommunity && 'slug' in role) {
+			link = `/role/${role.slug}`;
 		}
 	}
 </script>
 
 <div class="number-block">
 	<div class={clsx(['number', { community: isCommunity }])}>
-		<p>{formatTraitRoleNumber(trait?.number ?? role?.number ?? -1)}.</p>
+		<p>{formatTraitRoleNumber(trait?.number ?? role?.number ?? -1, isTrait, isCommunity)}.</p>
 		{#if showLink}
 			<p>
 				<a href={link}>

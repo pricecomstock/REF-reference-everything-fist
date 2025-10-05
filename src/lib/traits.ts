@@ -46,6 +46,7 @@ export type Trait = RawTrait & {
 
 export type CommunityTrait = Trait & {
 	author: string;
+	slug: string;
 };
 
 export function parseStatString(statString: string): Stats {
@@ -98,6 +99,7 @@ export const communityTraits: CommunityTrait[] = rawCommunityTraits.map((trait) 
 export const traitsByNumber = mapByField(traits, 'number');
 export const traitsByName = mapByField(traits, 'name');
 export const communityTraitsByNumber = mapByField(communityTraits, 'number');
+export const communityTraitsBySlug = mapByField(communityTraits, 'slug');
 
 export function getTraitByNumber(n: number) {
 	return traitsByNumber.get(n);
@@ -105,6 +107,10 @@ export function getTraitByNumber(n: number) {
 
 export function getCommunityTraitByNumber(n: number) {
 	return communityTraitsByNumber.get(n);
+}
+
+export function getCommunityTraitBySlug(slug: string) {
+	return communityTraitsBySlug.get(slug);
 }
 
 export function getTraitByName(name: string) {

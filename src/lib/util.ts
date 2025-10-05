@@ -23,10 +23,21 @@ export function fuzzySearch(needle: string, haystack: string): boolean {
 	return true;
 }
 
-export function formatTraitRoleNumber(n: number): string {
-	// Format community numbers differently
-	if (n > 1000) {
-		return `C${String(n).replace(/(\d{2})(\d+)/, '$1-$2')}`;
+export function formatTraitRoleNumber(
+	n: number,
+	isTrait: boolean = true,
+	isCommunity: boolean = false
+): string {
+	// Format community numbers with CT/CR prefix
+	if (isCommunity) {
+		const prefix = isTrait ? 'CT' : 'CR';
+		return `${prefix}${String(n).replace(/(\d{1})(\d+)/, '$1-$2')}`;
 	}
 	return String(n);
+}
+
+export function createCommunitySlug(name: string, author: string): string {
+	const slugName = name.toLowerCase().replace(/\s+/g, '-');
+	const slugAuthor = author.toLowerCase().replace(/\s+/g, '-');
+	return `c-${slugName}-${slugAuthor}`;
 }

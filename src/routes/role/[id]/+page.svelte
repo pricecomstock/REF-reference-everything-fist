@@ -4,14 +4,15 @@
 	import { formatTraitRoleNumber } from '$lib/util';
 	export let data: PageServerData;
 	$: ({ role } = data);
+	$: isCommunity = 'author' in role;
 </script>
 
-<!-- 
+<!--
 <svelte:head>
 	<title>FistREF - {role.name}</title>
 </svelte:head> -->
 
-<h1>Role # {formatTraitRoleNumber(role.number)}: {role.name}</h1>
+<h1>Role # {formatTraitRoleNumber(role.number, false, isCommunity)}: {role.name}</h1>
 <NumberBlock {role} />
 
 <!-- <pre>{JSON.stringify(data, null, 2)}</pre> -->

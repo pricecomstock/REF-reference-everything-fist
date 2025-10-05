@@ -1,12 +1,11 @@
-import { getTraitByName, getTraitByNumber, getCommunityTraitByNumber } from '$lib/traits';
+import { getTraitByName, getTraitByNumber, getCommunityTraitBySlug } from '$lib/traits';
 import { error, redirect } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 
 export const load = (async ({ params }) => {
-	// Check if ID starts with 'C' or 'c' for community traits
-	if (params.id.match(/^[Cc]\d+$/)) {
-		const communityNumber = Number(params.id.slice(1));
-		const trait = getCommunityTraitByNumber(communityNumber);
+	// Check if ID starts with 'c' for community trait slug
+	if (params.id.startsWith('c')) {
+		const trait = getCommunityTraitBySlug(params.id);
 
 		if (!trait) {
 			throw error(404);

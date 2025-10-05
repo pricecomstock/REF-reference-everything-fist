@@ -4,9 +4,10 @@
 	import { formatTraitRoleNumber } from '$lib/util';
 	export let data: PageServerData;
 	$: ({ trait } = data);
+	$: isCommunity = 'author' in trait;
 </script>
 
-<h1>Trait # {formatTraitRoleNumber(trait.number)}: {trait.name}</h1>
+<h1>Trait # {formatTraitRoleNumber(trait.number, true, isCommunity)}: {trait.name}</h1>
 <NumberBlock {trait} />
 
 <!-- <pre>{JSON.stringify(data, null, 2)}</pre> -->
