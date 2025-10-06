@@ -10,6 +10,7 @@ import type { Merc } from '$lib/mercs';
 import { DeckRandomizer } from '$lib/randUtil';
 
 import { writable } from 'svelte/store';
+import { communityEnabled } from '$lib/stores/communityPreferences';
 
 const codenamesDeck = new DeckRandomizer([...codenames]);
 let traitsDeck = new DeckRandomizer([...traits]);
@@ -17,7 +18,6 @@ let rolesDeck = new DeckRandomizer([...roles]);
 
 let communityTraits: Trait[] = [];
 let communityRoles: Role[] = [];
-let allowCommunity = false;
 
 export const merc = writable<Merc>({
 	codename: '',
@@ -60,9 +60,8 @@ export function rerollTrait(index: number) {
 	});
 }
 
-export async function toggleCommunity(enabled: boolean) {
-	allowCommunity = enabled;
-
+// Subscribe to community preference changes to update decks
+communityEnabled.subscribe(async (enabled) => {
 	if (enabled) {
 		// Load community data if not already loaded
 		if (communityTraits.length === 0) {
@@ -80,8 +79,4 @@ export async function toggleCommunity(enabled: boolean) {
 		traitsDeck = new DeckRandomizer([...traits]);
 		rolesDeck = new DeckRandomizer([...roles]);
 	}
-}
-
-export function isCommunityEnabled() {
-	return allowCommunity;
-}
+});

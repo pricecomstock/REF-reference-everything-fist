@@ -1,29 +1,18 @@
 <script lang="ts">
 	import NumberBlock from '$components/NumberBlock.svelte';
 	import { getRandomRole, roles } from '$lib/roles';
-	import { communityRoles as communityRolesStore, loadAllCommunityContent } from '$lib/community';
-	import type { Role } from '$lib/roles';
+	import { communityRoles as communityRolesStore } from '$lib/community';
+	import { communityEnabled } from '$lib/stores/communityPreferences';
 
 	import IconButton from '$components/IconButton.svelte';
+	import CommunityToggle from '$components/CommunityToggle.svelte';
 	import { formatTraitRoleNumber } from '$lib/util';
-	import clsx from 'clsx';
-
-	let allowCommunity = false;
-	let isLoadingCommunity = false;
 
 	let role = getRandomRole();
 	$: isCommunity = 'author' in role;
 
-	async function toggleCommunity() {
-		if (allowCommunity && $communityRolesStore.length === 0) {
-			isLoadingCommunity = true;
-			await loadAllCommunityContent();
-			isLoadingCommunity = false;
-		}
-	}
-
 	const reroll = () => {
-		const pool = allowCommunity ? [...roles, ...$communityRolesStore] : roles;
+		const pool = $communityEnabled ? [...roles, ...$communityRolesStore] : roles;
 		role = pool[Math.floor(Math.random() * pool.length)];
 	};
 </script>
@@ -34,17 +23,7 @@
 
 <div class="controls">
 	<IconButton label="REROLL" size={24} on:click={reroll} />
-	<label class="toggle">
-		<input
-			type="checkbox"
-			bind:checked={allowCommunity}
-			on:change={toggleCommunity}
-			disabled={isLoadingCommunity}
-		/>
-		<span class={clsx({ community: allowCommunity, bold: allowCommunity })}
-			>[INCLUDE COMMUNITY CONTENT]</span
-		>
-	</label>
+	<CommunityToggle />
 </div>
 <h1>Role # {formatTraitRoleNumber(role.number, false, isCommunity)}: {role.name}</h1>
 <NumberBlock {role} />
@@ -60,18 +39,5 @@
 		align-items: center;
 		gap: 1rem;
 		margin: 2rem auto;
-	}
-	.toggle {
-		display: flex;
-		align-items: center;
-		gap: 0.5rem;
-		cursor: pointer;
-		font-size: 1rem;
-	}
-	.toggle input[type='checkbox'] {
-		cursor: pointer;
-		width: 1.2rem;
-		height: 1.2rem;
-		accent-color: var(--color-community);
 	}
 </style>

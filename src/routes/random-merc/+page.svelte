@@ -1,31 +1,14 @@
 <script lang="ts">
 	import NumberBlock from '$components/NumberBlock.svelte';
 	import IconButton from '$components/IconButton.svelte';
+	import CommunityToggle from '$components/CommunityToggle.svelte';
 	import type { Stats } from '$lib/traits';
-	import {
-		merc,
-		rerollCodename,
-		rerollMerc,
-		rerollRole,
-		rerollTrait,
-		toggleCommunity,
-		isCommunityEnabled
-	} from './randomMercStore';
+	import { merc, rerollCodename, rerollMerc, rerollRole, rerollTrait } from './randomMercStore';
 	import { onMount } from 'svelte';
-	import clsx from 'clsx';
-
-	let allowCommunity = isCommunityEnabled();
-	let isLoadingCommunity = false;
 
 	onMount(() => {
 		rerollMerc();
 	});
-
-	async function handleToggleCommunity() {
-		isLoadingCommunity = true;
-		await toggleCommunity(allowCommunity);
-		isLoadingCommunity = false;
-	}
 
 	$: stats = $merc.traits.reduce((acc, trait) => {
 		Object.entries(trait.stats).forEach(([key, value]) => {
@@ -38,17 +21,7 @@
 <h1>Random Merc</h1>
 <div class="top-actions">
 	<IconButton label="REROLL ALL" size={24} on:click={rerollMerc} />
-	<label class="toggle">
-		<input
-			type="checkbox"
-			bind:checked={allowCommunity}
-			on:change={handleToggleCommunity}
-			disabled={isLoadingCommunity}
-		/>
-		<span class={clsx({ community: allowCommunity, bold: allowCommunity })}
-			>[INCLUDE COMMUNITY CONTENT]</span
-		>
-	</label>
+	<CommunityToggle />
 </div>
 <div class="merc">
 	<div class="description">
@@ -136,19 +109,6 @@
 		flex-direction: column;
 		align-items: center;
 		gap: 1rem;
-	}
-	.toggle {
-		display: flex;
-		align-items: center;
-		gap: 0.5rem;
-		cursor: pointer;
-		font-size: 1rem;
-	}
-	.toggle input[type='checkbox'] {
-		cursor: pointer;
-		width: 1.2rem;
-		height: 1.2rem;
-		accent-color: var(--color-community);
 	}
 	.description {
 		margin: auto;
