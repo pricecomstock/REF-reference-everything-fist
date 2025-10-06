@@ -4,6 +4,7 @@
 
 	import communityMetadata from '$lib/json/community_metadata.json';
 	import { format } from 'date-fns';
+	import { Sparkle, Zap } from 'lucide-svelte';
 
 	const lastSyncDate = new Date(communityMetadata.lastSyncedAt);
 	const formattedDate = format(lastSyncDate, 'dd MMM yyyy').toUpperCase();
@@ -35,7 +36,10 @@
 	</p>
 	<CommunityToggle />
 	{#if $communityUnlocked}
-		<p />
+		<div class="index-links">
+			<a class="icon-link community" href="/community/traits"><Zap />COMMUNITY TRAITS INDEX</a>
+			<a class="icon-link community" href="/community/roles"><Sparkle />COMMUNITY ROLES INDEX</a>
+		</div>
 		<button class="lock-button" on:click={handleLock}>
 			Had enough? Click here to [HIDE COMMUNITY CONTENT TOGGLES]
 		</button>
@@ -78,5 +82,15 @@
 	.lock-button:hover {
 		background-color: var(--text);
 		color: var(--background);
+	}
+
+	.index-links {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+
+	.index-links a.community {
+		color: var(--color-community);
 	}
 </style>
