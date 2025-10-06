@@ -3,13 +3,10 @@
 	import { Sparkle, X, Zap, UserPen } from 'lucide-svelte';
 	import { onDestroy, onMount } from 'svelte';
 	import NumberBlock from './NumberBlock.svelte';
+	import CommunityToggle from './CommunityToggle.svelte';
 	import { afterNavigate } from '$app/navigation';
-	import { loadAllCommunityContent } from '$lib/community';
-	import clsx from 'clsx';
 
 	import { fade } from 'svelte/transition';
-
-	let isLoadingCommunity = false;
 
 	let dialogElement: HTMLDialogElement;
 	let searchInputElement: HTMLInputElement;
@@ -50,14 +47,6 @@
 		$searchResults.roles.length +
 		$searchResults.communityTraits.length +
 		$searchResults.communityRoles.length;
-
-	async function handleToggleCommunity() {
-		if ($includeCommunity && !isLoadingCommunity) {
-			isLoadingCommunity = true;
-			await loadAllCommunityContent();
-			isLoadingCommunity = false;
-		}
-	}
 
 	let highlightedResultIndex = -1;
 
@@ -130,19 +119,8 @@
 		/>
 		<button aria-label="Close" on:click={() => isSearching.set(false)}><X /></button>
 	</div>
-	<div class="community-toggle">
-		<label>
-			<input
-				type="checkbox"
-				role="switch"
-				bind:checked={$includeCommunity}
-				on:change={handleToggleCommunity}
-				disabled={isLoadingCommunity}
-			/>
-			<span class={clsx({ community: $includeCommunity, bold: $includeCommunity })}
-				>[INCLUDE COMMUNITY CONTENT]</span
-			>
-		</label>
+	<div class="community-toggle-wrapper">
+		<CommunityToggle />
 	</div>
 	<div class="results">
 		{#if $searchResults.roles.length}
@@ -315,27 +293,12 @@
 		position: relative;
 	}
 
-	.community-toggle {
+	.community-toggle-wrapper {
 		display: flex;
 		justify-content: center;
 		padding: 0.5rem;
 		background-color: var(--gray);
 		border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-	}
-
-	.community-toggle label {
-		display: flex;
-		align-items: center;
-		gap: 0.5rem;
-		cursor: pointer;
-		font-size: 0.875rem;
-	}
-
-	.community-toggle input[type='checkbox'] {
-		cursor: pointer;
-		width: 1.2rem;
-		height: 1.2rem;
-		accent-color: var(--color-community);
 	}
 
 	.section-header {
