@@ -5,6 +5,7 @@
 	import type { Stats } from '$lib/traits';
 	import { merc, rerollCodename, rerollMerc, rerollRole, rerollTrait } from './randomMercStore';
 	import { onMount } from 'svelte';
+	import { communityUnlocked } from '$lib/stores/communityPreferences';
 
 	onMount(() => {
 		rerollMerc();
@@ -21,7 +22,10 @@
 <h1>Random Merc</h1>
 <div class="top-actions">
 	<IconButton label="REROLL ALL" size={24} on:click={rerollMerc} />
-	<CommunityToggle />
+
+	{#if $communityUnlocked}
+		<CommunityToggle />
+	{/if}
 </div>
 <div class="merc">
 	<div class="description">

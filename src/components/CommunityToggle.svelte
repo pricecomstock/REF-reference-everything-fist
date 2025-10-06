@@ -1,7 +1,7 @@
 <script lang="ts">
 	import clsx from 'clsx';
 	import { loadAllCommunityContent } from '$lib/community';
-	import { communityEnabled } from '$lib/stores/communityPreferences';
+	import { communityEnabled, communityUnlocked } from '$lib/stores/communityPreferences';
 
 	export let checked: boolean | undefined = undefined;
 	export let disabled: boolean = false;
@@ -35,21 +35,32 @@
 		}
 	}
 
+	function handleUnlock() {
+		communityUnlocked.unlock();
+		communityEnabled.set(true);
+	}
+
 	$: effectiveDisabled = disabled || isLoading;
 </script>
 
-<label class="community-toggle">
-	<input
-		type="checkbox"
-		role="switch"
-		bind:checked={effectiveChecked}
-		on:change={handleChange}
-		disabled={effectiveDisabled}
-	/>
-	<span class={clsx({ community: effectiveChecked, bold: effectiveChecked })}
-		>[INCLUDE COMMUNITY CONTENT]</span
-	>
-</label>
+{#if $communityUnlocked}
+	<label class="community-toggle">
+		<input
+			type="checkbox"
+			role="switch"
+			bind:checked={effectiveChecked}
+			on:change={handleChange}
+			disabled={effectiveDisabled}
+		/>
+		<span class={clsx({ community: effectiveChecked, bold: effectiveChecked })}
+			>[INCLUDE COMMUNITY CONTENT]</span
+		>
+	</label>
+{:else}
+	<button class="community-unlock" on:click={handleUnlock}>
+		<span>[UNLOCK COMMUNITY CONTENT]</span>
+	</button>
+{/if}
 
 <style>
 	.community-toggle {
@@ -70,5 +81,25 @@
 	.community-toggle input[type='checkbox']:disabled {
 		cursor: not-allowed;
 		opacity: 0.5;
+	}
+
+	.community-unlock {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		cursor: pointer;
+		font-size: 1rem;
+		padding: 0.5rem 1rem;
+		background-color: transparent;
+		border: 2px solid var(--color-community);
+		border-radius: var(--border-radius);
+		color: var(--color-community);
+		font-weight: bold;
+		transition: all 0.2s ease;
+	}
+
+	.community-unlock:hover {
+		background-color: var(--color-community);
+		color: var(--background);
 	}
 </style>

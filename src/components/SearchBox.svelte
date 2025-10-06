@@ -7,6 +7,7 @@
 	import { afterNavigate } from '$app/navigation';
 
 	import { fade } from 'svelte/transition';
+	import { communityUnlocked } from '$lib/stores/communityPreferences';
 
 	let dialogElement: HTMLDialogElement;
 	let searchInputElement: HTMLInputElement;
@@ -119,9 +120,11 @@
 		/>
 		<button aria-label="Close" on:click={() => isSearching.set(false)}><X /></button>
 	</div>
-	<div class="community-toggle-wrapper">
-		<CommunityToggle />
-	</div>
+	{#if $communityUnlocked}
+		<div class="community-toggle-wrapper">
+			<CommunityToggle />
+		</div>
+	{/if}
 	<div class="results">
 		{#if $searchResults.roles.length}
 			<div class="section-header">

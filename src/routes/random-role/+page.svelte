@@ -2,7 +2,7 @@
 	import NumberBlock from '$components/NumberBlock.svelte';
 	import { getRandomRole, roles } from '$lib/roles';
 	import { communityRoles as communityRolesStore } from '$lib/community';
-	import { communityEnabled } from '$lib/stores/communityPreferences';
+	import { communityEnabled, communityUnlocked } from '$lib/stores/communityPreferences';
 
 	import IconButton from '$components/IconButton.svelte';
 	import CommunityToggle from '$components/CommunityToggle.svelte';
@@ -23,7 +23,9 @@
 
 <div class="controls">
 	<IconButton label="REROLL" size={24} on:click={reroll} />
-	<CommunityToggle />
+	{#if $communityUnlocked}
+		<CommunityToggle />
+	{/if}
 </div>
 <h1>Role # {formatTraitRoleNumber(role.number, false, isCommunity)}: {role.name}</h1>
 <NumberBlock {role} />
