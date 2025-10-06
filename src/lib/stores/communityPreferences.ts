@@ -73,6 +73,14 @@ function createCommunityUnlockedStore() {
 				localStorage.setItem(UNLOCKED_KEY, 'true');
 			}
 			set(true);
+		},
+		lock: () => {
+			if (browser) {
+				localStorage.setItem(UNLOCKED_KEY, 'false');
+				localStorage.setItem(ENABLED_KEY, 'false');
+			}
+			set(false);
+			communityEnabled.set(false);
 		}
 	};
 }
