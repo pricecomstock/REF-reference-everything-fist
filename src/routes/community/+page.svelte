@@ -22,24 +22,24 @@
 	<h1>Community Content</h1>
 	<p>
 		Community traits and roles are created by the FIST community and synced to this website
-		occasionally (last: {formattedDate}).
+		occasionally (most recently: {formattedDate}).
 	</p>
 	<p>
-		They are not part of the official game. They may not be balanced, and the formatting may be <i
-			>weird</i
-		>. If you want to play with them, make sure you ask your ref to make sure the balance and tone
-		works for your game.
+		These are homebrew. They are not part of the official game. They may not be balanced, and the
+		formatting may be <i>weird</i>. If you want to play with them, check with your ref!
 	</p>
+	<div class="index-links">
+		<a class="icon-link community" href="/community/traits"><Zap />COMMUNITY TRAITS INDEX</a>
+		<a class="icon-link community" href="/community/roles"><Sparkle />COMMUNITY ROLES INDEX</a>
+	</div>
 	<p>
 		Clicking the button below will allow you to include community content in the random generators
 		on this website.
 	</p>
-	<CommunityToggle />
+	<div class="unlock-wrapper">
+		<CommunityToggle />
+	</div>
 	{#if $communityUnlocked}
-		<div class="index-links">
-			<a class="icon-link community" href="/community/traits"><Zap />COMMUNITY TRAITS INDEX</a>
-			<a class="icon-link community" href="/community/roles"><Sparkle />COMMUNITY ROLES INDEX</a>
-		</div>
 		<button class="lock-button" on:click={handleLock}>
 			Had enough? Click here to [HIDE COMMUNITY CONTENT TOGGLES]
 		</button>
@@ -65,6 +65,10 @@
 	p {
 		text-align: left;
 		font-size: 1.1rem;
+	}
+
+	.unlock-wrapper {
+		margin-top: 1rem;
 	}
 
 	.lock-button {

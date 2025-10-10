@@ -1951,6 +1951,11 @@ METALLIC: maybe you’ve been dipped in chrome, had most of your organs replaced
 ________________
 
 
+METAMORPHOSIS: You can shapeshift, freely altering your anatomy into new biological forms. Once per mission, you may transform to gain a useful adaptation—work out a special power with the referee that reflects your new form (e.g. gills to breathe underwater or compound eyes that see heat signatures).
+- Mutagenic serum (+1D6 HP, one use), +2 MAX HP
+[AUTHOR: ryan]
+
+________________
 METROPOLITAN: your knowledge of urban areas borders on the supernatural. you always know directions to a place as long as you know the name of it and once per mission you can locate a shortcut to a place, even if it is inaccessible otherwise.
 * Psychic ID card (gain access to most restricted areas), +1 CREATIVE
 [AUTHOR: Agent 69]
@@ -2194,7 +2199,7 @@ ________________
 
 
 OVERSIZED: Your small stature doesn’t stop you from wielding the biggest weapon you can get your hands on. When you attack with a weapon with the HEAVY tag, you can choose to roll + your inverted FORCEFUL score and add DAMAGE equal to your inverted FORCEFUL score (e.g. +1 if you have -1 FRC, or -2 if you have +2 FRC). On a success, roll +FRC to keep control of your unwieldy weapon.
-* Bigass hammer (1D6+1 DAMAGE, HEAVY), -2 FORCEFUL
+* Bigass hammer (1D6+2 DAMAGE, HEAVY), -2 FORCEFUL
 [AUTHOR: Dorian]
 ________________
 

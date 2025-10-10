@@ -58,7 +58,7 @@
 	</label>
 {:else}
 	<button class="community-unlock" on:click={handleUnlock}>
-		<span>[UNLOCK COMMUNITY CONTENT]</span>
+		<span>UNLOCK COMMUNITY CONTENT</span>
 	</button>
 {/if}
 
