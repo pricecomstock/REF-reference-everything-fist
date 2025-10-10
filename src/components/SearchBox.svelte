@@ -287,8 +287,8 @@
 	}
 
 	.results {
-		overflow: scroll;
-		max-height: 85svh;
+		overflow: auto;
+		max-height: 80svh;
 	}
 
 	.query-bar {
@@ -358,7 +358,7 @@
 
 	.search-result:focus {
 		/* impossibly tall max height */
-		/* max-height: 200rem; */
+		/* max-height: 400rem; */
 		/* --mask: none; */
 		--accent: var(--text);
 		background-color: var(--gray);
