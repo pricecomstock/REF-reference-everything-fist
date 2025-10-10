@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { isSearching, searchQuery, searchResults, includeCommunity } from '$lib/stores/search';
+	import { isSearching, searchQuery, searchResults } from '$lib/stores/search';
 	import { Sparkle, X, Zap, UserPen } from 'lucide-svelte';
 	import { onDestroy, onMount } from 'svelte';
 	import NumberBlock from './NumberBlock.svelte';
@@ -7,7 +7,7 @@
 	import { afterNavigate } from '$app/navigation';
 
 	import { fade } from 'svelte/transition';
-	import { communityUnlocked } from '$lib/stores/communityPreferences';
+	import { communityUnlocked, communityEnabled } from '$lib/stores/communityPreferences';
 
 	let dialogElement: HTMLDialogElement;
 	let searchInputElement: HTMLInputElement;
@@ -287,8 +287,8 @@
 	}
 
 	.results {
-		overflow: auto;
-		max-height: 90svh;
+		overflow: scroll;
+		max-height: 85svh;
 	}
 
 	.query-bar {

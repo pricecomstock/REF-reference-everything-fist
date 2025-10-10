@@ -1,14 +1,13 @@
 import { derived, writable, get } from 'svelte/store';
 import { traits, getTraitByNumber, type Trait, type CommunityTrait } from '$lib/traits';
 import { roles, getRoleByNumber, type Role, type CommunityRole } from '$lib/roles';
-import { communityTraits, communityRoles } from '$lib/community';
+import { communityTraits, communityRoles, loadAllCommunityContent } from '$lib/community';
 import { communityEnabled } from './communityPreferences';
 
 import flexsearch, { type Index } from 'flexsearch';
 
 export const isSearching = writable(false);
 export const searchQuery = writable('');
-export { communityEnabled as includeCommunity };
 
 isSearching.subscribe((val) => {
 	if (val) {
@@ -123,6 +122,7 @@ export const searchResults = derived<[typeof searchQuery, typeof communityEnable
 		let resultCommunityRoles: CommunityRole[] = [];
 
 		if (includeComm) {
+			loadAllCommunityContent();
 			const commTraits = get(communityTraits);
 			const commRoles = get(communityRoles);
 
