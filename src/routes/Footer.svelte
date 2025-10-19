@@ -8,7 +8,7 @@
 
 <div class="footer">
 	<a href="https://claymorerpgs.itch.io/fist"
-		><img src="/img/fist-compatiblity-mark.png" alt="compatible with fist" /></a
+		><img src="/img/fist-compatiblity-mark.webp" alt="compatible with fist" /></a
 	>
 	<div>
 		<p>
