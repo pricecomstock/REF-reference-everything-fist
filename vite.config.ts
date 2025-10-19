@@ -41,7 +41,8 @@ export default defineConfig({
 				globIgnores: ['**/node_modules/**/*', 'server/**'],
 				skipWaiting: true,
 				clientsClaim: true,
-				navigateFallback: null,
+				navigateFallback: '/index.html',
+				navigateFallbackDenylist: [/^\/_app\//, /^\/api\//],
 				runtimeCaching: [
 					{
 						urlPattern: ({ url }) => url.pathname.endsWith('__data.json'),
