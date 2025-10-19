@@ -61,7 +61,8 @@ html {
 }
 
 body {
-	font-family: 'Space Grotesk', sans-serif;
+	font-family: var(--body-font);
+	font-feature-settings: 'ss02', 'ss03', 'ss04', 'case';
 
 	background-color: var(--background);
 	color: var(--text);

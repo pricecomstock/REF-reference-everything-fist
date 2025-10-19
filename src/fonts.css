@@ -1,0 +1,17 @@
+@font-face {
+	font-family: 'Space Grotesk';
+	font-weight: normal;
+	src: url('/fonts/SpaceGrotesk-Regular.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'Space Grotesk';
+	font-weight: bold;
+	src: url('/fonts/SpaceGrotesk-Bold.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'Michroma';
+	font-weight: bold;
+	src: url('/fonts/Michroma-Regular.ttf') format('ttf');
+}
