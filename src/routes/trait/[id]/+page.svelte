@@ -1,8 +1,8 @@
 <script lang="ts">
-	import type { PageServerData } from './$types';
+	import type { PageData } from './$types';
 	import NumberBlock from '$components/NumberBlock.svelte';
 	import { formatTraitRoleNumber } from '$lib/util';
-	export let data: PageServerData;
+	export let data: PageData;
 	$: ({ trait } = data);
 	$: isCommunity = 'author' in trait;
 </script>

@@ -39,6 +39,8 @@ export default defineConfig({
 			workbox: {
 				globPatterns: ['**/*.{js,css,html,ico,png,svg,webp,woff,woff2,json}'],
 				globIgnores: ['**/node_modules/**/*', 'server/**'],
+				skipWaiting: true,
+				clientsClaim: true,
 				runtimeCaching: [
 					{
 						urlPattern: ({ url }) => url.pathname.endsWith('__data.json'),
