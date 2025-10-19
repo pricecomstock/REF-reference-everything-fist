@@ -35,10 +35,6 @@
 <svelte:head>
 	<title>FISTREF - {$page.data.title ?? 'Online Fist Reference'}</title>
 	{@html webManifestLink}
-	<meta name="theme-color" content="#1a1a1a" />
-	<meta name="apple-mobile-web-app-capable" content="yes" />
-	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-	<meta name="apple-mobile-web-app-title" content="FIST Ref" />
 </svelte:head>
 
 <div class="layout">

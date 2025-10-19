@@ -41,7 +41,7 @@ export default defineConfig({
 				globIgnores: ['**/node_modules/**/*', 'server/**'],
 				skipWaiting: true,
 				clientsClaim: true,
-				navigateFallback: '/index.html',
+				navigateFallback: '/',
 				navigateFallbackDenylist: [/^\/_app\//, /^\/api\//],
 				runtimeCaching: [
 					{
