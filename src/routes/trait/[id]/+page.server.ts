@@ -4,8 +4,8 @@ import { error, redirect } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 
 export const load = (async ({ params }) => {
-	// Check if ID starts with 'c' for community trait slug
-	if (params.id.startsWith('c')) {
+	// Check if ID starts with 'c-' for community trait slug
+	if (params.id.startsWith('ct-')) {
 		await loadCommunityTraits();
 		const trait = getCommunityTraitBySlug(params.id);
 

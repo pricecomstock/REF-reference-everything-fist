@@ -5,7 +5,7 @@ import type { PageServerLoad } from './$types';
 
 export const load = (async ({ params }) => {
 	// Check if ID starts with 'c-' for community role slug
-	if (params.id.startsWith('c')) {
+	if (params.id.startsWith('cr-')) {
 		await loadCommunityRoles();
 		const role = getCommunityRoleBySlug(params.id);
 
