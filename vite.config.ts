@@ -30,7 +30,7 @@ export default defineConfig({
 						type: 'image/png'
 					},
 					{
-						src: '/android-chrome-icon.png',
+						src: '/apple-touch-icon.png',
 						sizes: '180x180',
 						type: 'image/png'
 					}
@@ -70,13 +70,14 @@ export default defineConfig({
 					},
 					{
 						urlPattern: ({ request }) => request.mode === 'navigate',
-						handler: 'CacheFirst',
+						handler: 'NetworkFirst',
 						options: {
 							cacheName: 'fist-ref-pages',
 							expiration: {
 								maxEntries: 100,
 								maxAgeSeconds: 30 * 24 * 60 * 60 // 30 days
-							}
+							},
+							networkTimeoutSeconds: 2
 						}
 					}
 				]
