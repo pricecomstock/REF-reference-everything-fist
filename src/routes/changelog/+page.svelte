@@ -17,7 +17,11 @@
 			'Move random generation to client to make things faster and less network dependent',
 			'Fancy animations'
 		],
-		'10 OCT 2025': ['Add community roles and traits']
+		'10 OCT 2025': ['Add community roles and traits'],
+		'19 OCT 2025': [
+			'Fix community roles and traits search',
+			'Improve performance and loading speed'
+		]
 	};
 </script>
 
