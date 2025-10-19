@@ -136,7 +136,7 @@
 			<a
 				href={`/role/${role.name.toLowerCase()}`}
 				class="search-result"
-				in:fade={{ delay: overallIndex * 40, duration: 100 }}
+				in:fade={{ duration: 100 }}
 				out:fade={{ duration: 100 }}
 				on:focus={() => setFocus(overallIndex)}
 				on:mouseover={() => {
@@ -158,7 +158,7 @@
 			<a
 				href={`/trait/${trait.name.toLowerCase()}`}
 				class="search-result"
-				in:fade={{ delay: overallIndex * 40, duration: 100 }}
+				in:fade={{ duration: 100 }}
 				out:fade={{ duration: 100 }}
 				on:focus={() => setFocus(overallIndex)}
 				on:mouseover={() => {
@@ -184,7 +184,7 @@
 			<a
 				href={`/role/${role.slug}`}
 				class="search-result"
-				in:fade={{ delay: overallIndex * 40, duration: 100 }}
+				in:fade={{ duration: 100 }}
 				out:fade={{ duration: 100 }}
 				on:focus={() => setFocus(overallIndex)}
 				on:mouseover={() => {
@@ -214,7 +214,7 @@
 			<a
 				href={`/trait/${trait.slug}`}
 				class="search-result"
-				in:fade={{ delay: overallIndex * 40, duration: 100 }}
+				in:fade={{ duration: 100 }}
 				out:fade={{ duration: 100 }}
 				on:focus={() => setFocus(overallIndex)}
 				on:mouseover={() => {
