@@ -70,14 +70,13 @@ export default defineConfig({
 					},
 					{
 						urlPattern: ({ request }) => request.mode === 'navigate',
-						handler: 'NetworkFirst',
+						handler: 'StaleWhileRevalidate',
 						options: {
 							cacheName: 'fist-ref-pages',
 							expiration: {
 								maxEntries: 100,
 								maxAgeSeconds: 30 * 24 * 60 * 60 // 30 days
-							},
-							networkTimeoutSeconds: 2
+							}
 						}
 					}
 				]
