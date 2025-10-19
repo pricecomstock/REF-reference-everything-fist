@@ -20,13 +20,9 @@
 		'10 OCT 2025': ['Add community roles and traits'],
 		'19 OCT 2025': [
 			'Fix community roles and traits search',
-			'Improve performance and loading speed',
-			'Add PWA (Progressive Web App) support',
-			'Add offline mode - works without internet after first visit',
-			'Add intelligent caching with 30-day data expiry',
-			'Add cache update notifications',
-			'Installable as standalone app on mobile and desktop'
-		]
+			'Improve performance and loading speed'
+		],
+		'25 OCT 2025': ['Offline mode', 'App can be installed as a PWA']
 	};
 </script>
 
