@@ -1,6 +1,6 @@
 <script lang="ts">
 	import communityMetadata from '$lib/json/community_metadata.json';
-	import { format } from 'date-fns';
+	import { format } from 'date-fns/format';
 
 	const lastSyncDate = new Date(communityMetadata.lastSyncedAt);
 	const formattedDate = format(lastSyncDate, 'dd MMM yyyy').toUpperCase();

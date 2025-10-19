@@ -3,7 +3,7 @@
 	import { communityUnlocked } from '$lib/stores/communityPreferences';
 
 	import communityMetadata from '$lib/json/community_metadata.json';
-	import { format } from 'date-fns';
+	import { format } from 'date-fns/format';
 	import { Sparkle, Zap } from 'lucide-svelte';
 
 	const lastSyncDate = new Date(communityMetadata.lastSyncedAt);
