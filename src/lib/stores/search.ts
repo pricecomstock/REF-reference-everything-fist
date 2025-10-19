@@ -4,7 +4,7 @@ import { roles, getRoleByNumber, type Role, type CommunityRole } from '$lib/role
 import { communityTraits, communityRoles, loadAllCommunityContent } from '$lib/community';
 import { communityEnabled } from './communityPreferences';
 
-import flexsearch, { type Index } from 'flexsearch';
+import type { Index } from 'flexsearch';
 
 export const isSearching = writable(false);
 export const searchQuery = writable('');
@@ -15,76 +15,98 @@ isSearching.subscribe((val) => {
 	}
 });
 
-// @ts-expect-error tbh not sure about this one but sk had it in their code.
-const Index = flexsearch.Index ?? flexsearch;
-
-// export const inited = false;
-
-const indexTraits = new Index({
-	tokenize: 'forward', // index parts of words from beginning
-	language: 'en', // use english defaults
-	encoder: 'balance'
-});
-const indexRoles = new Index({
-	tokenize: 'forward',
-	language: 'en',
-	encoder: 'balance'
-});
-const indexCommunityTraits = new Index({
-	tokenize: 'forward',
-	language: 'en',
-	encoder: 'balance'
-});
-const indexCommunityRoles = new Index({
-	tokenize: 'forward',
-	language: 'en',
-	encoder: 'balance'
-});
-
-console.time('Setting up search index');
-
-for (const trait of traits) {
-	indexTraits.add(trait.number, trait.name);
-	indexTraits.append(trait.number, trait.effect);
-	indexTraits.append(trait.number, trait.item);
-}
-
-for (const role of roles) {
-	indexRoles.add(role.number, role.name);
-	indexRoles.append(role.number, role.text);
-}
-
-console.timeEnd('Setting up search index');
-
-// Track whether community indexes have been populated
+// Lazy-loaded FlexSearch and indexes
+let FlexSearchIndex: any = null;
+let indexTraits: Index | null = null;
+let indexRoles: Index | null = null;
+let indexCommunityTraits: Index | null = null;
+let indexCommunityRoles: Index | null = null;
+let indexesInitialized = false;
 let communityTraitsIndexed = false;
 let communityRolesIndexed = false;
 
-// Index community content when available
-communityTraits.subscribe((commTraits) => {
-	// Only index if we have traits and haven't indexed them yet
+// Lazy load FlexSearch and initialize indexes
+async function initializeSearch() {
+	if (indexesInitialized) return;
+
+	console.time('Loading FlexSearch library');
+	const flexsearch = await import('flexsearch');
+	console.timeEnd('Loading FlexSearch library');
+
+	// @ts-expect-error tbh not sure about this one but sk had it in their code.
+	FlexSearchIndex = flexsearch.default.Index ?? flexsearch.default;
+
+	console.time('Setting up search indexes');
+
+	// Initialize indexes
+	indexTraits = new FlexSearchIndex({
+		tokenize: 'forward',
+		language: 'en',
+		encoder: 'balance'
+	});
+	indexRoles = new FlexSearchIndex({
+		tokenize: 'forward',
+		language: 'en',
+		encoder: 'balance'
+	});
+	indexCommunityTraits = new FlexSearchIndex({
+		tokenize: 'forward',
+		language: 'en',
+		encoder: 'balance'
+	});
+	indexCommunityRoles = new FlexSearchIndex({
+		tokenize: 'forward',
+		language: 'en',
+		encoder: 'balance'
+	});
+
+	// Build main indexes
+	for (const trait of traits) {
+		indexTraits.add(trait.number, trait.name);
+		indexTraits.append(trait.number, trait.effect);
+		indexTraits.append(trait.number, trait.item);
+	}
+
+	for (const role of roles) {
+		indexRoles.add(role.number, role.name);
+		indexRoles.append(role.number, role.text);
+	}
+
+	console.timeEnd('Setting up search indexes');
+	indexesInitialized = true;
+}
+
+// Build community indexes when needed
+async function ensureCommunityIndexes() {
+	if (!indexesInitialized) await initializeSearch();
+	if (!indexCommunityTraits || !indexCommunityRoles) return;
+
+	const commTraits = get(communityTraits);
+	const commRoles = get(communityRoles);
+
+	// Index community traits if we have them and haven't indexed yet
 	if (commTraits.length > 0 && !communityTraitsIndexed) {
+		console.time('Indexing community traits');
 		for (const trait of commTraits) {
 			indexCommunityTraits.add(trait.number, trait.name);
 			indexCommunityTraits.append(trait.number, trait.effect);
 			indexCommunityTraits.append(trait.number, trait.item);
 		}
 		communityTraitsIndexed = true;
+		console.timeEnd('Indexing community traits');
 	}
-});
 
-communityRoles.subscribe((commRoles) => {
-	// Only index if we have roles and haven't indexed them yet
+	// Index community roles if we have them and haven't indexed yet
 	if (commRoles.length > 0 && !communityRolesIndexed) {
-		console.time('Adding community roles to search');
+		console.time('Indexing community roles');
 		for (const role of commRoles) {
 			indexCommunityRoles.add(role.number, role.name);
 			indexCommunityRoles.append(role.number, role.text);
 		}
 		communityRolesIndexed = true;
-		console.timeEnd('Adding community roles to search');
+		console.timeEnd('Indexing community roles');
 	}
-});
+}
 
 type SearchResults = {
 	roles: Role[];
@@ -125,35 +147,52 @@ export const searchResults = derived<[typeof searchQuery, typeof communityEnable
 			return;
 		}
 
-		const resultTraits = (indexTraits.search(query, 8, { suggest: true }) as number[])
-			.map(getTraitByNumber)
-			.filter(Boolean) as Trait[];
-		const resultRoles = (indexRoles.search(query, 5, { suggest: true }) as number[])
-			.map(getRoleByNumber)
-			.filter(Boolean) as Role[];
+		// Initialize search and perform search asynchronously
+		(async () => {
+			// Lazy load FlexSearch and initialize indexes on first search
+			await initializeSearch();
 
-		let resultCommunityTraits: CommunityTrait[] = [];
-		let resultCommunityRoles: CommunityRole[] = [];
+			if (!indexTraits || !indexRoles) {
+				set(emptyResult);
+				return;
+			}
 
-		if (includeComm) {
-			loadAllCommunityContent();
-			const commTraits = get(communityTraits);
-			const commRoles = get(communityRoles);
+			const resultTraits = (indexTraits.search(query, 8, { suggest: true }) as number[])
+				.map(getTraitByNumber)
+				.filter(Boolean) as Trait[];
+			const resultRoles = (indexRoles.search(query, 5, { suggest: true }) as number[])
+				.map(getRoleByNumber)
+				.filter(Boolean) as Role[];
 
-			resultCommunityTraits = (indexCommunityTraits.search(query, 8, { suggest: true }) as number[])
-				.map((num) => commTraits.find((t) => t.number === num))
-				.filter(Boolean) as CommunityTrait[];
+			let resultCommunityTraits: CommunityTrait[] = [];
+			let resultCommunityRoles: CommunityRole[] = [];
 
-			resultCommunityRoles = (indexCommunityRoles.search(query, 5, { suggest: true }) as number[])
-				.map((num) => commRoles.find((r) => r.number === num))
-				.filter(Boolean) as CommunityRole[];
-		}
+			if (includeComm) {
+				await loadAllCommunityContent();
+				await ensureCommunityIndexes();
 
-		set({
-			roles: [...new Set(resultRoles)],
-			traits: [...new Set(resultTraits)],
-			communityRoles: [...new Set(resultCommunityRoles)],
-			communityTraits: [...new Set(resultCommunityTraits)]
-		});
+				const commTraits = get(communityTraits);
+				const commRoles = get(communityRoles);
+
+				if (indexCommunityTraits && indexCommunityRoles) {
+					resultCommunityTraits = (
+						indexCommunityTraits.search(query, 8, { suggest: true }) as number[]
+					)
+						.map((num) => commTraits.find((t) => t.number === num))
+						.filter(Boolean) as CommunityTrait[];
+
+					resultCommunityRoles = (indexCommunityRoles.search(query, 5, { suggest: true }) as number[])
+						.map((num) => commRoles.find((r) => r.number === num))
+						.filter(Boolean) as CommunityRole[];
+				}
+			}
+
+			set({
+				roles: [...new Set(resultRoles)],
+				traits: [...new Set(resultTraits)],
+				communityRoles: [...new Set(resultCommunityRoles)],
+				communityTraits: [...new Set(resultCommunityTraits)]
+			});
+		})();
 	}
 );
