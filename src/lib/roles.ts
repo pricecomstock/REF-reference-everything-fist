@@ -1,5 +1,4 @@
 import rolesJSON from './json/roles.json';
-import communityRolesJSON from './json/community_roles.json';
 import { mapByField } from './util';
 
 export type Role = {
@@ -15,23 +14,11 @@ export type CommunityRole = Role & {
 
 export const roles: Role[] = rolesJSON;
 
-export const communityRoles: CommunityRole[] = communityRolesJSON;
-
 export const rolesByNumber = mapByField(roles, 'number');
 export const rolesByName = mapByField(roles, 'name');
-export const communityRolesByNumber = mapByField(communityRoles, 'number');
-export const communityRolesBySlug = mapByField(communityRoles, 'slug');
 
 export function getRoleByNumber(n: number) {
 	return rolesByNumber.get(n);
-}
-
-export function getCommunityRoleByNumber(n: number) {
-	return communityRolesByNumber.get(n);
-}
-
-export function getCommunityRoleBySlug(slug: string) {
-	return communityRolesBySlug.get(slug);
 }
 
 export function getRoleByName(name: string) {

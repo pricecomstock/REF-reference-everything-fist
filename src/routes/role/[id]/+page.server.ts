@@ -1,10 +1,12 @@
-import { getRoleByName, getRoleByNumber, getCommunityRoleBySlug } from '$lib/roles';
+import { getRoleByName, getRoleByNumber } from '$lib/roles';
+import { getCommunityRoleBySlug, loadCommunityRoles } from '$lib/community';
 import { error, redirect } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 
 export const load = (async ({ params }) => {
 	// Check if ID starts with 'c-' for community role slug
 	if (params.id.startsWith('c')) {
+		await loadCommunityRoles();
 		const role = getCommunityRoleBySlug(params.id);
 
 		if (!role) {
