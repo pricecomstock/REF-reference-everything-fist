@@ -67,6 +67,8 @@ function parseCommunityContent(filePath: string) {
 
 function parseTraits(traitsSection: string): CommunityTrait[] {
 	const traits: CommunityTrait[] = [];
+	const seenSlugs = new Set<string>();
+	let currentNumber = 1111; // Start trait numbers at 1111
 
 	// Split by separator lines (5 or more underscores)
 	const traitBlocks = traitsSection.split(/_{5,}/);
@@ -78,9 +80,17 @@ function parseTraits(traitsSection: string): CommunityTrait[] {
 		}
 
 		try {
-			const trait = parseTraitBlock(trimmedBlock);
+			const trait = parseTraitBlock(trimmedBlock, currentNumber);
 			if (trait) {
+				if (seenSlugs.has(trait.slug)) {
+					console.warn(
+						`⚠️  Skipping duplicate trait: ${trait.name} (by ${trait.author}) - slug already exists: ${trait.slug}`
+					);
+					continue;
+				}
+				seenSlugs.add(trait.slug);
 				traits.push(trait);
+				currentNumber++; // Increment for next trait
 			}
 		} catch (error) {
 			console.warn('Failed to parse trait block:', error);
@@ -91,7 +101,7 @@ function parseTraits(traitsSection: string): CommunityTrait[] {
 	return traits;
 }
 
-function parseTraitBlock(block: string): CommunityTrait | null {
+function parseTraitBlock(block: string, number: number): CommunityTrait | null {
 	const lines = block
 		.split('\n')
 		.map((line) => line.trim())
@@ -128,43 +138,37 @@ function parseTraitBlock(block: string): CommunityTrait | null {
 	const name = traitLine.substring(0, colonIndex).trim();
 	const effect = traitLine.substring(colonIndex + 1).trim();
 
-	// Find author line index and extract author
-	let authorIndex = -1;
+	// Find author in entire block and extract it
 	let author = '';
-
-	for (let i = 0; i < lines.length; i++) {
-		const line = lines[i];
-		const authorMatch = line.match(/\[AUTHORS?:\s*([^\]]+)\]/);
-		if (authorMatch) {
-			authorIndex = i;
-			author = authorMatch[1].trim();
-			break;
-		}
+	const blockText = block;
+	const authorMatch = blockText.match(/\[AUTHORS? ?:?\s*([^\]]+)\]/);
+	if (authorMatch) {
+		author = authorMatch[1].trim();
 	}
 
-	// Parse content between effect start and author, separating effect from items
+	// Parse content, separating effect from items
 	const { effectText, itemLines } = separateEffectFromItems(
 		lines,
 		effectStart,
-		authorIndex,
+		-1, // No longer tracking author line index
 		effect
 	);
+
+	// Remove author tag from effect text if present
+	const cleanEffectText = effectText.replace(/\[AUTHORS? ?:?\s*([^\]]+)\]/, '').trim();
 
 	// Parse items and stats from item lines
 	const { item, stat } = parseItemLines(itemLines);
 
-	// Generate a number (we'll need to assign these systematically)
-	const number = generateTraitNumber(name);
-
-	// Generate slug from name and author
-	const slugName = name.toLowerCase().replace(/\s+/g, '-');
-	const slugAuthor = author.toLowerCase().replace(/\s+/g, '-');
-	const slug = `ct-${slugName}-${slugAuthor}`;
+	// Generate slug from author and name
+	const slugName = name.toLowerCase().replace(/[\s/]+/g, '-');
+	const slugAuthor = author.toLowerCase().replace(/[\s/]+/g, '-');
+	const slug = `ct-${slugAuthor}-${slugName}`;
 
 	return {
 		number,
 		name: name.toUpperCase(),
-		effect: formatDescriptionText(effectText.trim()),
+		effect: formatDescriptionText(cleanEffectText),
 		item: item.trim(),
 		stat: stat.trim(),
 		author: author.trim(),
@@ -184,10 +188,10 @@ function getBulletType(line: string): string | null {
 function separateEffectFromItems(
 	lines: string[],
 	effectStart: number,
-	authorIndex: number,
+	_authorIndex: number,
 	initialEffect: string
 ) {
-	const endIndex = authorIndex === -1 ? lines.length : authorIndex;
+	const endIndex = lines.length;
 	let effectText = initialEffect;
 	const itemLines: string[] = [];
 
@@ -232,6 +236,16 @@ function separateEffectFromItems(
 	// Process all lines
 	for (let i = effectStart; i < endIndex; i++) {
 		const line = lines[i];
+
+		// Skip lines that contain author tags
+		if (/\[AUTHORS? ?:?\s*[^\]]+\]/.test(line)) {
+			// If the line has content besides the author tag, add that content
+			const lineWithoutAuthor = line.replace(/\[AUTHORS? ?:?\s*[^\]]+\]/, '').trim();
+			if (lineWithoutAuthor) {
+				effectText += ' ' + lineWithoutAuthor;
+			}
+			continue;
+		}
 
 		// Find which bullet group this line belongs to (if any)
 		let isItemLine = false;
@@ -321,6 +335,8 @@ function formatDescriptionText(text: string): string {
 
 function parseRoles(rolesSection: string): CommunityRole[] {
 	const roles: CommunityRole[] = [];
+	const seenSlugs = new Set<string>();
+	let currentNumber = 9000; // Start role numbers at 9000
 
 	// Split by separator lines (5 or more underscores)
 	const roleBlocks = rolesSection.split(/_{5,}/);
@@ -332,9 +348,17 @@ function parseRoles(rolesSection: string): CommunityRole[] {
 		}
 
 		try {
-			const role = parseRoleBlock(trimmedBlock);
+			const role = parseRoleBlock(trimmedBlock, currentNumber);
 			if (role) {
+				if (seenSlugs.has(role.slug)) {
+					console.warn(
+						`⚠️  Skipping duplicate role: ${role.name} (by ${role.author}) - slug already exists: ${role.slug}`
+					);
+					continue;
+				}
+				seenSlugs.add(role.slug);
 				roles.push(role);
+				currentNumber++; // Increment for next role
 			}
 		} catch (error) {
 			console.warn('Failed to parse role block:', error);
@@ -345,7 +369,7 @@ function parseRoles(rolesSection: string): CommunityRole[] {
 	return roles;
 }
 
-function parseRoleBlock(block: string): CommunityRole | null {
+function parseRoleBlock(block: string, number: number): CommunityRole | null {
 	const lines = block
 		.split('\n')
 		.map((line) => line.trim())
@@ -382,46 +406,39 @@ function parseRoleBlock(block: string): CommunityRole | null {
 	const name = roleLine.substring(0, colonIndex).trim();
 	let text = roleLine.substring(colonIndex + 1).trim();
 
-	// Continue collecting text lines until we hit an author
+	// Find author in entire block and extract it
 	let author = '';
+	const blockText = block;
+	const authorMatch = blockText.match(/\[AUTHORS? ?:?\s*([^\]]+)\]/);
+	if (authorMatch) {
+		author = authorMatch[1].trim();
+	}
 
+	// Continue collecting text lines, excluding author tags
 	for (let i = textStart; i < lines.length; i++) {
 		const line = lines[i];
-		const authorMatch = line.match(/\[AUTHORS? *:\s*([^\]]+)\]/);
 
-		if (authorMatch) {
-			author = authorMatch[1].trim();
-			// If author is inline, extract the text before it
-			const authorTagStart = line.search(/\[AUTHORS?:/);
-			const beforeAuthor = line.substring(0, authorTagStart).trim();
-			if (beforeAuthor) {
-				text += ' ' + beforeAuthor;
+		// Skip lines that contain author tags
+		if (/\[AUTHORS? ?:?\s*[^\]]+\]/.test(line)) {
+			// If the line has content besides the author tag, add that content
+			const lineWithoutAuthor = line.replace(/\[AUTHORS? ?:?\s*[^\]]+\]/, '').trim();
+			if (lineWithoutAuthor) {
+				text += ' ' + lineWithoutAuthor;
 			}
-			break;
-		} else {
-			// Continue building text
-			text += ' ' + line;
+			continue;
 		}
+
+		// Continue building text
+		text += ' ' + line;
 	}
 
-	// Find author if not found yet (check all lines)
-	if (!author) {
-		for (const line of lines) {
-			const authorMatch = line.match(/\[AUTHORS?:\s*([^\]]+)\]/);
-			if (authorMatch) {
-				author = authorMatch[1].trim();
-				break;
-			}
-		}
-	}
+	// Remove author tag from text if present
+	text = text.replace(/\[AUTHORS? ?:?\s*([^\]]+)\]/, '').trim();
 
-	// Generate a number (we'll need to assign these systematically)
-	const number = generateRoleNumber(name);
-
-	// Generate slug from name and author
-	const slugName = name.toLowerCase().replace(/\s+/g, '-');
-	const slugAuthor = author.toLowerCase().replace(/\s+/g, '-');
-	const slug = `cr-${slugName}-${slugAuthor}`;
+	// Generate slug from author and name
+	const slugName = name.toLowerCase().replace(/[\s/+,&]+/g, '-');
+	const slugAuthor = author.toLowerCase().replace(/[\s/+,&]+/g, '-');
+	const slug = `cr-${slugAuthor}-${slugName}`;
 
 	return {
 		number,
@@ -432,27 +449,40 @@ function parseRoleBlock(block: string): CommunityRole | null {
 	};
 }
 
-// Simple hash-based number generation to ensure consistency with a variant of djb2
-function generateHashNumber(name: string, digits: number = 6): number {
-	let hash = 0;
-	for (let i = 0; i < name.length; i++) {
-		const char = name.charCodeAt(i);
-		hash = (hash << 5) - hash + char;
-		hash = hash & hash; // Convert to 32bit integer
+// Collision detection
+interface Collision {
+	id: number;
+	items: Array<{ name: string; author: string }>;
+}
+
+function findCollisions(
+	items: Array<{ number: number; name: string; author: string }>
+): Collision[] {
+	const idMap = new Map<number, Array<{ name: string; author: string }>>();
+
+	// Group items by their number (ID)
+	for (const item of items) {
+		if (!idMap.has(item.number)) {
+			idMap.set(item.number, []);
+		}
+		idMap.get(item.number)!.push({
+			name: item.name,
+			author: item.author
+		});
 	}
-	// Calculate the range based on digits
-	const min = Math.pow(10, digits - 1);
-	const max = Math.pow(10, digits) - 1;
-	const range = max - min + 1;
-	return min + (Math.abs(hash) % range);
-}
 
-function generateTraitNumber(name: string): number {
-	return generateHashNumber(name, 4);
-}
+	// Find all IDs that have more than one item
+	const collisions: Collision[] = [];
+	for (const [id, itemsList] of idMap.entries()) {
+		if (itemsList.length > 1) {
+			collisions.push({
+				id,
+				items: itemsList
+			});
+		}
+	}
 
-function generateRoleNumber(name: string): number {
-	return generateHashNumber(name, 4);
+	return collisions;
 }
 
 // Main execution
@@ -464,6 +494,12 @@ function main() {
 
 	try {
 		const { traits, roles } = parseCommunityContent(inputFile);
+
+		// Check for ID collisions within traits
+		const traitCollisions = findCollisions(traits);
+
+		// Check for ID collisions within roles
+		const roleCollisions = findCollisions(roles);
 
 		// Write traits to JSON
 		const traitsOutput = join(outputDir, 'community_traits.json');
@@ -484,6 +520,35 @@ function main() {
 		};
 		writeFileSync(metadataOutput, JSON.stringify(metadata, null, '\t'));
 		console.log(`✅ Wrote metadata to ${metadataOutput}`);
+
+		// Report collisions at the end
+		let hasErrors = false;
+
+		if (traitCollisions.length > 0) {
+			hasErrors = true;
+			console.error('\n❌ ERROR: Found ID collisions in community traits:');
+			for (const collision of traitCollisions) {
+				console.error(`  ID ${collision.id} is shared by:`);
+				for (const item of collision.items) {
+					console.error(`    - ${item.name} (by ${item.author})`);
+				}
+			}
+		}
+
+		if (roleCollisions.length > 0) {
+			hasErrors = true;
+			console.error('\n❌ ERROR: Found ID collisions in community roles:');
+			for (const collision of roleCollisions) {
+				console.error(`  ID ${collision.id} is shared by:`);
+				for (const item of collision.items) {
+					console.error(`    - ${item.name} (by ${item.author})`);
+				}
+			}
+		}
+
+		if (hasErrors) {
+			console.error('\n⚠️  Please resolve these ID collisions before using the generated files.');
+		}
 
 		// // Output some examples for verification
 		// if (traits.length > 0) {

@@ -66,10 +66,12 @@ communityTraits.subscribe((commTraits) => {
 });
 
 communityRoles.subscribe((commRoles) => {
+	console.time('Adding community roles to search');
 	for (const role of commRoles) {
 		indexCommunityRoles.add(role.number, role.name);
 		indexCommunityRoles.append(role.number, role.text);
 	}
+	console.timeEnd('Adding community roles to search');
 });
 
 type SearchResults = {

@@ -1,233 +1,233 @@
 [
 	{
-		"number": 5901,
+		"number": 9000,
 		"name": "ARCHITECT",
 		"text": "Describe a community, a force, or a physical megastructure that you wish to build. Advance when you do something to funnel significant resources to your construction project. The payment for a given mission does not count as significant resources unless all of your teammates give up their share.",
 		"author": "kumada1",
-		"slug": "cr-architect-kumada1"
+		"slug": "cr-kumada1-architect"
 	},
 	{
-		"number": 9009,
+		"number": 9001,
 		"name": "ANGEL",
 		"text": "describe a near-death experience you came back from. Advance if you did something this session to save someone else from certain death at the last moment.",
 		"author": "ghostlenin",
-		"slug": "cr-angel-ghostlenin"
+		"slug": "cr-ghostlenin-angel"
 	},
 	{
-		"number": 7561,
+		"number": 9002,
 		"name": "ANNIHILATOR",
 		"text": "Describe how you want the world to end. Advance if something happened that brought the world closer to this destruction.",
 		"author": "ululu",
-		"slug": "cr-annihilator-ululu"
+		"slug": "cr-ululu-annihilator"
 	},
 	{
-		"number": 4665,
+		"number": 9003,
 		"name": "BODYMODDER",
 		"text": "Describe what your ideal body looks like. Advance if you did something that brought you closer to that image of yourself.",
 		"author": "ululu",
-		"slug": "cr-bodymodder-ululu"
+		"slug": "cr-ululu-bodymodder"
 	},
 	{
-		"number": 8546,
+		"number": 9004,
 		"name": "CLIMBER",
 		"text": "describe your idea of what the pinnacle of personal achievement feels like for you advance if you screwed over, sabotaged, or otherwise undermined a bandmate or ally for your personal benefit this session",
 		"author": "ghostlenin",
-		"slug": "cr-climber-ghostlenin"
+		"slug": "cr-ghostlenin-climber"
 	},
 	{
-		"number": 9098,
+		"number": 9005,
 		"name": "CHOSEN",
 		"text": "Describe the major role you are destined to play (or so told) in a grand, universe-spanning prophecy, and whether it excites or burdens you. Advance if you did something that led you one step closer to fulfilling the prophecy, or if you worked towards changing your destiny for the better.",
 		"author": "maenad of miami",
-		"slug": "cr-chosen-maenad-of-miami"
+		"slug": "cr-maenad-of-miami-chosen"
 	},
 	{
-		"number": 8957,
+		"number": 9006,
 		"name": "COLLECTOR",
 		"text": "Describe what you're collecting and the state of your collection. Advance if you've added something special to that collection.",
 		"author": "Gunzales",
-		"slug": "cr-collector-gunzales"
+		"slug": "cr-gunzales-collector"
 	},
 	{
-		"number": 7709,
+		"number": 9007,
 		"name": "CON ARTIST",
 		"text": "Describe the scam that you are most known for. Advance if you managed to lie successfully to someone for your own benefit (shameful display).",
 		"author": "Munin",
-		"slug": "cr-con-artist-munin"
+		"slug": "cr-munin-con-artist"
 	},
 	{
-		"number": 5101,
+		"number": 9008,
 		"name": "CRIMINAL",
 		"text": "Describe the criminal organization you’re a part of, as well as its goal. Advance if you’ve done something to help out the organization in its mission.",
 		"author": "Gunzales",
-		"slug": "cr-criminal-gunzales"
+		"slug": "cr-gunzales-criminal"
 	},
 	{
-		"number": 2767,
+		"number": 9009,
 		"name": "DELINQUENT",
 		"text": "Describe your life’s greatest disappointment. Advance if you needlessly trashed a place or otherwise caused extra destruction this session.",
 		"author": "ghostlenin",
-		"slug": "cr-delinquent-ghostlenin"
+		"slug": "cr-ghostlenin-delinquent"
 	},
 	{
-		"number": 9191,
+		"number": 9010,
 		"name": "END-SEER",
 		"text": "Describe the apocalyptic future you have glimpsed, and how it will bring immeasurable suffering to your future self and everyone you know and love. Advance if you made an effort towards preventing this apocalypse from coming to pass.",
 		"author": "maenad of miami",
-		"slug": "cr-end-seer-maenad-of-miami"
+		"slug": "cr-maenad-of-miami-end-seer"
 	},
 	{
-		"number": 5227,
+		"number": 9011,
 		"name": "FAUST",
 		"text": "Describe an event that partially corrupted you, or that shook your faith, leaving whispering doubts in the back of your head. Advance when you slide noticeably further down the path of corruption and disillusionment.",
 		"author": "kumada1",
-		"slug": "cr-faust-kumada1"
+		"slug": "cr-kumada1-faust"
 	},
 	{
-		"number": 4990,
+		"number": 9012,
 		"name": "FRANKENSTEIN",
 		"text": "Describe a monster you want to create. Advance if you obtained something you plan to use to build the monster.",
 		"author": "ululu",
-		"slug": "cr-frankenstein-ululu"
+		"slug": "cr-ululu-frankenstein"
 	},
 	{
-		"number": 8671,
+		"number": 9013,
 		"name": "GUARDIAN",
 		"text": "Describe a person or concept you wish to keep safe, and what you seek to safeguard them from. Advance when you prevent something from happening that would have caused them considerable harm, or when you take significant steps to ensure that they will be better protected in the future.",
 		"author": "kumada1",
-		"slug": "cr-guardian-kumada1"
+		"slug": "cr-kumada1-guardian"
 	},
 	{
-		"number": 7366,
+		"number": 9014,
 		"name": "HERETIC",
 		"text": "Describe the esoteric religious sect you once belonged to, and what beliefs or actions warranted your exile and/or persecution from their ranks. Advance if you worked towards making amends with your sect, or exposed the injustice within them that led to your wrongful treatment.",
 		"author": "maenad of miami",
-		"slug": "cr-heretic-maenad-of-miami"
+		"slug": "cr-maenad-of-miami-heretic"
 	},
 	{
-		"number": 2663,
+		"number": 9015,
 		"name": "HOTSHOT",
 		"text": "SEROTINY. SWAIL. DRIPTORCH. Describe your connection to the Fractal Zone/Wyrd, and their significance to you. Advance if you prevented the incursion, exploitation, or mastery of the Zone/Wyrd at the hands of coherent Reality, or escaped from complete annihilation with nothing but your life",
 		"author": "helen + valorie",
-		"slug": "cr-hotshot-helen-+-valorie"
+		"slug": "cr-helen-valorie-hotshot"
 	},
 	{
-		"number": 4739,
+		"number": 9016,
 		"name": "ICONOCLAST",
 		"text": "describe the false idol that must be toppled if the world is to survive. Advance if you did something to reveal the truth about the deceiver or if you convinced someone else to join you in your cause.",
 		"author": "ClassicJ",
-		"slug": "cr-iconoclast-classicj"
+		"slug": "cr-classicj-iconoclast"
 	},
 	{
-		"number": 1113,
+		"number": 9017,
 		"name": "IMPOSTER",
 		"text": "Describe who you’re impersonating and why. Advance if you did something to convince others that you are who you claim to be. If you are revealed to be an imposter you must immediately change your role.",
 		"author": "ClassicJ",
-		"slug": "cr-imposter-classicj"
+		"slug": "cr-classicj-imposter"
 	},
 	{
-		"number": 7543,
+		"number": 9018,
 		"name": "IMPOSTER",
 		"text": "Describe the FIST agent you are impersonating, as well as your true identity and motivations for infiltrating FIST and taking their place. Advance if you successfully convince your bandmates that you are who you are pretending to be, without causing any suspicion. Advance (and choose a new role) if you reveal your true nature to your bandmates, and they accept you within FIST regardless.",
 		"author": "maenad of miami",
-		"slug": "cr-imposter-maenad-of-miami"
+		"slug": "cr-maenad-of-miami-imposter"
 	},
 	{
-		"number": 9649,
+		"number": 9019,
 		"name": "KEYMASTER",
 		"text": "Describe your first supernatural experience.  Advance if you did something this mission to actively thin the boundary between this world and the ones beyond.",
 		"author": "ghostlenin",
-		"slug": "cr-keymaster-ghostlenin"
+		"slug": "cr-ghostlenin-keymaster"
 	},
 	{
-		"number": 4897,
+		"number": 9020,
 		"name": "LUDDITE",
 		"text": "Describe the current technology that will ultimately lead to our destruction. Advance if you did something to reveal the harmful effects of this technology or if you did something to halt or reverse its use – this includes outright destruction of the technology.",
 		"author": "ClassicJ",
-		"slug": "cr-luddite-classicj"
+		"slug": "cr-classicj-luddite"
 	},
 	{
-		"number": 2154,
+		"number": 9021,
 		"name": "MONSTER HUNTER",
 		"text": "Describe the monster that set you on this path. Advance if you killed, or learn information on, a dangerous monster (this includes people).",
 		"author": "Agent 69",
-		"slug": "cr-monster-hunter-agent-69"
+		"slug": "cr-agent-69-monster-hunter"
 	},
 	{
-		"number": 9703,
+		"number": 9022,
 		"name": "OMEN",
 		"text": "Describe what apocalyptic doom you foreshadow. Advance if you delay or expedite this doom (decide which when you pick this role).",
 		"author": "Agent 69",
-		"slug": "cr-omen-agent-69"
+		"slug": "cr-agent-69-omen"
 	},
 	{
-		"number": 4943,
+		"number": 9023,
 		"name": "PENITENT",
 		"text": "Describe what powerful person or organization is forcing you to atone for something you did. What did you do? What leverage do they have on you? Advance if you did something during the session to convince the person or organization that you recognize the error of your ways.",
 		"author": "ClassicJ",
-		"slug": "cr-penitent-classicj"
+		"slug": "cr-classicj-penitent"
 	},
 	{
-		"number": 5685,
+		"number": 9024,
 		"name": "PHILOSOPHER",
 		"text": "Describe the unique worldview you hold, and how it challenges other more popular schools of thought. Advance if you convinced someone to subscribe to your philosophy, or witnessed something that made you deeply question your worldview.",
 		"author": "maenad of miami",
-		"slug": "cr-philosopher-maenad-of-miami"
+		"slug": "cr-maenad-of-miami-philosopher"
 	},
 	{
-		"number": 6785,
+		"number": 9025,
 		"name": "PRIEST",
 		"text": "Describe the deity you praise. Advance if you've done something that'd appease your deity, as long as it didn't make you doubt your faith.",
 		"author": "Gunzales",
-		"slug": "cr-priest-gunzales"
+		"slug": "cr-gunzales-priest"
 	},
 	{
-		"number": 2684,
+		"number": 9026,
 		"name": "PROPHET",
 		"text": "Describe the vision you saw or the voice that spoke to you and what it said. Advance if you did something to bring the vision you saw or the future described to you by the voice to fruition.",
 		"author": "ClassicJ",
-		"slug": "cr-prophet-classicj"
+		"slug": "cr-classicj-prophet"
 	},
 	{
-		"number": 3053,
+		"number": 9027,
 		"name": "QUACK",
 		"text": "Describe a field of science that is totally, definitely real. Advance if you convinced or otherwise proved to someone that you are an expert in this field.",
 		"author": "ululu",
-		"slug": "cr-quack-ululu"
+		"slug": "cr-ululu-quack"
 	},
 	{
-		"number": 4851,
+		"number": 9028,
 		"name": "REVENANT",
 		"text": "Describe how you died, and was miraculously brought back to life. Advance if you brought one of the people responsible for your death to justice, or reconciled with someone from your past before you died.",
 		"author": "maenad of miami",
-		"slug": "cr-revenant-maenad-of-miami"
+		"slug": "cr-maenad-of-miami-revenant"
 	},
 	{
-		"number": 3871,
+		"number": 9029,
 		"name": "REVELER",
 		"text": "Describe the worst trip you’ve ever had. Advance if you advance if you successfully convinced someone else to do something hedonistic this session.",
 		"author": "ghostlenin",
-		"slug": "cr-reveler-ghostlenin"
+		"slug": "cr-ghostlenin-reveler"
 	},
 	{
-		"number": 6879,
+		"number": 9030,
 		"name": "SHADOWED",
 		"text": "Describe a truth that troubles you, haunting your waking moments. Advance when you find a moment of significant peace, or when you are able to shed a part of the burden of your awareness.",
 		"author": "kumada1",
-		"slug": "cr-shadowed-kumada1"
+		"slug": "cr-kumada1-shadowed"
 	},
 	{
-		"number": 7514,
+		"number": 9031,
 		"name": "TOUCHED",
-		"text": "Describe your muse and how they move you. Advance if you did something during the session on pure in-the-moment inspiration. [AUTHOR ghostlenin]",
-		"author": "",
-		"slug": "cr-touched-"
+		"text": "Describe your muse and how they move you. Advance if you did something during the session on pure in-the-moment inspiration.",
+		"author": "ghostlenin",
+		"slug": "cr-ghostlenin-touched"
 	},
 	{
-		"number": 7956,
+		"number": 9032,
 		"name": "WYRD",
 		"text": "Describe a fate that awaits you. Advance when circumstances beyond your control move you closer to that fate.",
 		"author": "kumada1",
-		"slug": "cr-wyrd-kumada1"
+		"slug": "cr-kumada1-wyrd"
 	}
 ]
