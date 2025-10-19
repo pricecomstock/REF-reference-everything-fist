@@ -20,7 +20,12 @@
 		'10 OCT 2025': ['Add community roles and traits'],
 		'19 OCT 2025': [
 			'Fix community roles and traits search',
-			'Improve performance and loading speed'
+			'Improve performance and loading speed',
+			'Add PWA (Progressive Web App) support',
+			'Add offline mode - works without internet after first visit',
+			'Add intelligent caching with 30-day data expiry',
+			'Add cache update notifications',
+			'Installable as standalone app on mobile and desktop'
 		]
 	};
 </script>
@@ -34,7 +39,7 @@
 		<li><s>Improved merc generator</s></li>
 		<li>Filtering</li>
 		<li><s>Community content</s></li>
-		<li>Offline mode</li>
+		<li><s>Offline mode</s></li>
 		<li>Printable References</li>
 	</ul>
 </div>

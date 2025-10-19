@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import SearchBox from '$components/SearchBox.svelte';
+	import PWAUpdateNotification from '$components/PWAUpdateNotification.svelte';
 	import { isSearching } from '$lib/stores/search';
 	import '../reset.css';
 	import '../styles.css';
@@ -8,6 +9,9 @@
 	import Header from './Header.svelte';
 	import Nav from './Nav.svelte';
 	import { onNavigate } from '$app/navigation';
+	import { pwaInfo } from 'virtual:pwa-info';
+
+	$: webManifestLink = pwaInfo ? pwaInfo.webManifest.linkTag : '';
 
 	onNavigate((navigation) => {
 		const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')?.matches;
@@ -30,6 +34,11 @@
 
 <svelte:head>
 	<title>FISTREF - {$page.data.title ?? 'Online Fist Reference'}</title>
+	{@html webManifestLink}
+	<meta name="theme-color" content="#1a1a1a" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+	<meta name="apple-mobile-web-app-title" content="FIST Ref" />
 </svelte:head>
 
 <div class="layout">
@@ -42,6 +51,7 @@
 	<div class="footer">
 		<Footer />
 	</div>
+	<PWAUpdateNotification />
 </div>
 
 <style>
