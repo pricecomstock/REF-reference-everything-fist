@@ -56,22 +56,34 @@ for (const role of roles) {
 
 console.timeEnd('Setting up search index');
 
+// Track whether community indexes have been populated
+let communityTraitsIndexed = false;
+let communityRolesIndexed = false;
+
 // Index community content when available
 communityTraits.subscribe((commTraits) => {
-	for (const trait of commTraits) {
-		indexCommunityTraits.add(trait.number, trait.name);
-		indexCommunityTraits.append(trait.number, trait.effect);
-		indexCommunityTraits.append(trait.number, trait.item);
+	// Only index if we have traits and haven't indexed them yet
+	if (commTraits.length > 0 && !communityTraitsIndexed) {
+		for (const trait of commTraits) {
+			indexCommunityTraits.add(trait.number, trait.name);
+			indexCommunityTraits.append(trait.number, trait.effect);
+			indexCommunityTraits.append(trait.number, trait.item);
+		}
+		communityTraitsIndexed = true;
 	}
 });
 
 communityRoles.subscribe((commRoles) => {
-	console.time('Adding community roles to search');
-	for (const role of commRoles) {
-		indexCommunityRoles.add(role.number, role.name);
-		indexCommunityRoles.append(role.number, role.text);
+	// Only index if we have roles and haven't indexed them yet
+	if (commRoles.length > 0 && !communityRolesIndexed) {
+		console.time('Adding community roles to search');
+		for (const role of commRoles) {
+			indexCommunityRoles.add(role.number, role.name);
+			indexCommunityRoles.append(role.number, role.text);
+		}
+		communityRolesIndexed = true;
+		console.timeEnd('Adding community roles to search');
 	}
-	console.timeEnd('Adding community roles to search');
 });
 
 type SearchResults = {
