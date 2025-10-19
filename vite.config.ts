@@ -41,6 +41,7 @@ export default defineConfig({
 				globIgnores: ['**/node_modules/**/*', 'server/**'],
 				skipWaiting: true,
 				clientsClaim: true,
+				navigateFallback: null,
 				runtimeCaching: [
 					{
 						urlPattern: ({ url }) => url.pathname.endsWith('__data.json'),
@@ -78,9 +79,7 @@ export default defineConfig({
 							}
 						}
 					}
-				],
-				navigateFallback: '/offline',
-				navigateFallbackDenylist: [/^\/__data\.json$/, /^\/api\//]
+				]
 			},
 			devOptions: {
 				enabled: false, // Disable in dev - PWA works best in production
