@@ -11,7 +11,7 @@
 	import { writable } from 'svelte/store';
 
 	// Reactive online status
-	const isOnline = writable(true);
+	const isOnline = writable(navigator.onLine ?? true);
 
 	// Automatically update when a new version is available
 	onMount(() => {
