@@ -25,10 +25,6 @@ export const merc = writable<Merc>({
 	traits: [{ name: '', number: 0, effect: '', item: '', stat: '', stats: {} }]
 });
 
-merc.subscribe((m) => {
-	console.log('Merc updated', m);
-});
-
 export function rerollMerc() {
 	merc.set({
 		codename: codenamesDeck.draw(),
