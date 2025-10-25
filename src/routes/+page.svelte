@@ -18,7 +18,10 @@
 </div>
 
 <div class="instructions prose">
-	<p>You can now <a href="/pwa">install this tool as an app</a>.</p>
+	<p>
+		This website now works offline! You can also now <a href="/pwa">install this tool as an app</a> if
+		you'd like.
+	</p>
 </div>
 
 <style>
