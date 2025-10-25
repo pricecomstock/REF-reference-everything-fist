@@ -22,7 +22,11 @@
 			'Fix community roles and traits search',
 			'Improve performance and loading speed'
 		],
-		'25 OCT 2025': ['Offline mode', 'App can be installed as a PWA']
+		'25 OCT 2025': [
+			'Offline mode',
+			'App can be installed as a PWA',
+			'Use font stylistic sets ss02, ss03, and ss04 to more closely match FIST'
+		]
 	};
 </script>
 
