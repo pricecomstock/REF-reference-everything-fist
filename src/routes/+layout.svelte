@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import SearchBox from '$components/SearchBox.svelte';
-	import PWAUpdateNotification from '$components/PWAUpdateNotification.svelte';
 	import { isSearching } from '$lib/stores/search';
 	import '../reset.css';
 	import '../fonts.css';
@@ -48,7 +47,6 @@
 	<div class="footer">
 		<Footer />
 	</div>
-	<PWAUpdateNotification />
 </div>
 
 <style>
