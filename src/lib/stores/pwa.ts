@@ -46,7 +46,7 @@ export async function clearCache() {
 
 	try {
 		const cacheNames = await caches.keys();
-		await Promise.all(cacheNames.map(name => caches.delete(name)));
+		await Promise.all(cacheNames.map((name) => caches.delete(name)));
 
 		// Reload the page
 		window.location.reload();
@@ -55,54 +55,51 @@ export async function clearCache() {
 	}
 }
 
-// Check if data cache is stale (older than 30 days)
-export const cacheStatus = readable<'fresh' | 'stale' | 'none'>(
-	'none',
-	(set) => {
-		if (!browser) return;
+// Check if data cache is stale (older than 90 days)
+export const cacheStatus = readable<'fresh' | 'stale' | 'none'>('none', (set) => {
+	if (!browser) return;
 
-		(async () => {
-			try {
-				const cacheNames = await caches.keys();
-				const dataCacheName = cacheNames.find(name => name.includes('fist-ref-data'));
+	(async () => {
+		try {
+			const cacheNames = await caches.keys();
+			const dataCacheName = cacheNames.find((name) => name.includes('fist-ref-data'));
 
-				if (!dataCacheName) {
-					set('none');
-					return;
-				}
-
-				const dataCache = await caches.open(dataCacheName);
-
-				// Try to find any data file to check the timestamp
-				const keys = await dataCache.keys();
-				if (keys.length === 0) {
-					set('none');
-					return;
-				}
-
-				// Check the first cached data response
-				const firstResponse = await dataCache.match(keys[0]);
-				if (!firstResponse) {
-					set('none');
-					return;
-				}
-
-				// Check the Date header from the response
-				const dateHeader = firstResponse.headers.get('date');
-				if (!dateHeader) {
-					set('fresh'); // No date info, assume fresh
-					return;
-				}
-
-				const cachedDate = new Date(dateHeader);
-				const CACHE_EXPIRY_MS = 30 * 24 * 60 * 60 * 1000; // 30 days
-				const isStale = Date.now() - cachedDate.getTime() > CACHE_EXPIRY_MS;
-
-				set(isStale ? 'stale' : 'fresh');
-			} catch (error) {
-				console.error('Error checking cache status:', error);
+			if (!dataCacheName) {
 				set('none');
+				return;
 			}
-		})();
-	}
-);
+
+			const dataCache = await caches.open(dataCacheName);
+
+			// Try to find any data file to check the timestamp
+			const keys = await dataCache.keys();
+			if (keys.length === 0) {
+				set('none');
+				return;
+			}
+
+			// Check the first cached data response
+			const firstResponse = await dataCache.match(keys[0]);
+			if (!firstResponse) {
+				set('none');
+				return;
+			}
+
+			// Check the Date header from the response
+			const dateHeader = firstResponse.headers.get('date');
+			if (!dateHeader) {
+				set('fresh'); // No date info, assume fresh
+				return;
+			}
+
+			const cachedDate = new Date(dateHeader);
+			const CACHE_EXPIRY_MS = 90 * 24 * 60 * 60 * 1000; // 90 days
+			const isStale = Date.now() - cachedDate.getTime() > CACHE_EXPIRY_MS;
+
+			set(isStale ? 'stale' : 'fresh');
+		} catch (error) {
+			console.error('Error checking cache status:', error);
+			set('none');
+		}
+	})();
+});

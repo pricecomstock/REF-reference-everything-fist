@@ -46,11 +46,11 @@ export default defineConfig({
 				runtimeCaching: [
 					{
 						urlPattern: ({ url }) => url.pathname.endsWith('__data.json'),
-						handler: 'CacheFirst',
+						handler: 'StaleWhileRevalidate',
 						options: {
 							cacheName: 'fist-ref-data',
 							expiration: {
-								maxAgeSeconds: 30 * 24 * 60 * 60, // 30 days
+								maxAgeSeconds: 90 * 24 * 60 * 60, // 90 days
 								maxEntries: 200
 							},
 							cacheableResponse: {
@@ -60,12 +60,12 @@ export default defineConfig({
 					},
 					{
 						urlPattern: /\.(?:png|jpg|jpeg|svg|gif|webp)$/,
-						handler: 'CacheFirst',
+						handler: 'StaleWhileRevalidate',
 						options: {
 							cacheName: 'fist-ref-images',
 							expiration: {
 								maxEntries: 100,
-								maxAgeSeconds: 60 * 24 * 60 * 60 // 60 days
+								maxAgeSeconds: 90 * 24 * 60 * 60 // 90 days
 							}
 						}
 					},
@@ -76,7 +76,7 @@ export default defineConfig({
 							cacheName: 'fist-ref-pages',
 							expiration: {
 								maxEntries: 100,
-								maxAgeSeconds: 30 * 24 * 60 * 60 // 30 days
+								maxAgeSeconds: 90 * 24 * 60 * 60 // 90 days
 							}
 						}
 					}
