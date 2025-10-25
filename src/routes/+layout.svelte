@@ -6,9 +6,9 @@
 	import '../reset.css';
 	import '../fonts.css';
 	import '../styles.css';
-	import Footer from './Footer.svelte';
-	import Header from './Header.svelte';
-	import Nav from './Nav.svelte';
+	import Footer from '../components/Footer.svelte';
+	import Header from '../components/Header.svelte';
+	import Nav from '../components/Nav.svelte';
 	import { onNavigate } from '$app/navigation';
 	import { pwaInfo } from 'virtual:pwa-info';
 

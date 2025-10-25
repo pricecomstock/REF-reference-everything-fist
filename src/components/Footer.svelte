@@ -1,6 +1,7 @@
 <script lang="ts">
 	import communityMetadata from '$lib/json/community_metadata.json';
 	import { format } from 'date-fns/format';
+	import FooterPWAInfo from './FooterPWAInfo.svelte';
 
 	const lastSyncDate = new Date(communityMetadata.lastSyncedAt);
 	const formattedDate = format(lastSyncDate, 'dd MMM yyyy').toUpperCase();
@@ -11,6 +12,9 @@
 		><img src="/img/fist-compatiblity-mark.webp" alt="compatible with fist" /></a
 	>
 	<div>
+		<p class="normal-text">
+			<FooterPWAInfo />
+		</p>
 		<p>
 			<b>FIST</b> is a tabletop RPG of paranormal mercenaries by CLAYMORE and is available
 			<a href="https://claymorerpgs.itch.io/fist">here</a>.
@@ -37,13 +41,13 @@
 	}
 
 	p {
-		margin-bottom: 0.25rem;
+		margin-bottom: 0.5rem;
 	}
 
 	div.footer {
 		display: flex;
 		justify-content: center;
-		align-items: center;
+		align-items: start;
 
 		text-align: left;
 		font-size: 0.85rem;
@@ -51,5 +55,9 @@
 		gap: 0.5rem;
 
 		view-transition-name: footer;
+	}
+
+	p.normal-text {
+		font-size: 1rem;
 	}
 </style>
