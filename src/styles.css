@@ -120,3 +120,14 @@ a.icon-link {
 .community {
 	color: var(--color-community);
 }
+
+.prose {
+	max-width: 55ch;
+	margin: auto;
+	font-size: 1.1rem;
+	text-align: left;
+}
+
+.prose p:not(:last-child) {
+	margin-bottom: 1rem;
+}
