@@ -10,8 +10,15 @@
 	import Nav from '../components/Nav.svelte';
 	import { onNavigate } from '$app/navigation';
 	import { pwaInfo } from 'virtual:pwa-info';
+	import { onMount } from 'svelte';
 
 	$: webManifestLink = pwaInfo ? pwaInfo.webManifest.linkTag : '';
+
+	onMount(() => {
+		window.addEventListener('beforeinstallprompt', (e) => {
+			e.preventDefault();
+		});
+	});
 
 	onNavigate((navigation) => {
 		const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')?.matches;
