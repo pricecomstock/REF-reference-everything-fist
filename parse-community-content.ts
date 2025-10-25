@@ -68,7 +68,7 @@ function parseCommunityContent(filePath: string) {
 function parseTraits(traitsSection: string): CommunityTrait[] {
 	const traits: CommunityTrait[] = [];
 	const seenSlugs = new Set<string>();
-	let currentNumber = 1111; // Start trait numbers at 1111
+	const generatedNumbers = new Set<number>();
 
 	// Split by separator lines (5 or more underscores)
 	const traitBlocks = traitsSection.split(/_{5,}/);
@@ -80,7 +80,7 @@ function parseTraits(traitsSection: string): CommunityTrait[] {
 		}
 
 		try {
-			const trait = parseTraitBlock(trimmedBlock, currentNumber);
+			const trait = parseTraitBlock(trimmedBlock);
 			if (trait) {
 				if (seenSlugs.has(trait.slug)) {
 					console.warn(
@@ -89,8 +89,10 @@ function parseTraits(traitsSection: string): CommunityTrait[] {
 					continue;
 				}
 				seenSlugs.add(trait.slug);
-				traits.push(trait);
-				currentNumber++; // Increment for next trait
+
+				const number = generateHashNumber(trait.slug, 4, generatedNumbers);
+				generatedNumbers.add(number);
+				traits.push({ ...trait, number });
 			}
 		} catch (error) {
 			console.warn('Failed to parse trait block:', error);
@@ -101,7 +103,7 @@ function parseTraits(traitsSection: string): CommunityTrait[] {
 	return traits;
 }
 
-function parseTraitBlock(block: string, number: number): CommunityTrait | null {
+function parseTraitBlock(block: string): Omit<CommunityTrait, 'number'> | null {
 	const lines = block
 		.split('\n')
 		.map((line) => line.trim())
@@ -166,7 +168,6 @@ function parseTraitBlock(block: string, number: number): CommunityTrait | null {
 	const slug = `ct-${slugAuthor}-${slugName}`;
 
 	return {
-		number,
 		name: name.toUpperCase(),
 		effect: formatDescriptionText(cleanEffectText),
 		item: item.trim(),
@@ -336,7 +337,7 @@ function formatDescriptionText(text: string): string {
 function parseRoles(rolesSection: string): CommunityRole[] {
 	const roles: CommunityRole[] = [];
 	const seenSlugs = new Set<string>();
-	let currentNumber = 9000; // Start role numbers at 9000
+	const generatedNumbers = new Set<number>();
 
 	// Split by separator lines (5 or more underscores)
 	const roleBlocks = rolesSection.split(/_{5,}/);
@@ -348,7 +349,7 @@ function parseRoles(rolesSection: string): CommunityRole[] {
 		}
 
 		try {
-			const role = parseRoleBlock(trimmedBlock, currentNumber);
+			const role = parseRoleBlock(trimmedBlock);
 			if (role) {
 				if (seenSlugs.has(role.slug)) {
 					console.warn(
@@ -357,8 +358,11 @@ function parseRoles(rolesSection: string): CommunityRole[] {
 					continue;
 				}
 				seenSlugs.add(role.slug);
-				roles.push(role);
-				currentNumber++; // Increment for next role
+
+				const number = generateHashNumber(role.slug, 4, generatedNumbers);
+				generatedNumbers.add(number);
+
+				roles.push({ ...role, number });
 			}
 		} catch (error) {
 			console.warn('Failed to parse role block:', error);
@@ -369,7 +373,7 @@ function parseRoles(rolesSection: string): CommunityRole[] {
 	return roles;
 }
 
-function parseRoleBlock(block: string, number: number): CommunityRole | null {
+function parseRoleBlock(block: string): Omit<CommunityRole, 'number'> | null {
 	const lines = block
 		.split('\n')
 		.map((line) => line.trim())
@@ -441,7 +445,6 @@ function parseRoleBlock(block: string, number: number): CommunityRole | null {
 	const slug = `cr-${slugAuthor}-${slugName}`;
 
 	return {
-		number,
 		name: name.toUpperCase(),
 		text: text.trim(),
 		author: author.trim(),
@@ -483,6 +486,35 @@ function findCollisions(
 	}
 
 	return collisions;
+}
+
+// Simple hash-based number generation to ensure consistency with a variant of djb2
+// Uses linear probing to avoid collisions
+function generateHashNumber(name: string, digits: number = 6, existing?: Set<number>): number {
+	if (existing && existing?.size > 10 ** digits / 2) {
+		console.log(
+			'⚠️ Hash space is more than half-full which will significantly degrade insert performance!'
+		);
+	}
+	let hash = 0;
+	for (let i = 0; i < name.length; i++) {
+		const char = name.charCodeAt(i);
+		hash = (hash << 5) - hash + char;
+		hash = hash & hash; // Convert to 32bit integer
+	}
+	// Calculate the range based on digits
+	const min = Math.pow(10, digits - 1);
+	const max = Math.pow(10, digits) - 1;
+	const range = max - min + 1;
+	let value = min + (Math.abs(hash) % range);
+	if (existing) {
+		while (existing.has(value)) {
+			console.log(`Resolving collision with ${name}: ${value} ==> ${value + 1}`);
+			value += 1;
+		}
+	}
+
+	return value;
 }
 
 // Main execution
