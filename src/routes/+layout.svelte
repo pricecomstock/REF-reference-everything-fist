@@ -3,11 +3,15 @@
 	import SearchBox from '$components/SearchBox.svelte';
 	import { isSearching } from '$lib/stores/search';
 	import '../reset.css';
+	import '../fonts.css';
 	import '../styles.css';
-	import Footer from './Footer.svelte';
-	import Header from './Header.svelte';
-	import Nav from './Nav.svelte';
+	import Footer from '../components/Footer.svelte';
+	import Header from '../components/Header.svelte';
+	import Nav from '../components/Nav.svelte';
 	import { onNavigate } from '$app/navigation';
+	import { pwaInfo } from 'virtual:pwa-info';
+
+	$: webManifestLink = pwaInfo ? pwaInfo.webManifest.linkTag : '';
 
 	onNavigate((navigation) => {
 		const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')?.matches;
@@ -30,6 +34,7 @@
 
 <svelte:head>
 	<title>FISTREF - {$page.data.title ?? 'Online Fist Reference'}</title>
+	{@html webManifestLink}
 </svelte:head>
 
 <div class="layout">

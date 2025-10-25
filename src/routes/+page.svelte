@@ -4,9 +4,10 @@
 
 <h1>The R.E.F.</h1>
 <p class="subtitle"><u>R</u>EFERENCE for <u>E</u>VERYTHING <u>F</u>IST</p>
-<div class="instructions">
+<div class="instructions prose">
 	<p>Click an item above to get started.</p>
 </div>
+<div />
 
 <div class="links">
 	<a class="icon-link" href="https://claymorerpgs.itch.io/fist"><Book size="24" />GET FIST</a>
@@ -14,6 +15,13 @@
 	<a class="icon-link" href="https://github.com/pricecomstock/REF-reference-everything-fist"
 		><SquareCode size="24" />SOURCE CODE</a
 	>
+</div>
+
+<div class="instructions prose">
+	<p>
+		This website now works offline! You can also now <a href="/pwa">install this tool as an app</a> if
+		you'd like.
+	</p>
 </div>
 
 <style>

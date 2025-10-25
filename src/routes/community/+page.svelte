@@ -18,7 +18,7 @@
 	<title>FistREF - Community Content</title>
 </svelte:head>
 
-<div class="community-page">
+<div class="community-page prose">
 	<h1>Community Content</h1>
 	<p>
 		Community traits and roles are created by the FIST community and synced to this website
@@ -51,20 +51,13 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		gap: 1rem;
 		margin: 2rem auto;
-		max-width: 600px;
 		padding: 0 1rem;
 	}
 
 	h1 {
 		text-align: center;
 		margin-bottom: 1rem;
-	}
-
-	p {
-		text-align: left;
-		font-size: 1.1rem;
 	}
 
 	.unlock-wrapper {
